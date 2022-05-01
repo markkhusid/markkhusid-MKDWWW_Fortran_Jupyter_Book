@@ -1,0 +1,14 @@
+name = "Section_2_1_Statement_Blocks"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_2_1_Statement_Blocks"
+source-dir="app"
+main="section_2_1_statement_blocks.f90"

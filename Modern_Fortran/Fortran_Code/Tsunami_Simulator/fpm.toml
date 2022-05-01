@@ -1,0 +1,14 @@
+name = "Tsunami_Simulator"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Tsunami_Simulator"
+source-dir="app"
+main="tsunami_simulator.f90"

@@ -1,0 +1,14 @@
+name = "Section_14_Pi_Estimation"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_14_Pi_Estimation"
+source-dir='app'
+main="section_14_pi_estimation.f90"

@@ -1,0 +1,14 @@
+name = "Print_Compiler_Version"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Print_Compiler_Version"
+source-dir="app"
+main="print_compiler_version.f90"

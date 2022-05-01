@@ -1,0 +1,14 @@
+name = "Section_1_8_Ex_2_Quadratic_Formula"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_1_8_Ex_2_Quadratic_Formula"
+source-dir="app"
+main="quadratic_equation_solver_1_ex2_mk.f90"

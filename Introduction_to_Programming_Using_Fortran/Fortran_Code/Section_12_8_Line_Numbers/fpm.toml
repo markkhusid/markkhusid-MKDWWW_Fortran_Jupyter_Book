@@ -1,0 +1,14 @@
+name = "Section_12_8_Line_Numbers"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_12_8_Line_Numbers"
+source-dir="app"
+main="section_12_8_line_numbers.f90"

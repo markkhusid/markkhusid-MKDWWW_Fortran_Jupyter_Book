@@ -1,0 +1,32 @@
+format: jb-book
+root: intro
+parts:
+- caption: Modern Fortran
+  chapters:
+  - file: Modern_Fortran/Modern_Fortran
+    sections:
+    - file: Modern_Fortran/Cold_Front_Calculator
+    - file: Modern_Fortran/Cold_Front_Calculator_with_Loop
+    - file: Modern_Fortran/Tsunami_Simulator
+    - file: Modern_Fortran/Tsunami_Simulator_Plotter
+    - file: Modern_Fortran/Tsunami_Simulator_with_Modules
+    - file: Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter
+    - file: Modern_Fortran/Print_Compiler_Version
+- caption: Introduction to Programming Using Fortran
+  chapters:
+  - file: Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran
+    sections: 
+    - file: Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator
+    - file: Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference
+    - file: Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers
+    - file: Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation
+- caption: Guide to Fortran 2008 Programming
+  chapters:
+  - file: Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming
+    sections:
+    - file: Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula
+    - file: Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks
+- caption: Miscellaneous
+  chapters:
+    - file: markdown
+    - file: notebooks

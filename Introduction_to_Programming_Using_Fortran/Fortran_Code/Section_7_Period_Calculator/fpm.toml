@@ -1,0 +1,14 @@
+name = "Section_7_Period_Calculator"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_7_Period_Calculator"
+source-dir="app"
+main="section_7_period_calculator.f90"
