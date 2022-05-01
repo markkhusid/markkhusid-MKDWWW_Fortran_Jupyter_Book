@@ -1,0 +1,14 @@
+name = "Section_2_1_Associate_Construct"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_2_1_Associate_Construct"
+source-dir="app"
+main="section_2_1_associate_construct.f90"

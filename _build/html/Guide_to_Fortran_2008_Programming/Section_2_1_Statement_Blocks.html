@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Section 2.1: Statement Blocks &#8212; Fortran Programming</title>
+    <title>Section 2.1: Associate Construct &#8212; Fortran Programming</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section 1.8 Example 2: Quadratic Equation" href="Section_1_8_Ex_2_Quadratic_Formula.html" />
-    <link rel="prev" title="Worked Examples" href="Guide_to_Fortran_2008_Programming.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section 2.1: Statement Blocks" href="Section_2_1_Associate_Construct.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -211,14 +211,19 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Section 2.1: Statement Blocks
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="Section_1_8_Ex_2_Quadratic_Formula.html">
      Section 1.8 Example 2: Quadratic Equation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_2_1_Associate_Construct.html">
+     Section 2.1: Statement Blocks
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Section 2.1: Associate Construct
     </a>
    </li>
   </ul>
@@ -329,10 +334,10 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#program-to-demonstrate-the-block-construct-in-fortran">
+  <a class="reference internal nav-link" href="#program-to-demonstrate-the-associate-construct-in-fortran">
    Program to demonstrate the
    <strong>
-    block
+    associate
    </strong>
    construct in Fortran
   </a>
@@ -347,7 +352,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section 2.1: Statement Blocks</h1>
+                <h1>Section 2.1: Associate Construct</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -358,10 +363,10 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#program-to-demonstrate-the-block-construct-in-fortran">
+  <a class="reference internal nav-link" href="#program-to-demonstrate-the-associate-construct-in-fortran">
    Program to demonstrate the
    <strong>
-    block
+    associate
    </strong>
    construct in Fortran
   </a>
@@ -375,26 +380,53 @@
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="section-2-1-statement-blocks">
-<h1>Section 2.1: Statement Blocks<a class="headerlink" href="#section-2-1-statement-blocks" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-2-1-associate-construct">
+<h1>Section 2.1: Associate Construct<a class="headerlink" href="#section-2-1-associate-construct" title="Permalink to this headline">¶</a></h1>
 <p>Adapted from: “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015)</p>
-<section id="program-to-demonstrate-the-block-construct-in-fortran">
-<h2>Program to demonstrate the <strong>block</strong> construct in Fortran<a class="headerlink" href="#program-to-demonstrate-the-block-construct-in-fortran" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">block_test</span><span class="w"></span>
+<section id="program-to-demonstrate-the-associate-construct-in-fortran">
+<h2>Program to demonstrate the <strong>associate</strong> construct in Fortran<a class="headerlink" href="#program-to-demonstrate-the-associate-construct-in-fortran" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">assoc</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.1</span><span class="w"></span>
+<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">block</span>
-<span class="k">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="w">        </span><span class="k">do </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
-<span class="w">            </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="w">        </span><span class="k">end do</span>
-<span class="k">    end block</span>
+<span class="w">    </span><span class="k">associate</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;This program demonstrates the use of the Fortran associate construct&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is defined as s =&gt; sqrt (x**2 + y**2)&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;x is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;y is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is equal to -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w">        </span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Changing the value of x and y in the accociate block....&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1, a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;x is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; y is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is equal to -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Since x and y where changed in the associate block, s did not change&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1, a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;x still is -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; y still is -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s remains -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="k">end associate</span>
 
-<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="k">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="w">    </span><span class="k">associate</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">sqrt</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Now in a new associate block...&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is still defined as s =&gt; sqrt (x**2 + y**2)&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;x is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w">                           </span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;y is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is equal to -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="k">end associate</span>
 
-<span class="k">end program </span><span class="n">block_test</span><span class="w"></span>
+<span class="k">    associate</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is now defined as s =&gt; x&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;x is now -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f5.1)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;s is equal to -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="w">    </span><span class="k">end associate</span>
+
+<span class="k">end program </span><span class="n">assoc</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -408,7 +440,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_2_1_Statement_Blocks&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_2_1_Associate_Construct&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -435,10 +467,30 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           1
-           2
-           3
-   1.10000002    
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program demonstrates the use of the Fortran associate construct
+
+s is defined as s =&gt; sqrt (x**2 + y**2)
+x is now -&gt;   3.0
+y is now -&gt;   4.0
+s is equal to -&gt;   5.0
+
+Changing the value of x and y in the accociate block....
+x is now -&gt;   5.0 y is now -&gt;  12.0
+s is equal to -&gt;   5.0
+
+Since x and y where changed in the associate block, s did not change
+x still is -&gt;   5.0 y still is -&gt;  12.0
+s remains -&gt;   5.0
+
+Now in a new associate block...
+s is still defined as s =&gt; sqrt (x**2 + y**2)
+x is now -&gt;   5.0
+y is now -&gt;  12.0
+s is equal to -&gt;  13.0
+
+s is now defined as s =&gt; x
+x is now -&gt;   9.0
+s is equal to -&gt;   9.0
 </pre></div>
 </div>
 </div>
@@ -471,17 +523,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Guide_to_Fortran_2008_Programming.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_2_1_Associate_Construct.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Worked Examples</p>
+            <p class="prev-next-title">Section 2.1: Statement Blocks</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_1_8_Ex_2_Quadratic_Formula.html" title="next page">
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section 1.8 Example 2: Quadratic Equation</p>
+        <p class="prev-next-title">Markdown Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -25,6 +25,7 @@ parts:
   - file: Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming
     sections:
     - file: Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula
+    - file: Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct
     - file: Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks
 - caption: Miscellaneous
   chapters:

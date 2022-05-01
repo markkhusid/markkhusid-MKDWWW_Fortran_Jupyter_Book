@@ -11,28 +11,55 @@ kernelspec:
   language: python
   name: python3
 ---
-# # Section 2.1: Statement Blocks
+# # Section 2.1: Associate Construct
 
 # Adapted from: "Guide to Fortran 2008 Programming" by Walter S. Brainerd (Springer 2015)
 
-# ## Program to demonstrate the **block** construct in Fortran
+# ## Program to demonstrate the **associate** construct in Fortran
 
 # ```fortran
-# program block_test
+# program assoc
 # 
 #     implicit none
-#     real, parameter :: x = 1.1
+#     real :: x = 3, y = 4
 # 
-#     block
-#         integer :: x
-#         do x = 1, 3
-#             print *, x
-#         end do
-#     end block
+#     associate (s => sqrt (x**2 + y**2))
+#         write (*, '(a)') "This program demonstrates the use of the Fortran associate construct"
+#         print *
+#         write (*,'(a)') "s is defined as s => sqrt (x**2 + y**2)"
+#         write (*, '(a, f5.1)') "x is now -> ", x
+#         write (*, '(a, f5.1)') "y is now -> ", y
+#         write (*, '(a, f5.1)') "s is equal to -> ", s 
+#         print *        
+#         write (*, '(a)') "Changing the value of x and y in the accociate block...."
+#         x = 5; y = 12
+#         write (*, '(a, f5.1, a, f5.1)') "x is now -> ", x, " y is now -> ", y
+#         write (*, '(a, f5.1)') "s is equal to -> ", s 
+#         print *
+#         write (*, '(a)') "Since x and y where changed in the associate block, s did not change"
+#         write (*, '(a, f5.1, a, f5.1)') "x still is -> ", x, " y still is -> ", y
+#         write (*, '(a, f5.1)') "s remains -> ", s
+#     end associate
 # 
-#     print *, x
+#     x = 5; y = 12
+#     associate (s => sqrt (x**2 + y**2))
+#         print *
+#         write (*, '(a)') "Now in a new associate block..."
+#         write (*,'(a)') "s is still defined as s => sqrt (x**2 + y**2)"
+#         write (*, '(a, f5.1)') "x is now -> ", x                           
+#         write (*, '(a, f5.1)') "y is now -> ", y
+#         write (*, '(a, f5.1)') "s is equal to -> ", s
+#     end associate
 # 
-# end program block_test
+#     associate (s => x)
+#         print *
+#         write (*, '(a)') "s is now defined as s => x"
+#         x = 9
+#         write (*, '(a, f5.1)') "x is now -> ", x
+#         write (*, '(a, f5.1)') "s is equal to -> ", s
+#     end associate
+# 
+# end program assoc
 # ```
 
 # The above program is compiled and run using Fortran Package Manager (fpm):
@@ -47,7 +74,7 @@ root_dir = os.getcwd()
 # In[2]:
 
 
-code_dir = root_dir + "/" + "Fortran_Code/Section_2_1_Statement_Blocks"
+code_dir = root_dir + "/" + "Fortran_Code/Section_2_1_Associate_Construct"
 
 
 # In[3]:
