@@ -1,0 +1,14 @@
+name = "Section_3_17_Case_Study__Adaptive_Numerical_Integration"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_3_17_Case_Study__Adaptive_Numberical_Integration"
+source-dir="app"
+main="adaptive_numerical_integration.f90"
