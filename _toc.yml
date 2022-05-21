@@ -27,6 +27,9 @@ parts:
     - file: Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula
     - file: Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct
     - file: Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks
+    - file: Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module
+    - file: Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three
+    - file: Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing
     - file: Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration
 - caption: Miscellaneous
   chapters:

@@ -1,0 +1,14 @@
+name = "Section_3_4_Putting_Procedures_in_a_Module"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_3_4_Putting_Procedures_in_a_Module"
+source-dir="app"
+main="section_3_4_putting_procedures_in_a_module.f90"

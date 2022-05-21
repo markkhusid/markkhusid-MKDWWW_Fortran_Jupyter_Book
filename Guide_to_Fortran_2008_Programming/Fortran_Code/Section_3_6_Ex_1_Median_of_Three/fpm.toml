@@ -1,0 +1,14 @@
+name = "Section_3_6_Ex_1_Median_of_Three"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_3_6_Ex_1_Media_of_Three"
+source-dir="app"
+main="median_of_three.f90"
