@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Worked Examples &#8212; Fortran Programming</title>
+    <title>Section 1.16: Factorial Recursion &#8212; Fortran Programming</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -48,6 +48,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -57,8 +59,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section 1.8 Example 2: Quadratic Equation" href="Section_1_8_Ex_2_Quadratic_Formula.html" />
-    <link rel="prev" title="Section 14: Pi Estimation" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html" />
+    <link rel="next" title="Section 2.1: Statement Blocks" href="Section_2_1_Associate_Construct.html" />
+    <link rel="prev" title="Section 1.8 Example 2: Quadratic Equation" href="Section_1_8_Ex_2_Quadratic_Formula.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -202,7 +204,7 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="Guide_to_Fortran_2008_Programming.html">
    Worked Examples
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -210,14 +212,14 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="Section_1_8_Ex_2_Quadratic_Formula.html">
      Section 1.8 Example 2: Quadratic Equation
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_1_16_Factorial_Recursion.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Section 1.16: Factorial Recursion
     </a>
    </li>
@@ -311,7 +313,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -336,7 +338,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -353,6 +355,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-to-calculate-factorials-using-recursion-in-fortran">
+   Program to calculate factorials using recursion in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate">
+   Calculate:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Calculate:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Calculate:
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -360,22 +390,175 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Worked Examples</h1>
+                <h1>Section 1.16: Factorial Recursion</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-to-calculate-factorials-using-recursion-in-fortran">
+   Program to calculate factorials using recursion in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate">
+   Calculate:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Calculate:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Calculate:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples">
-<h1>Worked Examples<a class="headerlink" href="#worked-examples" title="Permalink to this headline">¶</a></h1>
-<p>In this section we will be following along with the examples from “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015). We will use Jupyter Lab with the Fortran Package Manager (fpm) to facilitate creation of this Jupyter Book.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="section-1-16-factorial-recursion">
+<h1>Section 1.16: Factorial Recursion<a class="headerlink" href="#section-1-16-factorial-recursion" title="Permalink to this headline">¶</a></h1>
+<p>Adapted from: “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015)</p>
+<section id="program-to-calculate-factorials-using-recursion-in-fortran">
+<h2>Program to calculate factorials using recursion in Fortran.<a class="headerlink" href="#program-to-calculate-factorials-using-recursion-in-fortran" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">factorial_module</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+<span class="k">    public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">factorial</span><span class="w"></span>
+
+<span class="k">contains</span>
+
+<span class="k">    recursive function </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">factorial_result</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">factorial_result</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">factorial_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">            </span><span class="n">factorial_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">    end function </span><span class="n">factorial</span><span class="w"></span>
+
+<span class="k">end module </span><span class="n">factorial_module</span><span class="w"></span>
+
+<span class="k">program </span><span class="n">test_factorial</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">use </span><span class="n">factorial_module</span><span class="w"></span>
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">read</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="c">! Will be piped in from command line</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;(i10, a, i10)&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;! = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">end program </span><span class="n">test_factorial</span><span class="w"></span>
+</pre></div>
 </div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_1_16_Factorial_Recursion&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build &gt; /dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.</p>
+</section>
+<section id="calculate">
+<h2>Calculate:<a class="headerlink" href="#calculate" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\Large 3!
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;echo 3 | fpm run | sed 1,1d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         3! =          6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Calculate:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\Large 6!
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;echo 6 | fpm run | sed 1,1d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         6! =        720
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Calculate:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\Large 15!
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;echo 15 | fpm run | sed 1,1d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        15! = 2004310016
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -403,17 +586,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_1_8_Ex_2_Quadratic_Formula.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section 14: Pi Estimation</p>
+            <p class="prev-next-title">Section 1.8 Example 2: Quadratic Equation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_1_8_Ex_2_Quadratic_Formula.html" title="next page">
+    <a class='right-next' id="next-link" href="Section_2_1_Associate_Construct.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section 1.8 Example 2: Quadratic Equation</p>
+        <p class="prev-next-title">Section 2.1: Statement Blocks</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
