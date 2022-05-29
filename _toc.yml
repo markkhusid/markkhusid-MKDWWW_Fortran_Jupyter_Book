@@ -32,6 +32,7 @@ parts:
     - file: Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three
     - file: Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing
     - file: Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration
+    - file: Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example
 - caption: Miscellaneous
   chapters:
     - file: markdown

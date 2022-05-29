@@ -1,0 +1,14 @@
+name = "Section_4_1_Elsewhere_Example"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_4_1_Elsewhere_Example"
+source-dir="app"
+main="section_4_1_elsewhere_example.f90"
