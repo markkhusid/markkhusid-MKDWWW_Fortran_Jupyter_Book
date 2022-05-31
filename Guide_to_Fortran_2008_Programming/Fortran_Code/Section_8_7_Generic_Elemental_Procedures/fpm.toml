@@ -1,0 +1,14 @@
+name = "Section_8_7_Generic_Elemental_Procedures"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_8_7_Generic_Elemental_Procedures"
+source-dir="app"
+main="generic_elemental_procedures.f90"
