@@ -1,0 +1,14 @@
+name = "Section_8_8_Findloc_Function"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_8_8_Findloc_Function"
+source-dir="app"
+main="section_8_8_findloc_function.f90"
