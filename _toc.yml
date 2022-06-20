@@ -33,6 +33,7 @@ parts:
     - file: Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing
     - file: Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration
     - file: Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example
+    - file: Guide_to_Fortran_2008_Programming/Section_8_1_Submodules
     - file: Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply
     - file: Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures
     - file: Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function
