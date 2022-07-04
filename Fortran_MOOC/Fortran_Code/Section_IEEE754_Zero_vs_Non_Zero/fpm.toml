@@ -1,0 +1,14 @@
+name = "Section_IEEE754_Zero_vs_Non_Zero"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_IEEE754_Zero_vs_Non_Zero"
+source-dir="app"
+main="Section_IEEE754_Zero_vs_Non_Zero.f90"

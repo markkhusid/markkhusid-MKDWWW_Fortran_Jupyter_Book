@@ -37,6 +37,11 @@ parts:
     - file: Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply
     - file: Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures
     - file: Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function
+- caption: Fortran MOOC
+  chapters:
+  - file: Fortran_MOOC/Fortran_MOOC
+    sections:
+    - file: Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero
 - caption: Miscellaneous
   chapters:
     - file: markdown

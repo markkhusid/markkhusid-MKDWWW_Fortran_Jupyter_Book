@@ -6,7 +6,7 @@
 
 ## Resources and Textbooks Used
 
-In this section we will be programming in Fortran using examples and techniques found in these books:  <br>
+In this section we will be programming in Fortran using examples and techniques found in these books and resources:  <br>
 
 ### "Guide to Fortran 2008 Programming" by Walter S.Brainerd
 This book may be purchased here: <br>
@@ -19,6 +19,9 @@ This online resource may be obtained here: <br>
 ### "Modern Fortan" by Milan Curcic (Manning Publications)
 This book may be purchased from:
 [Modern Fortran: Building Efficient Parallel Applications](https://www.manning.com/books/modern-fortran)
+
+### PRACE MOOC on "Fortran for scientific programming" by FutureLearn
+This online resource may be obtained from Github  [PRACE MOOC on "Fortran for scientific programming"](https://www.futurelearn.com/courses/fortran-for-scientific-computing)
 
 ### Project Code on Github
 
