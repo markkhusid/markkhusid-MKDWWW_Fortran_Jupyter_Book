@@ -1,0 +1,14 @@
+name = "Section_Arrays_Allocate_from_Source"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Allocate_from_Source"
+source-dir="app"
+main="section_arrays_allocate_from_source.f90"
