@@ -43,6 +43,7 @@ parts:
     sections:
     - file: Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero
     - file: Fortran_MOOC/Section_Arrays_Allocate_from_Source
+    - file: Fortran_MOOC/Section_Arrays_Array_Arithmetic
 - caption: Miscellaneous
   chapters:
     - file: markdown

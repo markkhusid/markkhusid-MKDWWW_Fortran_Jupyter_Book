@@ -1,0 +1,14 @@
+name = "Section_Arrays_Array_Arithmetic"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name ="Section_Arrays_Array_Arithmetic"
+source-dir="app"
+main="section_arrays_array_arithmetic.f90"
