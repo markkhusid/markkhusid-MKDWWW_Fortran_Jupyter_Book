@@ -17,7 +17,7 @@ program array_arithmetic
     C = A + 2.0*B
 
     print *, "C = A + 2.0 * B"
-    print *, "The array C containes"
+    print *, "The array C contains: "
 
     print *, C
 end program array_arithmetic
