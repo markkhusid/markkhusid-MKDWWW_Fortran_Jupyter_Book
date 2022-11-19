@@ -20,8 +20,8 @@ This online resource may be obtained here: <br>
 This book may be purchased from:
 [Modern Fortran: Building Efficient Parallel Applications](https://www.manning.com/books/modern-fortran)
 
-### PRACE MOOC on "Fortran for scientific programming" by FutureLearn
-This online resource may be obtained from Github  [PRACE MOOC on "Fortran for scientific programming"](https://www.futurelearn.com/courses/fortran-for-scientific-computing)
+### PRACE MOOC on "Fortran for Scientific Programming" by FutureLearn
+This online resource may be obtained from Github  [PRACE MOOC on "Fortran for Scientific Programming"](https://www.futurelearn.com/courses/fortran-for-scientific-computing)
 
 ### Project Code on Github
 
@@ -31,3 +31,5 @@ Project code is available at the following Github repositories:<br>
 [Worked Examples in Introduction to Programming Using Fortran](https://github.com/markkhusid/Introduction-to-Programming-using-Fortran)
 
 [Worked Examples in Modern Fortran](https://github.com/markkhusid/Modern_Fortran)
+
+[PRACE MOOC on "Fortran for Scientific Programming" by FutureLearn](https://github.com/gjbex/Fortran-MOOC)
