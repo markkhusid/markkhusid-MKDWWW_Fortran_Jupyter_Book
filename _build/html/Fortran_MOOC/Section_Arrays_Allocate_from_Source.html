@@ -608,25 +608,20 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build &gt; /dev/null&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Project is up to date
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run | sed 1,1d&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   1   4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> The matrix A contains:
+   1   4
    2   5
    3   6
 
@@ -634,9 +629,6 @@ title="Print to PDF"
    1   4
    2   5
    3   6
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Project is up to date
 </pre></div>
 </div>
 </div>

@@ -59,8 +59,6 @@ os.chdir(code_dir)
 build_status = os.system("fpm build 2>/dev/null")
 
 
-# fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.
-
 # In[5]:
 
 

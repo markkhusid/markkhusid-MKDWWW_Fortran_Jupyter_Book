@@ -70,8 +70,6 @@ os.chdir(code_dir)
 build_status = os.system("fpm build 2>/dev/null")
 
 
-# fpm run output now sends messages to stderr.  We redirect these messages to /dev/null for suppression.
-
 # In[5]:
 
 
