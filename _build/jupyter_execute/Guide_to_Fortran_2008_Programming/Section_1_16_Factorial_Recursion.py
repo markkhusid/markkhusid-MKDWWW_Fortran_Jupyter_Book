@@ -78,10 +78,8 @@ os.chdir(code_dir)
 # In[4]:
 
 
-build_status = os.system("fpm build > /dev/null")
+build_status = os.system("fpm build 2>/dev/null")
 
-
-# fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.
 
 # ## Calculate:
 
@@ -92,7 +90,7 @@ build_status = os.system("fpm build > /dev/null")
 # In[5]:
 
 
-exec_status = os.system("echo 3 | fpm run | sed 1,1d")
+exec_status = os.system("echo 3 | fpm run 2>/dev/null")
 
 
 # ## Calculate:
@@ -104,7 +102,7 @@ exec_status = os.system("echo 3 | fpm run | sed 1,1d")
 # In[6]:
 
 
-exec_status = os.system("echo 6 | fpm run | sed 1,1d")
+exec_status = os.system("echo 6 | fpm run 2>/dev/null")
 
 
 # ## Calculate:
@@ -116,5 +114,5 @@ exec_status = os.system("echo 6 | fpm run | sed 1,1d")
 # In[7]:
 
 
-exec_status = os.system("echo 15 | fpm run | sed 1,1d")
+exec_status = os.system("echo 15 | fpm run 2>/dev/null")
 

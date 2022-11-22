@@ -1,12 +1,16 @@
 name = "Section_3_8_Argument_Passing"
-version = "0.1.0"
-license = "license"
-author = "Mark Khusid"
-maintainer = "markkhusid@protonmail.com"
-copyright = "Copyright 2022, Mark Khusid"
+
+
 [build]
 auto-executables = true
 auto-tests = true
 auto-examples = true
+
 [install]
 library = false
+
+[[executable]]
+name="Section_3_8_Argument_Passing"
+source-dir="app"
+main="series_sum.f90"
+

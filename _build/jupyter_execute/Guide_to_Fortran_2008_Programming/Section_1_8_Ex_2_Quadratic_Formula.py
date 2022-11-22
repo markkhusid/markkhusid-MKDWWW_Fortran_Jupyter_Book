@@ -183,10 +183,8 @@ os.chdir(code_dir)
 # In[4]:
 
 
-build_status = os.system("fpm build > /dev/null")
+build_status = os.system("fpm build 2>/dev/null")
 
-
-# fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.
 
 # ### Find the roots for the equation <br>
 # $$
@@ -196,7 +194,7 @@ build_status = os.system("fpm build > /dev/null")
 # In[5]:
 
 
-exec_status = os.system("echo '1 3 2' | fpm run | sed 1,1d")
+exec_status = os.system("echo '1 3 2' | fpm run 2>/dev/null")
 
 
 # ### Find the roots for the equation <br>
@@ -207,7 +205,7 @@ exec_status = os.system("echo '1 3 2' | fpm run | sed 1,1d")
 # In[6]:
 
 
-exec_status = os.system("echo '1 2 1' | fpm run | sed 1,1d")
+exec_status = os.system("echo '1 2 1' | fpm run 2>/dev/null")
 
 
 # ### Find the roots for the equation <br>
@@ -218,7 +216,7 @@ exec_status = os.system("echo '1 2 1' | fpm run | sed 1,1d")
 # In[7]:
 
 
-exec_status = os.system("echo '1 5 9' | fpm run | sed 1,1d")
+exec_status = os.system("echo '1 5 9' | fpm run 2>/dev/null")
 
 
 # ### Find the roots for the equation <br>
@@ -229,5 +227,5 @@ exec_status = os.system("echo '1 5 9' | fpm run | sed 1,1d")
 # In[8]:
 
 
-exec_status = os.system("echo '1 6 1' | fpm run | sed 1,1d")
+exec_status = os.system("echo '1 6 1' | fpm run 2>/dev/null")
 
