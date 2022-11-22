@@ -46,6 +46,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Array_Arithmetic
     - file: Fortran_MOOC/Section_Arrays_Array_Elements
     - file: Fortran_MOOC/Section_Arrays_Array_Initialization
+    - file: Fortran_MOOC/Section_Arrays_Array_Timing
 - caption: Miscellaneous
   chapters:
     - file: markdown
