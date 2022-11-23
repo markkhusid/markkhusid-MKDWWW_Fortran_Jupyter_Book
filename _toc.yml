@@ -47,6 +47,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Array_Elements
     - file: Fortran_MOOC/Section_Arrays_Array_Initialization
     - file: Fortran_MOOC/Section_Arrays_Array_Timing
+    - file: Fortran_MOOC/Section_Arrays_Assumed
 - caption: Miscellaneous
   chapters:
     - file: markdown
