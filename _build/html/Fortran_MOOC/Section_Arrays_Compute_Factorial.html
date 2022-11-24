@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Section Arrays: Assumed &#8212; Fortran Programming</title>
+    <title>Section Arrays: Compute Factorial &#8212; Fortran Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -345,7 +345,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Section Arrays: Assumed
+     Section Arrays: Compute Factorial
     </a>
    </li>
   </ul>
@@ -529,8 +529,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-a-fortran-technique">
-   This program demonstrates a Fortran technique.
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-the-factorials-over-an-array-of-integers-in-fortran">
+   This program demonstrates computing the factorials over an array of integers in Fortran.
   </a>
  </li>
 </ul>
@@ -542,7 +542,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section Arrays: Assumed</h1>
+                <h1>Section Arrays: Compute Factorial</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -553,8 +553,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-a-fortran-technique">
-   This program demonstrates a Fortran technique.
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-the-factorials-over-an-array-of-integers-in-fortran">
+   This program demonstrates computing the factorials over an array of integers in Fortran.
   </a>
  </li>
 </ul>
@@ -567,43 +567,33 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-assumed">
-<h1>Section Arrays: Assumed<a class="headerlink" href="#section-arrays-assumed" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-compute-factorial">
+<h1>Section Arrays: Compute Factorial<a class="headerlink" href="#section-arrays-compute-factorial" title="Permalink to this headline">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
-<section id="this-program-demonstrates-a-fortran-technique">
-<h2>This program demonstrates a Fortran technique.<a class="headerlink" href="#this-program-demonstrates-a-fortran-technique" title="Permalink to this headline">#</a></h2>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">assumed</span><span class="w"></span>
+<section id="this-program-demonstrates-computing-the-factorials-over-an-array-of-integers-in-fortran">
+<h2>This program demonstrates computing the factorials over an array of integers in Fortran.<a class="headerlink" href="#this-program-demonstrates-computing-the-factorials-over-an-array-of-integers-in-fortran" title="Permalink to this headline">#</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">compute_factorial</span><span class="w"></span>
 <span class="w">    </span><span class="k">implicit none</span>
 <span class="k">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
-<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">array1d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">array1d</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="n">factorial</span><span class="p">(</span><span class="n">array1d</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">array1d</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="w"></span>
+
 <span class="k">contains</span>
 
-<span class="k">    </span><span class="kt">integer </span><span class="k">function </span><span class="n">fac</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="k">    elemental </span><span class="kt">integer </span><span class="k">function </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="k">implicit none</span>
 <span class="k">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
 <span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
 
-<span class="w">        </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">factorial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">            </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fac</span><span class="o">*</span><span class="n">i</span><span class="w"></span>
+<span class="w">            </span><span class="n">factorial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="o">*</span><span class="n">i</span><span class="w"></span>
 <span class="w">        </span><span class="k">end do</span>
-<span class="k">    end function </span><span class="n">fac</span><span class="w"></span>
+<span class="k">    end function </span><span class="n">factorial</span><span class="w"></span>
 
-<span class="w">    </span><span class="k">subroutine </span><span class="n">factorial</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">implicit none</span>
-<span class="k">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
-<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
-
-<span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fac</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"></span>
-<span class="w">        </span><span class="k">end do</span>
-<span class="k">    end subroutine </span><span class="n">factorial</span><span class="w"></span>
-
-<span class="k">end program </span><span class="n">assumed</span><span class="w"></span>
+<span class="k">end program </span><span class="n">compute_factorial</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -617,7 +607,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Arrays_Assumed&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Arrays_Compute_Factorial&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -643,8 +633,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           2           3           5           7          11
-           2           6         120        5040    39916800
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           1           2           3           4           5
+           1           2           6          24         120
 </pre></div>
 </div>
 </div>

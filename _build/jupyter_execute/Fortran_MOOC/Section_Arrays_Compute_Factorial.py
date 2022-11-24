@@ -11,45 +11,35 @@ kernelspec:
   language: python
   name: python3
 ---
-# # Section Arrays: Assumed
+# # Section Arrays: Compute Factorial
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays)
 
-# ## This program demonstrates a Fortran technique.
+# ## This program demonstrates computing the factorials over an array of integers in Fortran.
 
 # ```fortran
-# program assumed
+# program compute_factorial
 #     implicit none
 #     integer :: i
-#     integer, dimension(5) :: array1d = [ 2, 3, 5, 7, 11 ]
+#     integer, dimension(5) :: values = [ (i, i=1,5) ]
 # 
-#     print *, array1d
-#     call factorial(array1d)
-#     print *, array1d
+#     print *, values
+#     print *, factorial(values)
+# 
 # contains
 # 
-#     integer function fac(n)
+#     elemental integer function factorial(n)
 #         implicit none
 #         integer, value :: n
 #         integer :: i
 # 
-#         fac = 1
+#         factorial = 1
 #         do i = 2, n
-#             fac = fac*i
+#             factorial = factorial*i
 #         end do
-#     end function fac
+#     end function factorial
 # 
-#     subroutine factorial(A)
-#         implicit none
-#         integer, dimension(:), intent(inout) :: A
-#         integer :: i
-# 
-#         do i = 1, size(A)
-#             A(i) = fac(A(i))
-#         end do
-#     end subroutine factorial
-# 
-# end program assumed
+# end program compute_factorial
 # ```
 
 # The above program is compiled and run using Fortran Package Manager (fpm):
@@ -64,7 +54,7 @@ root_dir = os.getcwd()
 # In[2]:
 
 
-code_dir = root_dir + "/" + "Fortran_Code/Section_Arrays_Assumed"
+code_dir = root_dir + "/" + "Fortran_Code/Section_Arrays_Compute_Factorial"
 
 
 # In[3]:
