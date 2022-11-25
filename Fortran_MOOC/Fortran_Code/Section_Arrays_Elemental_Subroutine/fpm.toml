@@ -1,0 +1,14 @@
+name = "Section_Arrays_Elemental_Subroutine"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Elemental_Subroutine"
+source-dir="app"
+main="section_arrays_elemental_subroutine.f90"
