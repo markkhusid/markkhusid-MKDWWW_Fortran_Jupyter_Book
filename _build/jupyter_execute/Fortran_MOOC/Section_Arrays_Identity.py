@@ -11,7 +11,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# # Section Arrays: Enlarge Array
+# # Section Arrays: Identity
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays)
 
