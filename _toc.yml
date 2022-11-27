@@ -51,6 +51,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Compute_Factorial
     - file: Fortran_MOOC/Section_Arrays_Elemental_Subroutine
     - file: Fortran_MOOC/Section_Arrays_Enlarge_Array
+    - file: Fortran_MOOC/Section_Arrays_Identity
 - caption: Miscellaneous
   chapters:
     - file: markdown
