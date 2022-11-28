@@ -1,0 +1,14 @@
+name = "Section_Arrays_Linear_Transform"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Linear_Transform"
+source-dir="app"
+main="section_arrays_linear_transform.f90"
