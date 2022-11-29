@@ -53,6 +53,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Enlarge_Array
     - file: Fortran_MOOC/Section_Arrays_Identity
     - file: Fortran_MOOC/Section_Arrays_Linear_Transform
+    - file: Fortran_MOOC/Section_Arrays_Matrix
 - caption: Miscellaneous
   chapters:
     - file: markdown
