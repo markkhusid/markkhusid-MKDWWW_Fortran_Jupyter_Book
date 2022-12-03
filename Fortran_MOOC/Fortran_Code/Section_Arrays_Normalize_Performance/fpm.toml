@@ -1,0 +1,14 @@
+name = "Section_Arrays_Normalize_Performance"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Normalize_Performance"
+source-dir="app"
+main="section_arrays_normalize_performance.f90"

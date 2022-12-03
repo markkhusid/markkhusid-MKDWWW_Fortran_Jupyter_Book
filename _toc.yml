@@ -54,6 +54,8 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Identity
     - file: Fortran_MOOC/Section_Arrays_Linear_Transform
     - file: Fortran_MOOC/Section_Arrays_Matrix
+    - file: Fortran_MOOC/Section_Arrays_Max_Array
+    - file: Fortran_MOOC/Section_Arrays_Normalize_Performance
 - caption: Miscellaneous
   chapters:
     - file: markdown

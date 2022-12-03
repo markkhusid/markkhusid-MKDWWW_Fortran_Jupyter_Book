@@ -1,0 +1,14 @@
+name = "Section_Arrays_Max_Array"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Max_Array"
+source-dir="app"
+main="section_arrays_max_array.f90"
