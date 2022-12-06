@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
-    <link rel="prev" title="Section Arrays: Max Array" href="Section_Arrays_Max_Array.html" />
+    <link rel="next" title="Section Arrays: Reshape" href="Section_Arrays_Reshape.html" />
+    <link rel="prev" title="Section Arrays: Normalize" href="Section_Arrays_Normalize.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -378,9 +378,19 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Max Array
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize.html">
+     Section Arrays: Normalize
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Section Arrays: Normalize Performance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
     </a>
    </li>
   </ul>
@@ -752,10 +762,24 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000002
+do concurrent row-wise norm:   0.000001
+norm using spread:   0.000006
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000020
+do concurrent row-wise norm:   0.000034
+norm using spread:   0.000080
 </pre></div>
 </div>
 </div>
@@ -766,10 +790,28 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.002524
+do concurrent row-wise norm:   0.004511
+norm using spread:   0.008541
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   1.790784
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do concurrent row-wise norm:   1.680109
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>norm using spread:   1.997138
 </pre></div>
 </div>
 </div>
@@ -804,17 +846,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_Arrays_Max_Array.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_Arrays_Normalize.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section Arrays: Max Array</p>
+            <p class="prev-next-title">Section Arrays: Normalize</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="Section_Arrays_Reshape.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Section Arrays: Reshape</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
