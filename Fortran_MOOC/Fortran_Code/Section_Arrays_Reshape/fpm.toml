@@ -1,4 +1,4 @@
-name = "Section_Arrays_Normalize"
+name = "Section_Arrays_Reshape"
 
 [build]
 auto-executables = true
@@ -9,6 +9,6 @@ auto-examples = true
 library = false
 
 [[executable]]
-name="Section_Arrays_Normalize"
+name="Section_Arrays_Reshape"
 source-dir="app"
-main="section_arrays_normalize.f90"
+main="section_arrays_reshape.f90"

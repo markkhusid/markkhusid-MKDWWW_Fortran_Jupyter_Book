@@ -57,6 +57,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Max_Array
     - file: Fortran_MOOC/Section_Arrays_Normalize
     - file: Fortran_MOOC/Section_Arrays_Normalize_Performance
+    - file: Fortran_MOOC/Section_Arrays_Reshape
 - caption: Miscellaneous
   chapters:
     - file: markdown
