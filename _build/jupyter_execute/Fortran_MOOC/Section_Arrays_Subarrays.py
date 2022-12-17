@@ -16,7 +16,7 @@ kernelspec:
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays)
 
-# ## This program array slicing in Fortran.
+# ## This program demonstrates array slicing in Fortran.
 
 # ```fortran
 # program subarrays

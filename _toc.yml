@@ -59,6 +59,8 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Normalize_Performance
     - file: Fortran_MOOC/Section_Arrays_Reshape
     - file: Fortran_MOOC/Section_Arrays_Subarrays
+    - file: Fortran_MOOC/Section_Arrays_Submatrices
+
 - caption: Miscellaneous
   chapters:
     - file: markdown
