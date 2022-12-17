@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section Arrays: Allocate from Source &#8212; Fortran Programming</title>
     
@@ -36,6 +36,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Section Arrays: Array Arithmetic" href="Section_Arrays_Array_Arithmetic.html" />
     <link rel="prev" title="Section IEEE754: Zero vs Non - Zero" href="Section_IEEE754_16_Zero_vs_Non_Zero.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -338,6 +339,66 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Array Timing
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Assumed.html">
+     Section Arrays: Assumed
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Compute_Factorial.html">
+     Section Arrays: Compute Factorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">
+     Section Arrays: Elemental Subroutine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Enlarge_Array.html">
+     Section Arrays: Enlarge Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Identity.html">
+     Section Arrays: Identity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Linear_Transform.html">
+     Section Arrays: Linear Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Matrix.html">
+     Section Arrays: Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Max_Array.html">
+     Section Arrays: Max Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize.html">
+     Section Arrays: Normalize
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize_Performance.html">
+     Section Arrays: Normalize Performance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -558,10 +619,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-allocate-from-source">
-<h1>Section Arrays: Allocate from Source<a class="headerlink" href="#section-arrays-allocate-from-source" title="Permalink to this headline">#</a></h1>
+<h1>Section Arrays: Allocate from Source<a class="headerlink" href="#section-arrays-allocate-from-source" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
 <section id="this-program-demonstrates-allocating-an-array-from-a-source-array">
-<h2>This program demonstrates allocating an array from a source array.<a class="headerlink" href="#this-program-demonstrates-allocating-an-array-from-a-source-array" title="Permalink to this headline">#</a></h2>
+<h2>This program demonstrates allocating an array from a source array.<a class="headerlink" href="#this-program-demonstrates-allocating-an-array-from-a-source-array" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">allocate_from_source</span><span class="w"></span>
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="w"></span>
 <span class="w">    </span><span class="k">implicit none</span>

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section Arrays: Normalize &#8212; Fortran Programming</title>
     
@@ -36,6 +36,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Section Arrays: Normalize Performance" href="Section_Arrays_Normalize_Performance.html" />
     <link rel="prev" title="Section Arrays: Max Array" href="Section_Arrays_Max_Array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -388,6 +389,16 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Normalize Performance
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -628,10 +639,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-normalize">
-<h1>Section Arrays: Normalize<a class="headerlink" href="#section-arrays-normalize" title="Permalink to this headline">#</a></h1>
+<h1>Section Arrays: Normalize<a class="headerlink" href="#section-arrays-normalize" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
 <section id="this-program-normalizes-a-randomly-generated-matrix-in-fortran">
-<h2>This program normalizes a randomly generated matrix in Fortran.<a class="headerlink" href="#this-program-normalizes-a-randomly-generated-matrix-in-fortran" title="Permalink to this headline">#</a></h2>
+<h2>This program normalizes a randomly generated matrix in Fortran.<a class="headerlink" href="#this-program-normalizes-a-randomly-generated-matrix-in-fortran" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">normalize</span><span class="w"></span>
 <span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="w"></span>
 <span class="w">  </span><span class="k">implicit none</span>
@@ -674,7 +685,7 @@ title="Print to PDF"
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 </section>
 <section id="build-the-program-using-fpm-fortran-package-manager">
-<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -703,10 +714,17 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%]       Section_Arrays_Normalize
+[100%]       Section_Arrays_Normalize  done.
+[100%] Project compiled successfully.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
-<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
@@ -715,17 +733,17 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original:
-   0.9400661   0.9133463   0.5099552   0.2089620
-   0.7305507   0.0868574   0.8362349   0.9366505
-   0.7567837   0.3492868   0.6917019   0.7747180
-norm:   2.5723295   2.5902935   2.5724904
-   2.5723295   2.5723295   2.5723295   2.5723295
-   2.5902935   2.5902935   2.5902935   2.5902935
-   2.5724904   2.5724904   2.5724904   2.5724904
+   0.3097062   0.8899970   0.6305612   0.1080992
+   0.7084532   0.8884141   0.2438448   0.6762446
+   0.0567863   0.4607397   0.6008070   0.8102997
+norm:   1.9383635   2.5169567   1.9286326
+   1.9383635   1.9383635   1.9383635   1.9383635
+   2.5169567   2.5169567   2.5169567   2.5169567
+   1.9286326   1.9286326   1.9286326   1.9286326
 row-normalized::
-   0.3654532   0.3550658   0.1982464   0.0812345
-   0.2820339   0.0335319   0.3228340   0.3616002
-   0.2941833   0.1357777   0.2688841   0.3011549
+   0.1597771   0.4591486   0.3253060   0.0557683
+   0.2814721   0.3529716   0.0968808   0.2686755
+   0.0294438   0.2388945   0.3115197   0.4201421
 norm:   1.0000000   1.0000000   1.0000000
 </pre></div>
 </div>
@@ -739,17 +757,17 @@ norm:   1.0000000   1.0000000   1.0000000
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original:
-   0.6258724   0.7004916   0.1855764   0.6674922
-   0.6847638   0.2526534   0.7639832   0.8755722
-   0.1848311   0.7938647   0.1286733   0.8819302
-norm:   2.1794326   2.5769725   1.9892993
-   2.1794326   2.1794326   2.1794326   2.1794326
-   2.5769725   2.5769725   2.5769725   2.5769725
-   1.9892993   1.9892993   1.9892993   1.9892993
+   0.9403601   0.7352561   0.2911698   0.5619836
+   0.5786600   0.3030310   0.7268522   0.3490652
+   0.1142321   0.5718545   0.5552428   0.8110583
+norm:   2.5287696   1.9576084   2.0523878
+   2.5287696   2.5287696   2.5287696   2.5287696
+   1.9576084   1.9576084   1.9576084   1.9576084
+   2.0523878   2.0523878   2.0523878   2.0523878
 row-normalized::
-   0.2871722   0.3214101   0.0851489   0.3062688
-   0.2657241   0.0980427   0.2964654   0.3397678
-   0.0929126   0.3990675   0.0646827   0.4433371
+   0.3718647   0.2907565   0.1151429   0.2222360
+   0.2955954   0.1547965   0.3712960   0.1783120
+   0.0556582   0.2786289   0.2705351   0.3951779
 norm:   1.0000000   1.0000000   1.0000000
 </pre></div>
 </div>
@@ -763,17 +781,17 @@ norm:   1.0000000   1.0000000   1.0000000
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original:
-   0.5720776   0.5344790   0.9020998   0.2938950
-   0.4323076   0.1379914   0.6287207   0.6897551
-   0.8157334   0.7988197   0.5485120   0.2060680
-norm:   2.3025513   1.8887748   2.3691331
-   2.3025513   2.3025513   2.3025513   2.3025513
-   1.8887748   1.8887748   1.8887748   1.8887748
-   2.3691331   2.3691331   2.3691331   2.3691331
+   0.0289622   0.6856446   0.4702871   0.5703248
+   0.1795264   0.3828722   0.3664080   0.2931165
+   0.4694624   0.8553650   0.1762149   0.7026137
+norm:   1.7552186   1.2219231   2.2036560
+   1.7552186   1.7552186   1.7552186   1.7552186
+   1.2219231   1.2219231   1.2219231   1.2219231
+   2.2036560   2.2036560   2.2036560   2.2036560
 row-normalized::
-   0.2484538   0.2321247   0.3917827   0.1276388
-   0.2288825   0.0730587   0.3328722   0.3651865
-   0.3443172   0.3371781   0.2315244   0.0869803
+   0.0165006   0.3906320   0.2679364   0.3249309
+   0.1469212   0.3133357   0.2998618   0.2398813
+   0.2130380   0.3881572   0.0799648   0.3188400
 norm:   1.0000000   1.0000000   1.0000000
 </pre></div>
 </div>

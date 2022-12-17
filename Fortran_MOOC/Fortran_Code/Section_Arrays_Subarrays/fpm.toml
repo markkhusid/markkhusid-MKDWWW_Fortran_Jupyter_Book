@@ -1,0 +1,14 @@
+name = "Section_Arrays_Subarrays"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Subarrays"
+source-dir="app"
+main="section_arrays_subarrays.f90"

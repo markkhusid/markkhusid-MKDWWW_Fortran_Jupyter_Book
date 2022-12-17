@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section Arrays: Linear Transform &#8212; Fortran Programming</title>
     
@@ -36,6 +36,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -54,10 +55,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="next" title="Section Arrays: Matrix" href="Section_Arrays_Matrix.html" />
     <link rel="prev" title="Section Arrays: Identity" href="Section_Arrays_Identity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -368,6 +369,36 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Linear Transform
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Matrix.html">
+     Section Arrays: Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Max_Array.html">
+     Section Arrays: Max Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize.html">
+     Section Arrays: Normalize
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize_Performance.html">
+     Section Arrays: Normalize Performance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -608,10 +639,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-linear-transform">
-<h1>Section Arrays: Linear Transform<a class="headerlink" href="#section-arrays-linear-transform" title="Permalink to this headline">#</a></h1>
+<h1>Section Arrays: Linear Transform<a class="headerlink" href="#section-arrays-linear-transform" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
 <section id="this-program-demonstrates-an-elemental-function-with-multiple-arguments-in-fortran">
-<h2>This program demonstrates an elemental function with multiple arguments in Fortran.<a class="headerlink" href="#this-program-demonstrates-an-elemental-function-with-multiple-arguments-in-fortran" title="Permalink to this headline">#</a></h2>
+<h2>This program demonstrates an elemental function with multiple arguments in Fortran.<a class="headerlink" href="#this-program-demonstrates-an-elemental-function-with-multiple-arguments-in-fortran" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">linear_transform</span><span class="w"></span>
 <span class="w">  </span><span class="k">implicit none</span>
 <span class="k">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
@@ -643,7 +674,7 @@ title="Print to PDF"
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 </section>
 <section id="build-the-program-using-fpm-fortran-package-manager">
-<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -675,7 +706,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
-<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
@@ -684,9 +715,9 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> The contents of the valus array is:
-  0.454279065      0.142779410       6.33039474E-02  0.459479868      0.560978889    
+  0.762360573      0.380545080      0.177127242      0.246879458      0.522683263    
  lin_transform(values, 2.0, 1.0) = 
-   1.90855813       1.28555882       1.12660789       1.91895974       2.12195778    
+   2.52472115       1.76109016       1.35425448       1.49375892       2.04536653    
  lin_transform(x, a, b) = 
  -0.650000036       6.90000010    
 </pre></div>
@@ -701,9 +732,9 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> The contents of the valus array is:
-  0.303589880      0.779964387      0.190466583      0.357081413       5.29478788E-02
+  0.248901725      0.272983491      0.475398064      0.891658068      0.347338796    
  lin_transform(values, 2.0, 1.0) = 
-   1.60717976       2.55992889       1.38093317       1.71416283       1.10589576    
+   1.49780345       1.54596698       1.95079613       2.78331614       1.69467759    
  lin_transform(x, a, b) = 
  -0.650000036       6.90000010    
 </pre></div>
@@ -747,10 +778,10 @@ title="Print to PDF"
             <p class="prev-next-title">Section Arrays: Identity</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="Section_Arrays_Matrix.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Section Arrays: Matrix</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

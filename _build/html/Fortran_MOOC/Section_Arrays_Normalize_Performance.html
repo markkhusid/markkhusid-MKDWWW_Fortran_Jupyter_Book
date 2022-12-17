@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section Arrays: Normalize Performance &#8212; Fortran Programming</title>
     
@@ -36,6 +36,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Section Arrays: Reshape" href="Section_Arrays_Reshape.html" />
     <link rel="prev" title="Section Arrays: Normalize" href="Section_Arrays_Normalize.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -393,6 +394,11 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Reshape
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -633,10 +639,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-normalize-performance">
-<h1>Section Arrays: Normalize Performance<a class="headerlink" href="#section-arrays-normalize-performance" title="Permalink to this headline">#</a></h1>
+<h1>Section Arrays: Normalize Performance<a class="headerlink" href="#section-arrays-normalize-performance" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
 <section id="this-program-tests-the-performance-of-various-methods-of-performing-matrix-normalization-in-fortran">
-<h2>This program tests the performance of various methods of performing matrix normalization in Fortran.<a class="headerlink" href="#this-program-tests-the-performance-of-various-methods-of-performing-matrix-normalization-in-fortran" title="Permalink to this headline">#</a></h2>
+<h2>This program tests the performance of various methods of performing matrix normalization in Fortran.<a class="headerlink" href="#this-program-tests-the-performance-of-various-methods-of-performing-matrix-normalization-in-fortran" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">normalize_performance</span><span class="w"></span>
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="w"></span>
 <span class="w">    </span><span class="k">implicit none</span>
@@ -723,7 +729,7 @@ title="Print to PDF"
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 </section>
 <section id="build-the-program-using-fpm-fortran-package-manager">
-<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -755,7 +761,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
-<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">#</a></h2>
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10 2&gt;/dev/null&quot;</span><span class="p">)</span>
@@ -763,8 +769,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000002
-do concurrent row-wise norm:   0.000001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000001
+do concurrent row-wise norm:   0.000014
 norm using spread:   0.000006
 </pre></div>
 </div>
@@ -777,9 +783,9 @@ norm using spread:   0.000006
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000020
-do concurrent row-wise norm:   0.000034
-norm using spread:   0.000080
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.000021
+do concurrent row-wise norm:   0.000035
+norm using spread:   0.000089
 </pre></div>
 </div>
 </div>
@@ -791,9 +797,9 @@ norm using spread:   0.000080
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.002524
-do concurrent row-wise norm:   0.004511
-norm using spread:   0.008541
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   0.002492
+do concurrent row-wise norm:   0.004286
+norm using spread:   0.007682
 </pre></div>
 </div>
 </div>
@@ -805,13 +811,13 @@ norm using spread:   0.008541
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   1.790784
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>row-wise norm:   1.957109
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do concurrent row-wise norm:   1.680109
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do concurrent row-wise norm:   1.772866
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>norm using spread:   1.997138
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>norm using spread:   2.225543
 </pre></div>
 </div>
 </div>

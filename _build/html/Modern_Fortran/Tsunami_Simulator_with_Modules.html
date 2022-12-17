@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tsunami Simulator with Modules &#8212; Fortran Programming</title>
     
@@ -36,6 +36,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Tsunami Simulator with Modules Plotter" href="Tsunami_Simulator_with_Modules_Plotter.html" />
     <link rel="prev" title="Tsunami Simulator Plotter" href="Tsunami_Simulator_Plotter.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -338,6 +339,66 @@ const thebe_selector_output = ".output, .cell_output"
      Section Arrays: Array Timing
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Assumed.html">
+     Section Arrays: Assumed
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Compute_Factorial.html">
+     Section Arrays: Compute Factorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Elemental_Subroutine.html">
+     Section Arrays: Elemental Subroutine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Enlarge_Array.html">
+     Section Arrays: Enlarge Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Identity.html">
+     Section Arrays: Identity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Linear_Transform.html">
+     Section Arrays: Linear Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Matrix.html">
+     Section Arrays: Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Max_Array.html">
+     Section Arrays: Max Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize.html">
+     Section Arrays: Normalize
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize_Performance.html">
+     Section Arrays: Normalize Performance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -578,11 +639,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tsunami-simulator-with-modules">
-<h1>Tsunami Simulator with Modules<a class="headerlink" href="#tsunami-simulator-with-modules" title="Permalink to this headline">#</a></h1>
+<h1>Tsunami Simulator with Modules<a class="headerlink" href="#tsunami-simulator-with-modules" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: “Modern Fortan” by Milan Curcic (Manning)</p>
 <p>In this section the Tsunami Simulator is rewritten using Fortran Modules.</p>
 <section id="the-file-mod-inital-f08-contains">
-<h2>The file mod_inital.f08 contains:<a class="headerlink" href="#the-file-mod-inital-f08-contains" title="Permalink to this headline">#</a></h2>
+<h2>The file mod_inital.f08 contains:<a class="headerlink" href="#the-file-mod-inital-f08-contains" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">mod_initial</span><span class="w"></span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">private</span>
@@ -607,7 +668,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="the-file-mod-diff-f08-contains">
-<h2>The file mod_diff.f08 contains:<a class="headerlink" href="#the-file-mod-diff-f08-contains" title="Permalink to this headline">#</a></h2>
+<h2>The file mod_diff.f08 contains:<a class="headerlink" href="#the-file-mod-diff-f08-contains" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">mod_diff</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">real32</span><span class="w"></span>
@@ -644,7 +705,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="main-program">
-<h2>Main Program<a class="headerlink" href="#main-program" title="Permalink to this headline">#</a></h2>
+<h2>Main Program<a class="headerlink" href="#main-program" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">tsunami_simulator_with_modules</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">int32</span><span class="p">,</span><span class="w"> </span><span class="n">real32</span><span class="w"></span>
