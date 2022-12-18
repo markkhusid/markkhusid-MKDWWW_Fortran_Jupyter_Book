@@ -1,0 +1,14 @@
+name = "Section_Arrays_Submatrices"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Submatrices"
+source-dir="app"
+main="section_arrays_submatrices.f90"

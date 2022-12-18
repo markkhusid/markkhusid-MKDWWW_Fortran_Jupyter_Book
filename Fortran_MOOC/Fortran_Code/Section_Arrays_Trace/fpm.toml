@@ -1,0 +1,14 @@
+name = "Section_Arrays_Trace"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Arrays_Trace"
+source-dir="app"
+main="section_arrays_trace.f90"

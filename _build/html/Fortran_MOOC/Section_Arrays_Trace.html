@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Section Arrays: Trace &#8212; Fortran Programming</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section Arrays: Submatrices" href="Section_Arrays_Submatrices.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/fortran_code_integrate.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fortran Programming</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Fortran Programming
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Modern Fortran
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">
+   Worked Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">
+     Cold Front Calculator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">
+     Cold Front Calculator With Loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">
+     Tsunami Simulator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">
+     Tsunami Simulator Plotter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">
+     Tsunami Simulator with Modules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">
+     Tsunami Simulator with Modules Plotter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">
+     Print Compiler Version
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction to Programming Using Fortran
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">
+   Worked Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">
+     Section 7: Pendulum Period Calculator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">
+     Section 9.3: Difference Between Sum of Squares and Square of Sums
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">
+     Section 12.8: Line Numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">
+     Section 14: Pi Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Guide to Fortran 2008 Programming
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">
+   Worked Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">
+     Section 1.8 Example 2: Quadratic Equation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">
+     Section 1.16: Factorial Recursion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">
+     Section 2.1: Statement Blocks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">
+     Section 2.1: Associate Construct
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">
+     Section 3.4: Putting Procedures in a Module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">
+     Section 3.6: Median of Three
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">
+     Section 3.8: Argument Passing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">
+     Section 3.17: Case Study: Adaptive Numerical Integration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">
+     Section 4.1: Elsewhere Example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">
+     Section 8.1: Submodules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">
+     Section 8.2: Time Matrix Multiply
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">
+     Section 8.7: Generic Elemental Procedures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">
+     Section 8.8: Findloc Function
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Fortran MOOC
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="Fortran_MOOC.html">
+   Worked Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">
+     Section IEEE754: Zero vs Non - Zero
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">
+     Section Arrays: Allocate from Source
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">
+     Section Arrays: Array Arithmetic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Array_Elements.html">
+     Section Arrays: Array Elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Array_Initialization.html">
+     Section Arrays: Array Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Array_Timing.html">
+     Section Arrays: Array Timing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Assumed.html">
+     Section Arrays: Assumed
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Compute_Factorial.html">
+     Section Arrays: Compute Factorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">
+     Section Arrays: Elemental Subroutine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Enlarge_Array.html">
+     Section Arrays: Enlarge Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Identity.html">
+     Section Arrays: Identity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Linear_Transform.html">
+     Section Arrays: Linear Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Matrix.html">
+     Section Arrays: Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Max_Array.html">
+     Section Arrays: Max Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize.html">
+     Section Arrays: Normalize
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Normalize_Performance.html">
+     Section Arrays: Normalize Performance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Reshape.html">
+     Section Arrays: Reshape
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Subarrays.html">
+     Section Arrays: Subarrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Section_Arrays_Submatrices.html">
+     Section Arrays: Submatrices
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Section Arrays: Trace
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Miscellaneous
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Fortran_MOOC/Section_Arrays_Trace.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Fortran_MOOC/Section_Arrays_Trace.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran">
+   This program demonstrates computing the trace of a matrix  in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Section Arrays: Trace</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran">
+   This program demonstrates computing the trace of a matrix  in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-trace">
+<h1>Section Arrays: Trace<a class="headerlink" href="#section-arrays-trace" title="Permalink to this heading">#</a></h1>
+<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Arrays_Trace&quot;</span>
+<span class="n">code_app_dir</span> <span class="o">=</span> <span class="n">code_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;app&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_app_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran">
+<h2>This program demonstrates computing the trace of a matrix  in Fortran.<a class="headerlink" href="#this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="o">%%</span><span class="n">writefile</span> <span class="n">section_arrays_trace</span><span class="o">.</span><span class="n">f90</span>
+<span class="n">program</span> <span class="n">compute_trace</span>
+    <span class="n">implicit</span> <span class="n">none</span>
+    <span class="n">integer</span> <span class="p">::</span> <span class="n">i</span>
+    <span class="n">real</span><span class="p">,</span> <span class="n">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="p">::</span> <span class="n">A</span>
+
+    <span class="n">call</span> <span class="n">random_number</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">do</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s1">&#39;(5F7.4)&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">:)</span>
+    <span class="n">end</span> <span class="n">do</span>
+    <span class="nb">print</span> <span class="s1">&#39;(/, A, F7.4)&#39;</span><span class="p">,</span> <span class="s1">&#39;trace = &#39;</span><span class="p">,</span> <span class="n">trace</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">contains</span>
+
+    <span class="n">real</span> <span class="n">function</span> <span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">use</span><span class="p">,</span> <span class="n">intrinsic</span> <span class="p">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">error_unit</span>
+        <span class="n">implicit</span> <span class="n">none</span>
+        <span class="n">real</span><span class="p">,</span> <span class="n">dimension</span><span class="p">(:,</span> <span class="p">:),</span> <span class="n">intent</span><span class="p">(</span><span class="ow">in</span><span class="p">)</span> <span class="p">::</span> <span class="n">matrix</span>
+        <span class="n">integer</span> <span class="p">::</span> <span class="n">i</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/=</span> <span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">then</span>
+            <span class="n">write</span> <span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
+                <span class="s1">&#39;error: can not compute trace of a non-square matrix&#39;</span>
+            <span class="n">stop</span> <span class="mi">1</span>
+        <span class="n">end</span> <span class="k">if</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">do</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">end</span> <span class="n">do</span>
+    <span class="n">end</span> <span class="n">function</span> <span class="n">trace</span>
+
+<span class="n">end</span> <span class="n">program</span> <span class="n">compute_trace</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bat section_arrays_trace.f90
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C238">───────┬────────────────────────────────────────────────────────────────────────</span>
+       <span class=" -Color -Color-C238">│ </span>File: <span class=" -Color -Color-Bold">section_arrays_trace.f90</span>
+<span class=" -Color -Color-C238">───────┼────────────────────────────────────────────────────────────────────────</span>
+<span class=" -Color -Color-C238">   1</span>   <span class=" -Color -Color-C238">│</span> program <span class=" -Color -Color-BGCyan">compute_trace</span>
+<span class=" -Color -Color-C238">   2</span>   <span class=" -Color -Color-C238">│</span>     implicit none
+<span class=" -Color -Color-C238">   3</span>   <span class=" -Color -Color-C238">│</span>     integer :: i
+<span class=" -Color -Color-C238">   4</span>   <span class=" -Color -Color-C238">│</span>     real, dimension(5, 5) :: A
+<span class=" -Color -Color-C238">   5</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">   6</span>   <span class=" -Color -Color-C238">│</span>     call random_number(A)
+<span class=" -Color -Color-C238">   7</span>   <span class=" -Color -Color-C238">│</span>     do i = 1, size(A, 1)
+<span class=" -Color -Color-C238">   8</span>   <span class=" -Color -Color-C238">│</span>         print &#39;(5F7.4)&#39;, A(i, :)
+<span class=" -Color -Color-C238">   9</span>   <span class=" -Color -Color-C238">│</span>     end do
+<span class=" -Color -Color-C238">  10</span>   <span class=" -Color -Color-C238">│</span>     print &#39;(/, A, F7.4)&#39;, &#39;trace = &#39;, trace(A)
+<span class=" -Color -Color-C238">  11</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  12</span>   <span class=" -Color -Color-C238">│</span> contains
+<span class=" -Color -Color-C238">  13</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  14</span>   <span class=" -Color -Color-C238">│</span>     real function trace(matrix)
+<span class=" -Color -Color-C238">  15</span>   <span class=" -Color -Color-C238">│</span>         use, intrinsic :: iso_fortran_env, only : error_unit
+<span class=" -Color -Color-C238">  16</span>   <span class=" -Color -Color-C238">│</span>         implicit none
+<span class=" -Color -Color-C238">  17</span>   <span class=" -Color -Color-C238">│</span>         real, dimension(:, :), intent(in) :: matrix
+<span class=" -Color -Color-C238">  18</span>   <span class=" -Color -Color-C238">│</span>         integer :: i
+<span class=" -Color -Color-C238">  19</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  20</span>   <span class=" -Color -Color-C238">│</span>         if (size(matrix, 1) /= size(matrix, 2)) then
+<span class=" -Color -Color-C238">  21</span>   <span class=" -Color -Color-C238">│</span>             write (<span class=" -Color -Color-Red">unit</span>=error_unit, <span class=" -Color -Color-Red">fmt</span>=&#39;(A)&#39;) &amp;
+<span class=" -Color -Color-C238">  22</span>   <span class=" -Color -Color-C238">│</span>                 &#39;error: can not compute trace of a non-square matrix&#39;
+<span class=" -Color -Color-C238">  23</span>   <span class=" -Color -Color-C238">│</span>             stop 1
+<span class=" -Color -Color-C238">  24</span>   <span class=" -Color -Color-C238">│</span>         end if
+<span class=" -Color -Color-C238">  25</span>   <span class=" -Color -Color-C238">│</span>         trace = 0.0
+<span class=" -Color -Color-C238">  26</span>   <span class=" -Color -Color-C238">│</span>         do i = 1, size(matrix, 1)
+<span class=" -Color -Color-C238">  27</span>   <span class=" -Color -Color-C238">│</span>             trace = trace + matrix(i, i)
+<span class=" -Color -Color-C238">  28</span>   <span class=" -Color -Color-C238">│</span>         end do
+<span class=" -Color -Color-C238">  29</span>   <span class=" -Color -Color-C238">│</span>     end function <span class=" -Color -Color-BGCyan">trace</span>
+<span class=" -Color -Color-C238">  30</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  31</span>   <span class=" -Color -Color-C238">│</span> end program <span class=" -Color -Color-BGCyan">compute_trace</span>
+<span class=" -Color -Color-C238">───────┴────────────────────────────────────────────────────────────────────────</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-program-using-fpm-fortran-package-manager">
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0.3440 0.6346 0.6225 0.4196 0.2113
+ 0.2423 0.6582 0.4643 0.3002 0.3229
+ 0.7764 0.8436 0.9791 0.8518 0.6422
+ 0.1868 0.5503 0.8908 0.0397 0.3177
+ 0.4187 0.6438 0.5743 0.0291 0.4108
+
+trace =  2.4319
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Fortran_MOOC"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Section_Arrays_Submatrices.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Section Arrays: Submatrices</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markdown Files</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Mark Khusid<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
