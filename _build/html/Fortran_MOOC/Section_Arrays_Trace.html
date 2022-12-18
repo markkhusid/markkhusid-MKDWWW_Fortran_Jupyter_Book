@@ -651,6 +651,45 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="section-arrays-trace">
 <h1>Section Arrays: Trace<a class="headerlink" href="#section-arrays-trace" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays</a></p>
+<section id="this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran">
+<h2>This program demonstrates computing the trace of a matrix  in Fortran.<a class="headerlink" href="#this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran" title="Permalink to this heading">#</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">compute_trace</span><span class="w"></span>
+<span class="w">    </span><span class="k">implicit none</span>
+<span class="k">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(5F7.4)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"></span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">    print</span><span class="w"> </span><span class="s1">&#39;(/, A, F7.4)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;trace = &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">contains</span>
+
+<span class="k">    </span><span class="kt">real </span><span class="k">function </span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="w"></span>
+<span class="w">        </span><span class="k">implicit none</span>
+<span class="k">        </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                </span><span class="s1">&#39;error: can not compute trace of a non-square matrix&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="k">stop </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        </span><span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">trace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trace</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">end do</span>
+<span class="k">    end function </span><span class="n">trace</span><span class="w"></span>
+
+<span class="k">end program </span><span class="n">compute_trace</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+</section>
+<section id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -661,117 +700,11 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Arrays_Trace&quot;</span>
-<span class="n">code_app_dir</span> <span class="o">=</span> <span class="n">code_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;app&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_app_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran">
-<h2>This program demonstrates computing the trace of a matrix  in Fortran.<a class="headerlink" href="#this-program-demonstrates-computing-the-trace-of-a-matrix-in-fortran" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
-<span class="o">%%</span><span class="n">writefile</span> <span class="n">section_arrays_trace</span><span class="o">.</span><span class="n">f90</span>
-<span class="n">program</span> <span class="n">compute_trace</span>
-    <span class="n">implicit</span> <span class="n">none</span>
-    <span class="n">integer</span> <span class="p">::</span> <span class="n">i</span>
-    <span class="n">real</span><span class="p">,</span> <span class="n">dimension</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="p">::</span> <span class="n">A</span>
-
-    <span class="n">call</span> <span class="n">random_number</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-    <span class="n">do</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="nb">print</span> <span class="s1">&#39;(5F7.4)&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">:)</span>
-    <span class="n">end</span> <span class="n">do</span>
-    <span class="nb">print</span> <span class="s1">&#39;(/, A, F7.4)&#39;</span><span class="p">,</span> <span class="s1">&#39;trace = &#39;</span><span class="p">,</span> <span class="n">trace</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-
-<span class="n">contains</span>
-
-    <span class="n">real</span> <span class="n">function</span> <span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-        <span class="n">use</span><span class="p">,</span> <span class="n">intrinsic</span> <span class="p">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">error_unit</span>
-        <span class="n">implicit</span> <span class="n">none</span>
-        <span class="n">real</span><span class="p">,</span> <span class="n">dimension</span><span class="p">(:,</span> <span class="p">:),</span> <span class="n">intent</span><span class="p">(</span><span class="ow">in</span><span class="p">)</span> <span class="p">::</span> <span class="n">matrix</span>
-        <span class="n">integer</span> <span class="p">::</span> <span class="n">i</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/=</span> <span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="n">then</span>
-            <span class="n">write</span> <span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
-                <span class="s1">&#39;error: can not compute trace of a non-square matrix&#39;</span>
-            <span class="n">stop</span> <span class="mi">1</span>
-        <span class="n">end</span> <span class="k">if</span>
-        <span class="n">trace</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">do</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="n">end</span> <span class="n">do</span>
-    <span class="n">end</span> <span class="n">function</span> <span class="n">trace</span>
-
-<span class="n">end</span> <span class="n">program</span> <span class="n">compute_trace</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bat section_arrays_trace.f90
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C238">───────┬────────────────────────────────────────────────────────────────────────</span>
-       <span class=" -Color -Color-C238">│ </span>File: <span class=" -Color -Color-Bold">section_arrays_trace.f90</span>
-<span class=" -Color -Color-C238">───────┼────────────────────────────────────────────────────────────────────────</span>
-<span class=" -Color -Color-C238">   1</span>   <span class=" -Color -Color-C238">│</span> program <span class=" -Color -Color-BGCyan">compute_trace</span>
-<span class=" -Color -Color-C238">   2</span>   <span class=" -Color -Color-C238">│</span>     implicit none
-<span class=" -Color -Color-C238">   3</span>   <span class=" -Color -Color-C238">│</span>     integer :: i
-<span class=" -Color -Color-C238">   4</span>   <span class=" -Color -Color-C238">│</span>     real, dimension(5, 5) :: A
-<span class=" -Color -Color-C238">   5</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">   6</span>   <span class=" -Color -Color-C238">│</span>     call random_number(A)
-<span class=" -Color -Color-C238">   7</span>   <span class=" -Color -Color-C238">│</span>     do i = 1, size(A, 1)
-<span class=" -Color -Color-C238">   8</span>   <span class=" -Color -Color-C238">│</span>         print &#39;(5F7.4)&#39;, A(i, :)
-<span class=" -Color -Color-C238">   9</span>   <span class=" -Color -Color-C238">│</span>     end do
-<span class=" -Color -Color-C238">  10</span>   <span class=" -Color -Color-C238">│</span>     print &#39;(/, A, F7.4)&#39;, &#39;trace = &#39;, trace(A)
-<span class=" -Color -Color-C238">  11</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">  12</span>   <span class=" -Color -Color-C238">│</span> contains
-<span class=" -Color -Color-C238">  13</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">  14</span>   <span class=" -Color -Color-C238">│</span>     real function trace(matrix)
-<span class=" -Color -Color-C238">  15</span>   <span class=" -Color -Color-C238">│</span>         use, intrinsic :: iso_fortran_env, only : error_unit
-<span class=" -Color -Color-C238">  16</span>   <span class=" -Color -Color-C238">│</span>         implicit none
-<span class=" -Color -Color-C238">  17</span>   <span class=" -Color -Color-C238">│</span>         real, dimension(:, :), intent(in) :: matrix
-<span class=" -Color -Color-C238">  18</span>   <span class=" -Color -Color-C238">│</span>         integer :: i
-<span class=" -Color -Color-C238">  19</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">  20</span>   <span class=" -Color -Color-C238">│</span>         if (size(matrix, 1) /= size(matrix, 2)) then
-<span class=" -Color -Color-C238">  21</span>   <span class=" -Color -Color-C238">│</span>             write (<span class=" -Color -Color-Red">unit</span>=error_unit, <span class=" -Color -Color-Red">fmt</span>=&#39;(A)&#39;) &amp;
-<span class=" -Color -Color-C238">  22</span>   <span class=" -Color -Color-C238">│</span>                 &#39;error: can not compute trace of a non-square matrix&#39;
-<span class=" -Color -Color-C238">  23</span>   <span class=" -Color -Color-C238">│</span>             stop 1
-<span class=" -Color -Color-C238">  24</span>   <span class=" -Color -Color-C238">│</span>         end if
-<span class=" -Color -Color-C238">  25</span>   <span class=" -Color -Color-C238">│</span>         trace = 0.0
-<span class=" -Color -Color-C238">  26</span>   <span class=" -Color -Color-C238">│</span>         do i = 1, size(matrix, 1)
-<span class=" -Color -Color-C238">  27</span>   <span class=" -Color -Color-C238">│</span>             trace = trace + matrix(i, i)
-<span class=" -Color -Color-C238">  28</span>   <span class=" -Color -Color-C238">│</span>         end do
-<span class=" -Color -Color-C238">  29</span>   <span class=" -Color -Color-C238">│</span>     end function <span class=" -Color -Color-BGCyan">trace</span>
-<span class=" -Color -Color-C238">  30</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">  31</span>   <span class=" -Color -Color-C238">│</span> end program <span class=" -Color -Color-BGCyan">compute_trace</span>
-<span class=" -Color -Color-C238">───────┴────────────────────────────────────────────────────────────────────────</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="build-the-program-using-fpm-fortran-package-manager">
-<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
@@ -789,13 +722,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0.3440 0.6346 0.6225 0.4196 0.2113
- 0.2423 0.6582 0.4643 0.3002 0.3229
- 0.7764 0.8436 0.9791 0.8518 0.6422
- 0.1868 0.5503 0.8908 0.0397 0.3177
- 0.4187 0.6438 0.5743 0.0291 0.4108
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 0.1239 0.4688 0.2019 0.7018 0.2345
+ 0.0841 0.8742 0.8662 0.9532 0.8563
+ 0.7822 0.7919 0.5174 0.2928 0.8351
+ 0.5026 0.8925 0.0513 0.8570 0.3282
+ 0.5303 0.7787 0.2122 0.7028 0.1448
 
-trace =  2.4319
+trace =  2.5174
 </pre></div>
 </div>
 </div>

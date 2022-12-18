@@ -60,6 +60,7 @@ parts:
     - file: Fortran_MOOC/Section_Arrays_Reshape
     - file: Fortran_MOOC/Section_Arrays_Subarrays
     - file: Fortran_MOOC/Section_Arrays_Submatrices
+    - file: Fortran_MOOC/Section_Arrays_Trace
 
 - caption: Miscellaneous
   chapters:
