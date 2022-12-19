@@ -1,0 +1,14 @@
+name = "Section_Call_By_Semantics_Call_By_In_Reference"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Call_By_Semantics_Call_By_In_Reference"
+source-dir="app"
+main="section_call_by_semantics_call_by_in_reference.f90"
