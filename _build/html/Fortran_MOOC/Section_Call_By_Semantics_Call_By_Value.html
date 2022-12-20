@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Section: Call By Semantics &#8212; Fortran Programming</title>
+    <title>Section Call By Semantics: Call By Value &#8212; Fortran Programming</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section Call By Semantics: Call By In Reference" href="Section_Call_By_Semantics_Call_By_In_Reference.html" />
-    <link rel="prev" title="Section IEEE754: Zero vs Non - Zero" href="Section_IEEE754_16_Zero_vs_Non_Zero.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section Call By Semantics: Call By Reference" href="Section_Call_By_Semantics_Call_By_Reference.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -419,7 +419,7 @@
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
-    <a class="current reference internal" href="#">
+    <a class="reference internal" href="Section_Call_By_Semantics.html">
      Section: Call By Semantics
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -427,7 +427,7 @@
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3">
       <a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">
        Section Call By Semantics: Call By In Reference
@@ -438,8 +438,8 @@
        Section Call By Semantics: Call By Reference
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Section Call By Semantics: Call By Value
       </a>
      </li>
@@ -505,7 +505,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Fortran_MOOC/Section_Call_By_Semantics.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -530,7 +530,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Fortran_MOOC/Section_Call_By_Semantics.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -547,6 +547,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-calling-by-value-in-fortran">
+   This program demonstrates calling by value in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -554,21 +577,124 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section: Call By Semantics</h1>
+                <h1>Section Call By Semantics: Call By Value</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-calling-by-value-in-fortran">
+   This program demonstrates calling by value in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="section-call-by-semantics">
-<h1>Section: Call By Semantics<a class="headerlink" href="#section-call-by-semantics" title="Permalink to this headline">¶</a></h1>
-<p>In this section we will be following along with the examples from “Fortran for scientific programming”, a <a class="reference external" href="https://www.futurelearn.com/courses/fortran-for-scientific-computing">MOOC that is hosted by FutureLearn</a>.  Course material can be found on Github <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC">here</a> . We will use Jupyter Lab with the Fortran Package Manager (fpm) to facilitate creation of this Jupyter Book.</p>
-<div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="section-call-by-semantics-call-by-value">
+<h1>Section Call By Semantics: Call By Value<a class="headerlink" href="#section-call-by-semantics-call-by-value" title="Permalink to this headline">¶</a></h1>
+<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/call_by_semantics">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/call_by_semantics</a></p>
+<div class="section" id="this-program-demonstrates-calling-by-value-in-fortran">
+<h2>This program demonstrates calling by value in Fortran.<a class="headerlink" href="#this-program-demonstrates-calling-by-value-in-fortran" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">call_by_value</span><span class="w"></span>
+<span class="w">    </span><span class="k">implicit none</span>
+<span class="k">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;! = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;! = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+
+<span class="k">contains</span>
+
+<span class="k">    function </span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">fac</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">implicit none</span>
+<span class="k">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fac</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fac</span><span class="o">*</span><span class="n">n</span><span class="w"></span>
+<span class="w">            </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="k">end do</span>
+<span class="k">    end function </span><span class="n">factorial</span><span class="w"></span>
+
+<span class="k">end program </span><span class="n">call_by_value</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+</div>
+<div class="section" id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Call_By_Semantics_Call_By_Value&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-the-program-using-fpm-fortran-package-manager">
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           5 ! =          120
+
+           6 ! =          720
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -597,17 +723,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Section_IEEE754_16_Zero_vs_Non_Zero.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_Call_By_Semantics_Call_By_Reference.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section IEEE754: Zero vs Non - Zero</p>
+            <p class="prev-next-title">Section Call By Semantics: Call By Reference</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_Call_By_Semantics_Call_By_In_Reference.html" title="next page">
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section Call By Semantics: Call By In Reference</p>
+        <p class="prev-next-title">Markdown Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
