@@ -14,7 +14,7 @@ kernelspec:
 # # Section Call By Semantics: Call By In Reference
 # 
 
-# Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/arrays)
+# Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/call_by_semantics](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/call_by_semantics)
 
 # ## This program demonstrates calling by in reference in Fortran.
 

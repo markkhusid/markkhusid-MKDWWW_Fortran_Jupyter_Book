@@ -71,6 +71,7 @@ parts:
     - file: Fortran_MOOC/Section_Call_By_Semantics
       sections:
       - file: Fortran_MOOC/Section_Call_By_Semantics_Call_By_In_Reference
+      - file: Fortran_MOOC/Section_Call_By_Semantics_Call_By_Reference
 
 - caption: Miscellaneous
   chapters:
