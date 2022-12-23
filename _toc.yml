@@ -77,6 +77,7 @@ parts:
     - file: Fortran_MOOC/Section_Computing_Pi
       sections:
       - file: Fortran_MOOC/Section_Computing_Pi_Compute_Pi
+      - file: Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP
 
 
 - caption: Miscellaneous

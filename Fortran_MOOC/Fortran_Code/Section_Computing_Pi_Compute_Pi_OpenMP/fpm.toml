@@ -1,0 +1,16 @@
+name = "Section_Computing_Pi_Compute_Pi_OpenMP"
+
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+external-modules = "openmp"
+
+[install]
+library = false
+
+[[executable]]
+name="Section_Computing_Pi_Compute_Pi_OpenMP"
+source-dir="app"
+main="section_computing_pi_compute_pi_openmp.f90"

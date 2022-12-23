@@ -14,3 +14,6 @@ kernelspec:
 # # Fortran MOOC
 
 # In this section we will be following along with the examples from "Fortran for scientific programming", a [MOOC that is hosted by FutureLearn](https://www.futurelearn.com/courses/fortran-for-scientific-computing).  Course material can be found on Github [here](https://github.com/gjbex/Fortran-MOOC) . We will use Jupyter Lab with the Fortran Package Manager (fpm) to facilitate creation of this Jupyter Book.
+
+# ```{tableofcontents}
+# ```

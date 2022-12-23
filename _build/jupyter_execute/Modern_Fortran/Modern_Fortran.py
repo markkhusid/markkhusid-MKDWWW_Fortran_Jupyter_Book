@@ -11,6 +11,9 @@ kernelspec:
   language: python
   name: python3
 ---
-# # Worked Examples
+# # Modern Fortran
 
 # In this section we will be following along with the examples from "Modern Fortan" by Milan Curcic (Manning). We will use Jupyter Lab to facilitate rapid production of HTML content. The output of the Fortran code will be displayed in graphical format using Python scripts and Matplotlib.
+
+# ```{tableofcontents}
+# ```

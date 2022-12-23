@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Section Computing Pi: Compute Pi &#8212; Fortran Programming</title>
+    <title>Section Computing Pi: Compute Pi with OpenMP &#8212; Fortran Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section Computing Pi: Compute Pi with OpenMP" href="Section_Computing_Pi_Compute_Pi_OpenMP.html" />
-    <link rel="prev" title="Section: Computing Pi" href="Section_Computing_Pi.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section Computing Pi: Compute Pi" href="Section_Computing_Pi_Compute_Pi.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -472,13 +472,13 @@ const thebe_selector_output = ".output, .cell_output"
      </i>
     </label>
     <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+     <li class="toctree-l3">
+      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">
        Section Computing Pi: Compute Pi
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Section Computing Pi: Compute Pi with OpenMP
       </a>
      </li>
@@ -562,7 +562,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Fortran_MOOC/Section_Computing_Pi_Compute_Pi.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -605,7 +605,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Fortran_MOOC/Section_Computing_Pi_Compute_Pi.ipynb"
+        <a href="../_sources/Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -665,12 +665,12 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp">
    This program demonstrates computing
    <span class="math notranslate nohighlight">
     \(\pi\)
    </span>
-   in Fortran.
+   in Fortran using OpenMP.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -692,7 +692,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section Computing Pi: Compute Pi</h1>
+                <h1>Section Computing Pi: Compute Pi with OpenMP</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -703,12 +703,12 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp">
    This program demonstrates computing
    <span class="math notranslate nohighlight">
     \(\pi\)
    </span>
-   in Fortran.
+   in Fortran using OpenMP.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -731,52 +731,56 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="section-computing-pi-compute-pi">
-<h1>Section Computing Pi: Compute Pi<a class="headerlink" href="#section-computing-pi-compute-pi" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-computing-pi-compute-pi-with-openmp">
+<h1>Section Computing Pi: Compute Pi with OpenMP<a class="headerlink" href="#section-computing-pi-compute-pi-with-openmp" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi</a></p>
-<section id="this-program-demonstrates-computing-pi-in-fortran">
-<h2>This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran.<a class="headerlink" href="#this-program-demonstrates-computing-pi-in-fortran" title="Permalink to this heading">#</a></h2>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">compute_pi</span><span class="w"></span>
-<span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="p">,</span><span class="w"> </span><span class="n">I8</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">INT64</span><span class="w"></span>
-<span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">delta</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span><span class="w"></span>
+<section id="this-program-demonstrates-computing-pi-in-fortran-using-openmp">
+<h2>This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran using OpenMP.<a class="headerlink" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp" title="Permalink to this heading">#</a></h2>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">compute_pi_omp</span><span class="w"></span>
+<span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="p">,</span><span class="w"> </span><span class="n">I8</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">INT64</span><span class="w"></span>
+<span class="w">  </span><span class="k">implicit none</span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">delta</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">    </span><span class="n">nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_nr_iters</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_DP</span><span class="o">/</span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">        </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pi_val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">1.0_DP</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">delta</span><span class="w"></span>
-<span class="w">    </span><span class="k">end do</span>
-<span class="k">    </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0_DP</span><span class="o">*</span><span class="n">pi_val</span><span class="o">/</span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span><span class="w"></span>
+<span class="w">  </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
+<span class="w">  </span><span class="n">nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_nr_iters</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_DP</span><span class="o">/</span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">!$omp parallel do default(none) private(x) shared(delta, nr_iters) reduction(+:pi_val)</span>
+<span class="w">  </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">      </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="n">delta</span><span class="w"></span>
+<span class="w">      </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pi_val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">1.0_DP</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">end do</span><span class="w"></span>
+<span class="w">  </span><span class="c">!$omp end parallel do</span>
+
+<span class="w">  </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0_DP</span><span class="o">*</span><span class="n">pi_val</span><span class="o">/</span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, I10, A, F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;After &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; loops, Pi = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span><span class="w"></span>
 
 <span class="k">contains</span>
-<span class="k">     </span>
-<span class="k">    function </span><span class="n">get_nr_iters</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">nr_iters</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="w"></span>
-<span class="w">        </span><span class="k">implicit none</span>
-<span class="k">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000_I8</span><span class="w"></span>
-<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="w"></span>
-<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w"></span>
+<span class="k">   </span>
+<span class="k">  function </span><span class="n">get_nr_iters</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">nr_iters</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="w"></span>
+<span class="w">      </span><span class="k">implicit none</span>
+<span class="k">      </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">default_nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000_I8</span><span class="w"></span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="w"></span>
+<span class="w">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">istat</span><span class="w"></span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">command_argument_count</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">            call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=*</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">                write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(2A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">                    </span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="w"></span>
-<span class="w">                </span><span class="k">stop </span><span class="mi">1</span><span class="w"></span>
-<span class="w">            </span><span class="k">end if</span>
-<span class="k">        else</span>
-<span class="k">            </span><span class="n">nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">default_nr_iters</span><span class="w"></span>
-<span class="w">        </span><span class="k">end if</span>
-<span class="k">    end function </span><span class="n">get_nr_iters</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">command_argument_count</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=*</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="n">nr_iters</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">              write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(2A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                  </span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="w"></span>
+<span class="w">              </span><span class="k">stop </span><span class="mi">1</span><span class="w"></span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">      else</span>
+<span class="k">          </span><span class="n">nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">default_nr_iters</span><span class="w"></span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">  end function </span><span class="n">get_nr_iters</span><span class="w"></span>
 
-<span class="k">end program </span><span class="n">compute_pi</span><span class="w"></span>
+<span class="k">end program </span><span class="n">compute_pi_omp</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -794,7 +798,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Computing_Pi_Compute_Pi&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_Computing_Pi_Compute_Pi_OpenMP&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -802,6 +806,38 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this program uses the OpenMP external library, the fpm.toml file had to be augmented as below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bat fpm.toml
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C238">───────┬────────────────────────────────────────────────────────────────────────</span>
+       <span class=" -Color -Color-C238">│ </span>File: <span class=" -Color -Color-Bold">fpm.toml</span>
+<span class=" -Color -Color-C238">───────┼────────────────────────────────────────────────────────────────────────</span>
+<span class=" -Color -Color-C238">   1</span>   <span class=" -Color -Color-C238">│</span> name = &quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;
+<span class=" -Color -Color-C238">   2</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">   3</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">   4</span>   <span class=" -Color -Color-C238">│</span> [<span class=" -Color -Color-BGCyan">build</span>]
+<span class=" -Color -Color-C238">   5</span>   <span class=" -Color -Color-C238">│</span> auto-executables = true
+<span class=" -Color -Color-C238">   6</span>   <span class=" -Color -Color-C238">│</span> auto-tests = true
+<span class=" -Color -Color-C238">   7</span>   <span class=" -Color -Color-C238">│</span> auto-examples = true
+<span class=" -Color -Color-C238">   8</span>   <span class=" -Color -Color-C238">│</span> external-modules = &quot;openmp&quot;
+<span class=" -Color -Color-C238">   9</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  10</span>   <span class=" -Color -Color-C238">│</span> [<span class=" -Color -Color-BGCyan">install</span>]
+<span class=" -Color -Color-C238">  11</span>   <span class=" -Color -Color-C238">│</span> library = false
+<span class=" -Color -Color-C238">  12</span>   <span class=" -Color -Color-C238">│</span> 
+<span class=" -Color -Color-C238">  13</span>   <span class=" -Color -Color-C238">│</span> [[<span class=" -Color -Color-BGCyan">executable</span>]]
+<span class=" -Color -Color-C238">  14</span>   <span class=" -Color -Color-C238">│</span> name=&quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;
+<span class=" -Color -Color-C238">  15</span>   <span class=" -Color -Color-C238">│</span> source-dir=&quot;app&quot;
+<span class=" -Color -Color-C238">  16</span>   <span class=" -Color -Color-C238">│</span> main=&quot;section_computing_pi_compute_pi_openmp.f90&quot;
+<span class=" -Color -Color-C238">───────┴────────────────────────────────────────────────────────────────────────</span>
 </pre></div>
 </div>
 </div>
@@ -824,19 +860,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-After         10 loops, Pi =         3.304518326248318
-17.5 ms ± 3.02 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+After         10 loops, Pi =         2.904518326248318
+15.5 ms ± 2.35 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -849,21 +885,21 @@ After         10 loops, Pi =         3.304518326248318
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
-After        100 loops, Pi =         3.160417031779042
-16.2 ms ± 3.22 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
+After        100 loops, Pi =         3.120417031779045
+16.4 ms ± 1.94 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -876,23 +912,21 @@ After        100 loops, Pi =         3.160417031779042
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.143555466911022
-After       1000 loops, Pi =         3.143555466911022
-15.1 ms ± 1.55 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
+After       1000 loops, Pi =         3.139555466911023
+15.4 ms ± 2.11 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -905,23 +939,23 @@ After       1000 loops, Pi =         3.143555466911022
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
-After      10000 loops, Pi =         3.141791477611602
-17.3 ms ± 4.24 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
+After      10000 loops, Pi =         3.141391477611321
+15.7 ms ± 2.59 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -934,23 +968,23 @@ After      10000 loops, Pi =         3.141791477611602
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
+After     100000 loops, Pi =         3.141572616402007
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141612616406209
-After     100000 loops, Pi =         3.141612616406209
-14.4 ms ± 1.16 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.2 ms ± 1.72 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -963,23 +997,27 @@ After     100000 loops, Pi =         3.141612616406209
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
+After    1000000 loops, Pi =         3.141590652413977
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141594652402481
-After    1000000 loops, Pi =         3.141594652402481
-17.2 ms ± 1.23 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
+After    1000000 loops, Pi =         3.141590652413977
+After    1000000 loops, Pi =         3.141590652413977
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
+After    1000000 loops, Pi =         3.141590652413977
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
+21.3 ms ± 6.19 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -992,31 +1030,35 @@ After    1000000 loops, Pi =         3.141594652402481
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
-After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
-After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592854147901
-42.7 ms ± 2.1 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
+43.6 ms ± 4.89 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -1029,31 +1071,29 @@ After   10000000 loops, Pi =         3.141592854147901
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
-After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
+After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
+After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
+After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
-After  100000000 loops, Pi =         3.141592668260093
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592668260093
-263 ms ± 13.4 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
+261 ms ± 35.8 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -1066,35 +1106,35 @@ After  100000000 loops, Pi =         3.141592668260093
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592665675041
-2.21 s ± 8.92 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
+2.12 s ± 14.1 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -1129,17 +1169,17 @@ After  100000000 loops, Pi =         3.141592668260093
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_Computing_Pi.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_Computing_Pi_Compute_Pi.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section: Computing Pi</p>
+            <p class="prev-next-title">Section Computing Pi: Compute Pi</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_Computing_Pi_Compute_Pi_OpenMP.html" title="next page">
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section Computing Pi: Compute Pi with OpenMP</p>
+        <p class="prev-next-title">Markdown Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

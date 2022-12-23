@@ -121,47 +121,53 @@ build_status = os.system("fpm build 2>/dev/null")
 # In[9]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 10 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 10 2>/dev/null")')
 
 
 # In[10]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 100 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 100 2>/dev/null")')
 
 
 # In[11]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 1000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 1000 2>/dev/null")')
 
 
 # In[12]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 10000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 10000 2>/dev/null")')
 
 
 # In[13]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 100000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 100000 2>/dev/null")')
 
 
 # In[14]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 1000000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 1000000 2>/dev/null")')
 
 
 # In[15]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 10000000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 10000000 2>/dev/null")')
 
 
 # In[16]:
 
 
-get_ipython().run_cell_magic('time', '', 'exec_status = os.system("fpm run -- 100000000 2>/dev/null")')
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 100000000 2>/dev/null")')
+
+
+# In[17]:
+
+
+get_ipython().run_cell_magic('timeit', '-r 10 -n 1', 'exec_status = os.system("fpm run -- 1000000000 2>/dev/null")')
 
