@@ -1,14 +1,16 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Section 8.2: Time Matrix Multiply &#8212; Fortran Programming</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,54 +20,65 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Section 8.7: Generic Elemental Procedures" href="Section_8_7_Generic_Elemental_Procedures.html" />
     <link rel="prev" title="Section 8.1: Submodules" href="Section_8_1_Submodules.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Fortran Programming
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Fortran Programming
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Modern Fortran
  </span>
@@ -438,6 +453,28 @@
        Section Call By Semantics: Call By Reference
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.html">
+       Section Call By Semantics: Call By Value
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi.html">
+     Section: Computing Pi
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi.html">
+       Section Computing Pi: Compute Pi
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -462,91 +499,164 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
    Program to demonstrate the performance improvement of using matmul over do loops.
@@ -554,12 +664,11 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Section 8.2: Time Matrix Multiply</h1>
@@ -583,14 +692,15 @@
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="section-8-2-time-matrix-multiply">
-<h1>Section 8.2: Time Matrix Multiply<a class="headerlink" href="#section-8-2-time-matrix-multiply" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-8-2-time-matrix-multiply">
+<h1>Section 8.2: Time Matrix Multiply<a class="headerlink" href="#section-8-2-time-matrix-multiply" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015)</p>
-<div class="section" id="program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
-<h2>Program to demonstrate the performance improvement of using matmul over do loops.<a class="headerlink" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops" title="Permalink to this headline">¶</a></h2>
+<section id="program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
+<h2>Program to demonstrate the performance improvement of using matmul over do loops.<a class="headerlink" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">time_matrix_multiply</span><span class="w"></span>
 
 <span class="w">    </span><span class="c">! Compare times of the matmul intrinsic cs DO loops</span>
@@ -703,16 +813,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> + mkdir -p build/dependencies
-[  0%] section_8_2_time_matrix_multip
-[ 50%] section_8_2_time_matrix_multip  done.
-[ 50%] Section_8_2_Time_Matrix_Multip
-[100%] Section_8_2_Time_Matrix_Multip  done.
-[100%] Project compiled successfully.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -721,67 +821,67 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2022-12-20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2022-12-23
 Matrix A
-     0.335     0.334     0.925     0.901     0.314     0.498     0.399     0.349     0.945     0.926
-     0.267     0.491     0.305     0.005     0.207     0.451     0.095     0.224     0.068     0.891
-     0.189     0.517     0.112     0.872     0.107     0.037     0.040     0.128     0.246     0.836
-     0.635     0.559     0.513     0.759     0.016     0.445     0.201     0.449     0.122     0.136
-     0.045     0.680     0.898     0.364     0.572     0.526     0.409     0.596     0.687     0.924
-     0.436     0.766     0.616     0.276     0.626     0.001     0.881     0.627     0.581     0.194
-     0.764     0.159     0.745     0.916     0.938     0.769     0.541     0.369     0.472     0.482
-     0.038     0.459     0.106     0.249     0.888     0.455     0.410     0.098     0.613     0.720
-     0.198     0.181     0.575     0.393     0.363     0.390     0.239     0.427     0.690     0.599
-     0.391     0.702     0.648     0.133     0.789     0.675     0.126     0.428     0.302     0.764
+     0.948     0.283     0.368     0.818     0.495     0.369     0.938     0.276     0.082     0.329
+     0.256     0.341     0.096     0.960     0.337     0.856     0.239     0.137     0.844     0.022
+     0.314     0.665     0.731     0.731     0.771     0.132     0.526     0.656     0.332     0.997
+     0.112     0.141     0.088     0.635     0.431     0.322     0.789     0.854     0.463     0.875
+     0.137     0.608     0.619     0.479     0.874     0.394     0.513     0.741     0.469     0.637
+     0.604     0.021     0.570     0.246     0.478     0.840     0.669     0.111     0.393     0.054
+     0.891     0.140     0.361     0.837     0.354     0.703     0.929     0.635     0.104     0.018
+     0.112     0.984     0.787     0.235     0.730     0.127     0.255     0.998     0.244     0.568
+     0.159     0.852     0.409     0.058     0.801     0.963     0.476     0.489     0.877     0.183
+     0.515     0.142     0.111     0.563     0.854     0.872     0.517     0.645     0.657     0.743
 
 Matrix B
-     0.831     0.474     0.964     0.813     0.791     0.103     0.575     0.134     0.722     0.433
-     0.321     0.889     0.371     0.882     0.793     0.965     0.212     0.528     0.685     0.361
-     0.800     0.430     0.784     0.163     0.163     0.558     0.251     0.780     0.307     0.939
-     0.664     0.227     0.679     0.855     0.594     0.192     0.042     0.496     0.589     0.393
-     0.928     0.146     0.352     0.457     0.877     0.861     0.069     0.498     0.703     0.939
-     0.599     0.008     0.184     0.557     0.441     0.192     0.934     0.121     0.954     0.923
-     0.312     0.438     0.850     0.411     0.209     0.437     0.366     0.868     0.439     0.680
-     0.419     0.689     0.964     0.214     0.433     0.498     0.173     0.605     0.436     0.965
-     0.532     0.908     0.254     0.195     0.912     0.070     0.793     0.383     0.033     0.188
-     0.411     0.327     0.408     0.920     0.847     0.727     0.177     0.140     0.044     0.326
+     0.214     0.542     0.808     0.762     0.337     0.954     0.937     0.952     0.965     0.182
+     0.700     0.632     0.489     0.852     0.663     0.720     0.567     0.274     0.529     0.194
+     0.070     0.053     0.569     0.248     0.477     0.382     0.313     0.781     0.683     0.289
+     0.108     0.967     0.352     0.073     0.943     0.542     0.357     0.762     0.673     0.474
+     0.247     0.996     0.053     0.630     0.215     0.918     0.120     0.754     0.041     0.604
+     0.590     0.890     0.349     0.863     0.503     0.215     0.889     0.305     0.517     0.479
+     0.917     0.698     0.941     0.884     0.133     0.172     0.058     0.720     0.509     0.964
+     0.901     0.235     0.330     0.430     0.821     0.052     0.533     0.762     0.664     0.827
+     0.661     0.451     0.356     0.348     0.585     0.039     0.241     0.568     0.210     0.428
+     0.379     0.335     0.425     0.801     0.846     0.203     0.496     0.906     0.026     0.349
 
 Matrix C1 is AxB using loops.
-     3.468     2.684     3.280     3.185     3.591     2.500     2.140     2.654     2.380     3.330
-     1.616     1.279     1.517     1.971     1.968     1.744     1.056     1.063     1.384     1.778
-     1.654     1.414     1.660     2.305     2.202     1.554     0.705     1.199     1.268     1.321
-     2.275     1.749     2.515     2.324     2.153     1.556     1.333     1.730     2.176     2.320
-     3.186     2.698     3.019     2.929     3.424     3.022     1.903     2.702     2.396     3.558
-     2.792     2.715     3.175     2.441     2.915     2.600     1.549     2.785     2.320     3.117
-     3.993     2.251     3.604     3.360     3.668     2.583     2.202     2.721     3.256     4.007
-     2.316     1.700     1.747     2.296     2.835     2.200     1.423     1.700     1.853     2.356
-     2.381     1.868     2.209     2.009     2.489     1.780     1.517     1.807     1.642     2.446
-     2.987     2.113     2.546     2.798     3.174     2.759     1.722     2.059     2.524     3.252
+     2.143     3.191     2.700     2.985     2.423     2.472     2.227     3.607     2.763     2.480
+     1.901     2.972     1.663     2.113     2.423     1.627     1.909     2.436     1.986     1.922
+     2.602     3.227     2.593     3.302     3.463     2.532     2.325     4.202     2.545     2.813
+     2.624     2.737     2.129     2.750     2.843     1.428     1.823     3.396     1.943     2.760
+     2.689     3.133     2.278     3.149     3.072     2.228     2.146     3.703     2.307     2.797
+     1.817     2.520     2.056     2.483     1.702     1.709     1.867     2.668     2.100     2.011
+     2.404     3.227     2.680     2.923     2.504     2.218     2.418     3.515     3.037     2.712
+     2.558     2.503     2.083     2.899     2.984     2.162     2.079     3.356     2.278     2.426
+     2.958     3.261     2.177     3.372     2.657     2.075     2.323     3.026     2.210     2.588
+     2.775     3.603     2.346     3.431     3.085     2.212     2.576     3.865     2.362     2.927
 
 Matrix C2 is AxB using matmul.
-     3.468     2.684     3.280     3.185     3.591     2.500     2.140     2.654     2.380     3.330
-     1.616     1.279     1.517     1.971     1.968     1.744     1.056     1.063     1.384     1.778
-     1.654     1.414     1.660     2.305     2.202     1.554     0.705     1.199     1.268     1.321
-     2.275     1.749     2.515     2.324     2.153     1.556     1.333     1.730     2.176     2.320
-     3.186     2.698     3.019     2.929     3.424     3.022     1.903     2.702     2.396     3.558
-     2.792     2.715     3.175     2.441     2.915     2.600     1.549     2.785     2.320     3.117
-     3.993     2.251     3.604     3.360     3.668     2.583     2.202     2.721     3.256     4.007
-     2.316     1.700     1.747     2.296     2.835     2.200     1.423     1.700     1.853     2.356
-     2.381     1.868     2.209     2.009     2.489     1.780     1.517     1.807     1.642     2.446
-     2.987     2.113     2.546     2.798     3.174     2.759     1.722     2.059     2.524     3.252
+     2.143     3.191     2.700     2.985     2.423     2.472     2.227     3.607     2.763     2.480
+     1.901     2.972     1.663     2.113     2.423     1.627     1.909     2.436     1.986     1.922
+     2.602     3.227     2.593     3.302     3.463     2.532     2.325     4.202     2.545     2.813
+     2.624     2.737     2.129     2.750     2.843     1.428     1.823     3.396     1.943     2.760
+     2.689     3.133     2.278     3.149     3.072     2.228     2.146     3.703     2.307     2.797
+     1.817     2.520     2.056     2.483     1.702     1.709     1.867     2.668     2.100     2.011
+     2.404     3.227     2.680     2.923     2.504     2.218     2.418     3.515     3.037     2.712
+     2.558     2.503     2.083     2.899     2.984     2.162     2.079     3.356     2.278     2.426
+     2.958     3.261     2.177     3.372     2.657     2.075     2.323     3.026     2.210     2.588
+     2.775     3.603     2.346     3.431     3.085     2.212     2.576     3.865     2.362     2.927
 
- Time of Do loop version is: .0003120000 seconds.
- Time of matmul version is: .0001599999 seconds.
+ Time of Do loop version is: .0000770000 seconds.
+ Time of matmul version is: .0000100000 seconds.
 
 The results are approximately the same.
 
-The speedup ratio is:      1.950x
+The speedup ratio is:      7.700x
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -805,9 +905,11 @@ The speedup ratio is:      1.950x
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="Section_8_1_Submodules.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -823,23 +925,27 @@ The speedup ratio is:      1.950x
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Mark Khusid<br/>
+  
+</p>
+        </footer>
+    </div>
     
-      By Mark Khusid<br/>
-    
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -74,6 +74,11 @@ parts:
       - file: Fortran_MOOC/Section_Call_By_Semantics_Call_By_Reference
       - file: Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value
 
+    - file: Fortran_MOOC/Section_Computing_Pi
+      sections:
+      - file: Fortran_MOOC/Section_Computing_Pi_Compute_Pi
+
+
 - caption: Miscellaneous
   chapters:
     - file: markdown
