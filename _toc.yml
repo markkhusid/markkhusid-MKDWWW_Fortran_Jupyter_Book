@@ -78,7 +78,10 @@ parts:
       sections:
       - file: Fortran_MOOC/Section_Computing_Pi_Compute_Pi
       - file: Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP
-
+    
+    - file: Fortran_MOOC/Section_Implicit_vs_Explicit_Loops__Head__
+      sections:
+      - file: Fortran_MOOC/Section_Implicit_vs_Explicit_Loops
 
 - caption: Miscellaneous
   chapters:

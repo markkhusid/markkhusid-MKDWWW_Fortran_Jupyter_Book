@@ -1,6 +1,5 @@
 name = "Section_Computing_Pi_Compute_Pi_OpenMP"
 
-
 [build]
 auto-executables = true
 auto-tests = true

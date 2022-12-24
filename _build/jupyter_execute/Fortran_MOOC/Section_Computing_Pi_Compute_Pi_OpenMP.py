@@ -16,7 +16,11 @@ kernelspec:
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi)
 
-# ## This program demonstrates computing $\pi$ in Fortran using OpenMP.
+# ## This program demonstrates computing $\pi$ in Fortran using OpenMP.  The program uses the following equation for computation:
+
+# $$
+# \Large \pi = 4 \int_{0}^{1} \sqrt{1-x^2}dx
+# $$
 
 # ```fortran
 # program compute_pi_omp

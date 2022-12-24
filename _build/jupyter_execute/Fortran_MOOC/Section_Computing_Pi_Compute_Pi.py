@@ -16,7 +16,11 @@ kernelspec:
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/computing_pi)
 
-# ## This program demonstrates computing $\pi$ in Fortran.
+# ## This program demonstrates computing $\pi$ in Fortran by using the following equation:
+
+# $$
+# \Large \pi = 4 \int_{0}^{1} \sqrt{1-x^2}dx
+# $$
 
 # ```fortran
 # program compute_pi
@@ -34,7 +38,7 @@ kernelspec:
 #         x = x + delta
 #     end do
 #     pi_val = 4.0_DP*pi_val/nr_iters
-#     print '(F25.15)', pi_val
+#     print '(A, I10, A, F25.15)', "After ", nr_iters, " loops, Pi = ", pi_val
 # 
 # contains
 #      
