@@ -744,13 +744,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sdot-f90">
-     sdot.f90
+    <a class="reference internal nav-link" href="#in-file-sdot-f90">
+     In file sdot.f90
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-blas-lapack-blas95-dot-blas95-f90">
-     section_blas_lapack_blas95_dot_blas95.f90
+    <a class="reference internal nav-link" href="#in-file-section-blas-lapack-blas95-dot-blas95-f90">
+     In file section_blas_lapack_blas95_dot_blas95.f90
     </a>
    </li>
   </ul>
@@ -790,13 +790,13 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sdot-f90">
-     sdot.f90
+    <a class="reference internal nav-link" href="#in-file-sdot-f90">
+     In file sdot.f90
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-blas-lapack-blas95-dot-blas95-f90">
-     section_blas_lapack_blas95_dot_blas95.f90
+    <a class="reference internal nav-link" href="#in-file-section-blas-lapack-blas95-dot-blas95-f90">
+     In file section_blas_lapack_blas95_dot_blas95.f90
     </a>
    </li>
   </ul>
@@ -826,8 +826,8 @@ title="Print to PDF"
 <p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack</a></p>
 <section id="this-program-demonstrates-the-blas95-linear-algebra-library-in-fortran">
 <h2>This program demonstrates the BLAS95 linear algebra library in Fortran.<a class="headerlink" href="#this-program-demonstrates-the-blas95-linear-algebra-library-in-fortran" title="Permalink to this heading">#</a></h2>
-<section id="sdot-f90">
-<h3>sdot.f90<a class="headerlink" href="#sdot-f90" title="Permalink to this heading">#</a></h3>
+<section id="in-file-sdot-f90">
+<h3>In file sdot.f90<a class="headerlink" href="#in-file-sdot-f90" title="Permalink to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">sdot_mod</span><span class="w"></span>
 
 <span class="w">      </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sdot</span><span class="w"></span>
@@ -836,7 +836,7 @@ title="Print to PDF"
 
 <span class="k">      </span><span class="kt">REAL </span><span class="k">FUNCTION </span><span class="n">SDOT</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">SX</span><span class="p">,</span><span class="n">INCX</span><span class="p">,</span><span class="n">SY</span><span class="p">,</span><span class="n">INCY</span><span class="p">)</span><span class="w"></span>
 <span class="c">!  ====== UPDATE TO DOCUMENTATION ======</span>
-<span class="c">!  To make this calling program compile, I took sdot.f90 for BLAS at</span>
+<span class="c">!  To make the calling program compile, I took sdot.f90 from BLAS at</span>
 <span class="c">!  https://netlib.org/blas/ and changed it into a module.</span>
 <span class="c">!  I was not able to get the Intel MKL library to work and the Intel</span>
 <span class="c">!  source code was not available.</span>
@@ -992,8 +992,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </section>
-<section id="section-blas-lapack-blas95-dot-blas95-f90">
-<h3>section_blas_lapack_blas95_dot_blas95.f90<a class="headerlink" href="#section-blas-lapack-blas95-dot-blas95-f90" title="Permalink to this heading">#</a></h3>
+<section id="in-file-section-blas-lapack-blas95-dot-blas95-f90">
+<h3>In file section_blas_lapack_blas95_dot_blas95.f90<a class="headerlink" href="#in-file-section-blas-lapack-blas95-dot-blas95-f90" title="Permalink to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">dot_test</span><span class="w"></span>
 <span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sdot_mod</span><span class="w"></span>
 <span class="w">    </span><span class="k">implicit none</span>

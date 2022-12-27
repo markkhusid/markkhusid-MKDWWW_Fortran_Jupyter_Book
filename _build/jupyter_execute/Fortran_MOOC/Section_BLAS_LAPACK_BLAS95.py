@@ -18,7 +18,7 @@ kernelspec:
 
 # ## This program demonstrates the BLAS95 linear algebra library in Fortran.
 
-# ### sdot.f90
+# ### In file sdot.f90
 
 # ```fortran
 # module sdot_mod
@@ -29,7 +29,7 @@ kernelspec:
 # 
 #       REAL FUNCTION SDOT(N,SX,INCX,SY,INCY)
 # !  ====== UPDATE TO DOCUMENTATION ======
-# !  To make this calling program compile, I took sdot.f90 for BLAS at
+# !  To make the calling program compile, I took sdot.f90 from BLAS at
 # !  https://netlib.org/blas/ and changed it into a module.
 # !  I was not able to get the Intel MKL library to work and the Intel
 # !  source code was not available.
@@ -185,7 +185,7 @@ kernelspec:
 # ```
 # 
 
-# ### section_blas_lapack_blas95_dot_blas95.f90
+# ### In file section_blas_lapack_blas95_dot_blas95.f90
 
 # ```fortran
 # program dot_test
