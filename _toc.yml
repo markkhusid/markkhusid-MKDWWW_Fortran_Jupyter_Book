@@ -87,6 +87,11 @@ parts:
       sections:
       - file: Fortran_MOOC/Section_Ball_Throw
 
+    - file: Fortran_MOOC/Section_BLAS_LAPACK__Head__
+      sections:
+      - file: Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__
+        sections:
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_BLAS95
 - caption: Miscellaneous
   chapters:
     - file: markdown

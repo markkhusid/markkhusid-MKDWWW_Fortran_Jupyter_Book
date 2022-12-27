@@ -1,0 +1,14 @@
+name = "Section_BLAS_LAPACK_BLAS95"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Section_BLAS_LAPACK_BLAS95_DOT_BLAS95"
+source-dir="app"
+main="section_blas_lapack_blas95_dot_blas95.f90"
