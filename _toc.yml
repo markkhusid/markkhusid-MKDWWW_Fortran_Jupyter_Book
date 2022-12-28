@@ -89,9 +89,15 @@ parts:
 
     - file: Fortran_MOOC/Section_BLAS_LAPACK__Head__
       sections:
+      
       - file: Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__
         sections:
         - file: Fortran_MOOC/Section_BLAS_LAPACK_BLAS95
+
+      - file: Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__
+        sections:
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations
+
 - caption: Miscellaneous
   chapters:
     - file: markdown

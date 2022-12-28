@@ -1,0 +1,15 @@
+name = "Section_BLAS_LAPACK_Linear_Equations"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+link = ["blas", "lapack"]
+
+[install]
+library = false
+
+[[executable]]
+name="solve_equations"
+source-dir="app"
+main="solve_equations.f90"
