@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Fortran MOOC &#8212; Fortran Programming</title>
+    <title>Section: BLAS/LAPACK - Dot Product &#8212; Fortran Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section: Arrays" href="Section_Arrays.html" />
-    <link rel="prev" title="Section 8.8: Findloc Function" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section: BLAS/LAPACK - Linear Equations" href="Section_BLAS_LAPACK_Linear_Equations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -300,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="Fortran_MOOC.html">
    Fortran MOOC
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -308,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="Section_Arrays.html">
      Section: Arrays
@@ -516,16 +518,16 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 has-children">
+   <li class="toctree-l2 current active has-children">
     <a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">
      Section: BLAS/LAPACK
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
     <label for="toctree-checkbox-11">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">
        Section: BLAS/LAPACK - BLAS95
@@ -560,8 +562,8 @@ const thebe_selector_output = ".output, .cell_output"
        </li>
       </ul>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Section: BLAS/LAPACK - Dot Product
       </a>
      </li>
@@ -645,7 +647,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Fortran_MOOC.ipynb"
+        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Section_BLAS_LAPACK_Dot.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -701,7 +703,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Fortran_MOOC/Fortran_MOOC.ipynb"
+        <a href="../_sources/Fortran_MOOC/Section_BLAS_LAPACK_Dot.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -738,23 +740,104 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-performing-a-dot-product-in-fortran">
+   This program demonstrates performing a dot product in Fortran.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dot-products">
+     Dot Products
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-file-dot-test-f90">
+     In file dot_test.f90
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Fortran MOOC</h1>
+                <h1>Section: BLAS/LAPACK - Dot Product</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-performing-a-dot-product-in-fortran">
+   This program demonstrates performing a dot product in Fortran.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dot-products">
+     Dot Products
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-file-dot-test-f90">
+     In file dot_test.f90
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -762,70 +845,156 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="fortran-mooc">
-<h1>Fortran MOOC<a class="headerlink" href="#fortran-mooc" title="Permalink to this heading">#</a></h1>
-<p>In this section we will be following along with the examples from “Fortran for scientific programming”, a <a class="reference external" href="https://www.futurelearn.com/courses/fortran-for-scientific-computing">MOOC that is hosted by FutureLearn</a>.  Course material can be found on Github <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC">here</a> . We will use Jupyter Lab with the Fortran Package Manager (fpm) to facilitate creation of this Jupyter Book.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Section_Arrays.html">Section: Arrays</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">Section Arrays: Allocate from Source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">Section Arrays: Array Arithmetic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Array_Elements.html">Section Arrays: Array Elements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Array_Initialization.html">Section Arrays: Array Initialization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Array_Timing.html">Section Arrays: Array Timing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Assumed.html">Section Arrays: Assumed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Compute_Factorial.html">Section Arrays: Compute Factorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">Section Arrays: Elemental Subroutine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Enlarge_Array.html">Section Arrays: Enlarge Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Identity.html">Section Arrays: Identity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Linear_Transform.html">Section Arrays: Linear Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Matrix.html">Section Arrays: Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Max_Array.html">Section Arrays: Max Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Normalize.html">Section Arrays: Normalize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Normalize_Performance.html">Section Arrays: Normalize Performance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Reshape.html">Section Arrays: Reshape</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Subarrays.html">Section Arrays: Subarrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Submatrices.html">Section Arrays: Submatrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Arrays_Trace.html">Section Arrays: Trace</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_Floating_Point.html">Section: Floating Point</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">Section IEEE754: Zero vs Non - Zero</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_Call_By_Semantics.html">Section: Call By Semantics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">Section Call By Semantics: Call By In Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Reference.html">Section Call By Semantics: Call By Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">Section Call By Semantics: Call By Value</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_Computing_Pi.html">Section: Computing Pi</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">Section Computing Pi: Compute Pi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">Section Computing Pi: Compute Pi with OpenMP</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_Implicit_vs_Explicit_Loops__Head__.html">Section: Implicit vs Explicit Loops</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_Implicit_vs_Explicit_Loops.html">Section: Implicit vs. Explicit Loops</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_Ball_Throw__Head__.html">Section: Ball Throw</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_Ball_Throw.html">Section: Ball Throw</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
-</ul>
-</li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-blas-lapack-dot-product">
+<h1>Section: BLAS/LAPACK - Dot Product<a class="headerlink" href="#section-blas-lapack-dot-product" title="Permalink to this heading">#</a></h1>
+<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack</a></p>
+<section id="this-program-demonstrates-performing-a-dot-product-in-fortran">
+<h2>This program demonstrates performing a dot product in Fortran.<a class="headerlink" href="#this-program-demonstrates-performing-a-dot-product-in-fortran" title="Permalink to this heading">#</a></h2>
+<section id="dot-products">
+<h3>Dot Products<a class="headerlink" href="#dot-products" title="Permalink to this heading">#</a></h3>
+<p>In this notebook we will use Fortran to perform dot products on vectors and matrices.</p>
+<p>The dot product of two vectors in 3-space is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Large \mathbf{u} \cdot \mathbf{v} =
+u_1 v_1 + u_2 v_2 + u_3 v_3
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Large \mathbf{u} =
+\left[
+\begin{array}{c}
+u_{1}  \\
+u_{2}  \\
+u_{3}
+\end{array}
+\right]
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Large \mathbf{v} =
+\left[
+\begin{array}{c}
+v_{1}  \\
+v_{2}  \\
+v_{3}
+\end{array}
+\right]
+\end{split}\]</div>
+<p>The approach makes use of the BLAS/LAPACK linear equation solver routine called <strong>SDOT</strong>.  Information on this routine can be found at <a class="reference external" href="https://netlib.org/lapack/explore-html/df/d28/group__single__blas__level1_ga37a14d8598319955b711af0d64a6f56e.html#ga37a14d8598319955b711af0d64a6f56e">LAPACK - SDOT</a>.</p>
+<p>The driver program is called <em>dot_test</em> and is listed below:</p>
+</section>
+<section id="in-file-dot-test-f90">
+<h3>In file dot_test.f90<a class="headerlink" href="#in-file-dot-test-f90" title="Permalink to this heading">#</a></h3>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">dot_test</span><span class="w"></span>
+<span class="w">  </span><span class="k">implicit none</span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">v_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">v_size</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">vector1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">I</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">v_size</span><span class="p">)</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                             </span><span class="n">vector2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">v_size</span><span class="p">)</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">v_size</span><span class="p">,</span><span class="w"> </span><span class="n">v_size</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="p">[</span><span class="w"> </span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">v_size</span><span class="o">*</span><span class="n">v_size</span><span class="p">)</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">v_size</span><span class="p">,</span><span class="w"> </span><span class="n">v_size</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">  </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">external</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sdot</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A20, *(F5.1))&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vector 1: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">vector1</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A20, *(F5.1))&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vector 2: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">vector2</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A20, F6.2)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vector1 . vector2 = &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">sdot</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">vector1</span><span class="p">),</span><span class="w"> </span><span class="n">vector1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">vector2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;matrix:&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(*(F5.1))&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"></span>
+<span class="w">  </span><span class="k">end do</span>
+<span class="k">  print</span><span class="w"> </span><span class="s1">&#39;(A, F10.1)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;col 2 . col 4:&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">sdot</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">matrix</span><span class="p">(:,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="p">(:,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F10.1)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;row 2 . row 4:&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">sdot</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="k">end program </span><span class="n">dot_test</span><span class="w"></span>
+</pre></div>
 </div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+</section>
+</section>
+<section id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the code makes use of the LAPACK library, the following FPM configuration file (fpm.toml) was used:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Section_BLAS_LAPACK_Dot&quot;</span><span class="w"></span>
+
+<span class="k">[build]</span><span class="w"></span>
+<span class="n">auto-executables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">auto-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">auto-examples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;blas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lapack&quot;</span><span class="p">]</span><span class="w"></span>
+
+<span class="k">[install]</span><span class="w"></span>
+<span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+
+<span class="k">[[executable]]</span><span class="w"></span>
+<span class="n">name</span><span class="o">=</span><span class="s">&quot;Section_BLAS_LAPACK_Dot&quot;</span><span class="w"></span>
+<span class="n">source-dir</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="w"></span>
+<span class="n">main</span><span class="o">=</span><span class="s">&quot;section_blas_lapack_dot.f90&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_BLAS_LAPACK_Dot&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-program-using-fpm-fortran-package-manager">
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> \
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          vector 1:   0.5  1.0  1.5  2.0  2.5
+          vector 2:   0.1  0.2  0.3  0.4  0.5
+vector1 . vector2 =   2.75
+matrix:
+  1.0  6.0 11.0 16.0 21.0
+  2.0  7.0 12.0 17.0 22.0
+  3.0  8.0 13.0 18.0 23.0
+  4.0  9.0 14.0 19.0 24.0
+  5.0 10.0 15.0 20.0 25.0
+col 2 . col 4:     730.0
+row 2 . row 4:    1090.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -855,17 +1024,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_BLAS_LAPACK_Linear_Equations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section 8.8: Findloc Function</p>
+            <p class="prev-next-title">Section: BLAS/LAPACK - Linear Equations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_Arrays.html" title="next page">
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section: Arrays</p>
+        <p class="prev-next-title">Markdown Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
