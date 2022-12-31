@@ -99,9 +99,8 @@ parts:
         - file: Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations
       
       - file: Fortran_MOOC/Section_BLAS_LAPACK_Dot
+      - file: Fortran_MOOC/Section_BLAS_LAPACK_Copy
       
-
-
 - caption: Miscellaneous
   chapters:
     - file: markdown
