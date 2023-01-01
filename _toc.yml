@@ -100,6 +100,7 @@ parts:
       
       - file: Fortran_MOOC/Section_BLAS_LAPACK_Dot
       - file: Fortran_MOOC/Section_BLAS_LAPACK_Copy
+      - file: Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing
       
 - caption: Miscellaneous
   chapters:

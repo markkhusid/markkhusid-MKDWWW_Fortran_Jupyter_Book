@@ -4,7 +4,7 @@
 			"path": ".."
 		},
 		{
-			"path": "../../Fortran-MOOC"
+			"path": "../../Fortran-MOOC/source_code"
 		}
 	],
 	"settings": {}

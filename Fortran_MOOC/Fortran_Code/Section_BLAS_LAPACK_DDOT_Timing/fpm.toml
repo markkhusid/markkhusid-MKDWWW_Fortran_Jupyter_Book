@@ -1,0 +1,15 @@
+name = "Section_BLAS_LAPACK_DDOT_Timing"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+link = ["blas", "lapack"]
+
+[install]
+library = false
+
+[[executable]]
+name="Section_BLAS_LAPACK_DDOT_Timing"
+source-dir="app"
+main="section_blas_lapack_ddot_timing.f90"
