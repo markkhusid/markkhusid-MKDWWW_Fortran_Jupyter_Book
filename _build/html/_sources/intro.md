@@ -4,6 +4,11 @@
 
 ![fortran_code](Images/fortran_code.jpeg)
 
+## Table of Contents
+
+```{tableofcontents}
+```
+
 ## Resources and Textbooks Used
 
 In this section we will be programming in Fortran using examples and techniques found in these books and resources:  <br>

@@ -11,14 +11,24 @@ kernelspec:
   language: python
   name: python3
 ---
-# # Section: BLAS/LAPACK - DDOT Timing
+# # Section: BLAS/LAPACK - GEMV
 # 
 
 # Adapted from: [https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack](https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack)
 
-# ## This program demonstrates copying vectors using BLAS/LAPACK in Fortran.
+# ## This program demonstrates using the GEMV BLAS/LAPACK subroutine to perform a matrix vector product in Fortran.
 
-# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_DDOT_Timing/app/section_blas_lapack_ddot_timing.f90
+# In file *section_blas_lapack_gemv.f90*
+
+# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_GEMV/app/section_blas_lapack_gemv.f90
+# ---
+# language: fortran
+# ---
+# ```
+
+# In file *util_mod.f90*
+
+# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_GEMV/src/util_mod.f90
 # ---
 # language: fortran
 # ---
@@ -38,7 +48,7 @@ root_dir = os.getcwd()
 
 # Since the code makes use of the LAPACK library, the following FPM configuration file (fpm.toml) was used:
 
-# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_DDOT_Timing/fpm.toml
+# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_GEMV/fpm.toml
 # ---
 # language: toml
 # ---
@@ -47,7 +57,7 @@ root_dir = os.getcwd()
 # In[2]:
 
 
-code_dir = root_dir + "/" + "Fortran_Code/Section_BLAS_LAPACK_DDOT_Timing"
+code_dir = root_dir + "/" + "Fortran_Code/Section_BLAS_LAPACK_GEMV"
 
 
 # In[3]:
@@ -67,43 +77,5 @@ build_status = os.system("fpm build 2>/dev/null")
 # In[5]:
 
 
-exec_status =     os.system("fpm run 2>/dev/null -- 1 1000")
-
-
-# In[6]:
-
-
-exec_status =     os.system("fpm run 2>/dev/null -- 1 10000")
-
-
-# In[7]:
-
-
-exec_status =     os.system("fpm run 2>/dev/null -- 1 100000")
-
-
-# In[8]:
-
-
-exec_status =     os.system("fpm run 2>/dev/null -- 1 1000000")
-
-
-# In[9]:
-
-
-exec_status =     os.system("fpm run 2>/dev/null -- 1 10000000")
-
-
-# In[10]:
-
-
-exec_status =     os.system("fpm run 2>/dev/null -- 1 100000000")
-
-
-# In[11]:
-
-
 exec_status =     os.system("fpm run 2>/dev/null")
 
-
-# 
