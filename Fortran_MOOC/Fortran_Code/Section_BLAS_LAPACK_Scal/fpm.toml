@@ -1,0 +1,15 @@
+name = "Section_BLAS_LAPACK_Scal"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+link = ["blas", "lapack"]
+
+[install]
+library = false
+
+[[executable]]
+name="Section_BLAS_LAPACK_Scal"
+source-dir="app"
+main="section_blas_lapack_scal.f90"
