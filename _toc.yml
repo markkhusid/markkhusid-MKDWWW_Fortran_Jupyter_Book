@@ -103,6 +103,7 @@ parts:
       - file: Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing
       - file: Fortran_MOOC/Section_BLAS_LAPACK_GEMV
       - file: Fortran_MOOC/Section_BLAS_LAPACK_Scal
+      - file: Fortran_MOOC/Section_BLAS_LAPACK_SV
       
 - caption: Miscellaneous
   chapters:
