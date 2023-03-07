@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Section: BLAS/LAPACK &#8212; Fortran Programming</title>
+    <title>Section: BLAS/LAPACK - SCAL &#8212; Fortran Programming</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Section: BLAS/LAPACK - BLAS95" href="Section_BLAS_LAPACK_BLAS95__Head__.html" />
-    <link rel="prev" title="Section: Ball Throw" href="Section_Ball_Throw.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Section: BLAS/LAPACK - GEMV" href="Section_BLAS_LAPACK_GEMV.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -517,7 +517,7 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toctree-l2 current active has-children">
-    <a class="current reference internal" href="#">
+    <a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">
      Section: BLAS/LAPACK
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -525,7 +525,7 @@ const thebe_selector_output = ".output, .cell_output"
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3 has-children">
       <a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">
        Section: BLAS/LAPACK - BLAS95
@@ -580,8 +580,8 @@ const thebe_selector_output = ".output, .cell_output"
        Section: BLAS/LAPACK - GEMV
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Section: BLAS/LAPACK - SCAL
       </a>
      </li>
@@ -665,7 +665,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Section_BLAS_LAPACK__Head__.ipynb"
+        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Section_BLAS_LAPACK_Scal.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -721,7 +721,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Fortran_MOOC/Section_BLAS_LAPACK__Head__.ipynb"
+        <a href="../_sources/Fortran_MOOC/Section_BLAS_LAPACK_Scal.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -758,23 +758,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-using-the-scal-blas-lapack-subroutine-to-scale-a-vector-by-a-constant-in-fortran">
+   This program demonstrates using the SCAL BLAS/LAPACK subroutine to scale a vector by a constant in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section: BLAS/LAPACK</h1>
+                <h1>Section: BLAS/LAPACK - SCAL</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#this-program-demonstrates-using-the-scal-blas-lapack-subroutine-to-scale-a-vector-by-a-constant-in-fortran">
+   This program demonstrates using the SCAL BLAS/LAPACK subroutine to scale a vector by a constant in Fortran.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
+   Build the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
+   Run the Program using FPM (Fortran Package Manager)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -782,26 +839,166 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="section-blas-lapack">
-<h1>Section: BLAS/LAPACK<a class="headerlink" href="#section-blas-lapack" title="Permalink to this heading">#</a></h1>
-<p>In this section we will be following along with the examples from “Fortran for scientific programming”, a <a class="reference external" href="https://www.futurelearn.com/courses/fortran-for-scientific-computing">MOOC that is hosted by FutureLearn</a>.  Course material can be found on Github <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC">here</a> . We will use Jupyter Lab with the Fortran Package Manager (fpm) to facilitate creation of this Jupyter Book.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="section-blas-lapack-scal">
+<h1>Section: BLAS/LAPACK - SCAL<a class="headerlink" href="#section-blas-lapack-scal" title="Permalink to this heading">#</a></h1>
+<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack</a></p>
+<section id="this-program-demonstrates-using-the-scal-blas-lapack-subroutine-to-scale-a-vector-by-a-constant-in-fortran">
+<h2>This program demonstrates using the SCAL BLAS/LAPACK subroutine to scale a vector by a constant in Fortran.<a class="headerlink" href="#this-program-demonstrates-using-the-scal-blas-lapack-subroutine-to-scale-a-vector-by-a-constant-in-fortran" title="Permalink to this heading">#</a></h2>
+<p>In file <em>section_blas_lapack_scal.f90</em></p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">scal</span><span class="w"></span>
+<span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="w"></span>
+<span class="w">  </span><span class="k">implicit none</span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">norm</span><span class="w"></span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">row</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">! Initialize matrix with random numbers</span>
+<span class="w">  </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c">! Print original matrix</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;original:&#39;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">! Print matrix</span>
+<span class="w">  </span><span class="k">call </span><span class="n">print_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">! Normalize along each column</span>
+<span class="w">  </span><span class="n">norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="nb">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, *(F12.7))&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;norm:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">! Loop over rows</span>
+<span class="w">  </span><span class="k">do </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">rows</span><span class="w"></span>
+<span class="w">      </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, I0)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;row: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="w"></span>
+<span class="w">      </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F12.7)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1/norm(row): &#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_DP</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">      </span><span class="c">! In Fortran, the function call for dscal is:</span>
+<span class="w">      </span><span class="c">! call dscal(n, da, dx, incx)</span>
+<span class="w">      </span><span class="c">! where:</span>
+<span class="w">      </span><span class="c">! n is the number of elements in the vector</span>
+<span class="w">      </span><span class="c">! da is the scalar</span>
+<span class="w">      </span><span class="c">! dx is the vector</span>
+<span class="w">      </span><span class="c">! incx is the increment between elements of the vector</span>
+<span class="w">      </span><span class="k">call </span><span class="n">dscal</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_DP</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">row</span><span class="p">),</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span>
+<span class="w">      </span><span class="c">! Print the matrix</span>
+<span class="w">      </span><span class="k">call </span><span class="n">print_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">end do</span>
+<span class="k">  print</span><span class="w"> </span><span class="s1">&#39;(A)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;row-normalized::&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="c">! Print matrix</span>
+<span class="w">  </span><span class="k">call </span><span class="n">print_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">  </span><span class="c">! Normalize along each column</span>
+<span class="w">  </span><span class="n">norm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="nb">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, *(F12.7))&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;norm:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">norm</span><span class="w"></span>
+
+<span class="k">contains</span>
+
+<span class="k">  subroutine </span><span class="n">print_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">implicit none</span>
+<span class="k">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix</span><span class="w"></span>
+<span class="w">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">row</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">do </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(*(F12.7))&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"></span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">  end subroutine </span><span class="n">print_matrix</span><span class="w"></span>
+
+<span class="k">end program </span><span class="n">scal</span><span class="w"></span>
+</pre></div>
 </div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+</section>
+<section id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the code makes use of the LAPACK library, the following FPM configuration file (fpm.toml) was used:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Section_BLAS_LAPACK_Scal&quot;</span><span class="w"></span>
+
+<span class="k">[build]</span><span class="w"></span>
+<span class="n">auto-executables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">auto-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">auto-examples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;blas&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lapack&quot;</span><span class="p">]</span><span class="w"></span>
+
+<span class="k">[install]</span><span class="w"></span>
+<span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+
+<span class="k">[[executable]]</span><span class="w"></span>
+<span class="n">name</span><span class="o">=</span><span class="s">&quot;Section_BLAS_LAPACK_Scal&quot;</span><span class="w"></span>
+<span class="n">source-dir</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="w"></span>
+<span class="n">main</span><span class="o">=</span><span class="s">&quot;section_blas_lapack_scal.f90&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Section_BLAS_LAPACK_Scal&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-program-using-fpm-fortran-package-manager">
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> \
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original:
+   0.5766766   0.4047249   0.1876784   0.9242026
+   0.2244316   0.6729601   0.0720348   0.9120011
+   0.4282010   0.0826110   0.2793861   0.0981987
+norm:   2.0932826   1.8814277   0.8883968
+row: 1
+1/norm(row):    0.4777186
+   0.2754891   0.1933446   0.0896575   0.4415088
+   0.2244316   0.6729601   0.0720348   0.9120011
+   0.4282010   0.0826110   0.2793861   0.0981987
+row: 2
+1/norm(row):    0.5315113
+   0.2754891   0.1933446   0.0896575   0.4415088
+   0.1192879   0.3576859   0.0382873   0.4847389
+   0.4282010   0.0826110   0.2793861   0.0981987
+row: 3
+1/norm(row):    1.1256232
+   0.2754891   0.1933446   0.0896575   0.4415088
+   0.1192879   0.3576859   0.0382873   0.4847389
+   0.4819929   0.0929889   0.3144835   0.1105347
+row-normalized::
+   0.2754891   0.1933446   0.0896575   0.4415088
+   0.1192879   0.3576859   0.0382873   0.4847389
+   0.4819929   0.0929889   0.3144835   0.1105347
+norm:   1.0000000   1.0000000   1.0000000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -831,17 +1028,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_Ball_Throw.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Section_BLAS_LAPACK_GEMV.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section: Ball Throw</p>
+            <p class="prev-next-title">Section: BLAS/LAPACK - GEMV</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_BLAS_LAPACK_BLAS95__Head__.html" title="next page">
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section: BLAS/LAPACK - BLAS95</p>
+        <p class="prev-next-title">Markdown Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
