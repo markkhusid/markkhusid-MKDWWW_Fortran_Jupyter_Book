@@ -19,7 +19,7 @@ kernelspec:
 
 # In file *util_mod.f90*
 
-# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_SV/app/section_blas_lapack_sv.f90
+# ```{literalinclude} Fortran_Code/Section_BLAS_LAPACK_SV/src/util_mod.f90
 # ---
 # language: fortran
 # ---
