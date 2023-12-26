@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analyzing Time Series Data with Arrays &#8212; Fortran Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Programming Using Fortran" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html" />
+    <link rel="prev" title="Print Compiler Version" href="Print_Compiler_Version.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-light" alt="Fortran Programming - Home"/>
+    <script>document.write(`<img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-dark" alt="Fortran Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Fortran Programming
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modern Fortran</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Modern_Fortran.html">Modern Fortran</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Cold_Front_Calculator.html">Cold Front Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cold_Front_Calculator_with_Loop.html">Cold Front Calculator With Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tsunami_Simulator.html">Tsunami Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tsunami_Simulator_Plotter.html">Tsunami Simulator Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Print_Compiler_Version.html">Print Compiler Version</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Analyzing Time Series Data with Arrays</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Programming Using Fortran</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">Introduction to Programming Using Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">Section 7: Pendulum Period Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">Section 9.3: Difference Between Sum of Squares and Square of Sums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">Section 12.8: Line Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">Section 14: Pi Estimation</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guide to Fortran 2008 Programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">Guide to Fortran 2008 Programming</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">Section 1.8 Example 2: Quadratic Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">Section 1.16: Factorial Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">Section 2.1: Statement Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">Section 2.1: Associate Construct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">Section 3.4: Putting Procedures in a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">Section 3.6: Median of Three</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">Section 3.8: Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">Section 3.17: Case Study: Adaptive Numerical Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">Section 4.1: Elsewhere Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">Section 8.1: Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">Section 8.2: Time Matrix Multiply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">Section 8.7: Generic Elemental Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">Section 8.8: Findloc Function</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fortran MOOC</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Fortran_MOOC/Fortran_MOOC.html">Fortran MOOC</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays.html">Section: Arrays</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Allocate_from_Source.html">Section Arrays: Allocate from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Arithmetic.html">Section Arrays: Array Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Elements.html">Section Arrays: Array Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Initialization.html">Section Arrays: Array Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Timing.html">Section Arrays: Array Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Assumed.html">Section Arrays: Assumed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Compute_Factorial.html">Section Arrays: Compute Factorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Elemental_Subroutine.html">Section Arrays: Elemental Subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Enlarge_Array.html">Section Arrays: Enlarge Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Identity.html">Section Arrays: Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Linear_Transform.html">Section Arrays: Linear Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Matrix.html">Section Arrays: Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Max_Array.html">Section Arrays: Max Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize.html">Section Arrays: Normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize_Performance.html">Section Arrays: Normalize Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Reshape.html">Section Arrays: Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Subarrays.html">Section Arrays: Subarrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Submatrices.html">Section Arrays: Submatrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Trace.html">Section Arrays: Trace</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Floating_Point.html">Section: Floating Point</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero.html">Section IEEE754: Zero vs Non - Zero</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics.html">Section: Call By Semantics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_In_Reference.html">Section Call By Semantics: Call By In Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Reference.html">Section Call By Semantics: Call By Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.html">Section Call By Semantics: Call By Value</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi.html">Section: Computing Pi</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi.html">Section Computing Pi: Compute Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP.html">Section Computing Pi: Compute Pi with OpenMP</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Implicit_vs_Explicit_Loops__Head__.html">Section: Implicit vs Explicit Loops</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Implicit_vs_Explicit_Loops.html">Section: Implicit vs. Explicit Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Ball_Throw__Head__.html">Section: Ball Throw</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Ball_Throw.html">Section: Ball Throw</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyzing Time Series Data with Arrays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-calculate-the-gain-of-a-stock-price">Program to Calculate the Gain of a Stock Price</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-stock-gain-f90">In file <em>stock_gain.f90</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-mod-arrays-f90">In file <em>mod_arrays.f90</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analyzing-time-series-data-with-arrays">
+<h1>Analyzing Time Series Data with Arrays<a class="headerlink" href="#analyzing-time-series-data-with-arrays" title="Permalink to this heading">#</a></h1>
+<p>The following program analyzes time series data using arrays. <br>
+Adapted from: “Modern Fortan” by Milan Curcic (Manning)</p>
+<section id="program-to-calculate-the-gain-of-a-stock-price">
+<h2>Program to Calculate the Gain of a Stock Price<a class="headerlink" href="#program-to-calculate-the-gain-of-a-stock-price" title="Permalink to this heading">#</a></h2>
+<section id="in-file-stock-gain-f90">
+<h3>In file <em>stock_gain.f90</em><a class="headerlink" href="#in-file-stock-gain-f90" title="Permalink to this heading">#</a></h3>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">stock_gain</span>
+
+<span class="w">  </span><span class="k">use </span><span class="n">mod_arrays</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">reverse</span>
+<span class="w">  </span><span class="k">use </span><span class="n">mod_io</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">read_stock</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">symbols</span><span class="p">(:)</span>
+<span class="w">  </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="nb">time</span><span class="p">(:)</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w">             </span><span class="kd">::</span><span class="w">  </span><span class="k">open</span><span class="p">(:),</span><span class="w"> </span><span class="n">high</span><span class="p">(:),</span><span class="w"> </span><span class="n">low</span><span class="p">(:),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                                    </span><span class="k">close</span><span class="p">(:),</span><span class="w"> </span><span class="n">adjclose</span><span class="p">(:),</span><span class="w"> </span><span class="n">volume</span><span class="p">(:)</span>
+<span class="w">                                    </span>
+<span class="w">  </span><span class="kt">integer</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">                                    </span>
+<span class="w">  </span><span class="kt">real</span><span class="w">                          </span><span class="kd">::</span><span class="w"> </span><span class="n">gain</span>
+
+<span class="w">  </span><span class="n">symbols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;AMZN&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CRAY&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CSCO&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HPQ &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">             </span><span class="s1">&#39;IBM &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;INTC&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;NVDA&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ORCL&#39;</span><span class="p">]</span>
+<span class="w">             </span>
+<span class="w">  </span><span class="k">do </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">read_stock</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="s1">&#39;data/&#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">symbols</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="k">open</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="k">close</span><span class="p">,</span><span class="w"> </span><span class="n">adjclose</span><span class="p">,</span><span class="w"> </span><span class="n">volume</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">      </span><span class="n">adjclose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">adjclose</span><span class="p">)</span>
+<span class="w">      </span><span class="n">gain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">adjclose</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">adjclose</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">adjclose</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">      </span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="nb">time</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="nb">time</span><span class="p">))</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; through &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">time</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Symbol, Gain (USD), Relative Gain (%)&#39;</span>
+<span class="w">        </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;-------------------------------------&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">symbols</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">gain</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="nb">nint</span><span class="p">(</span><span class="n">gain</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">adjclose</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end do</span>
+<span class="k">    </span>
+<span class="k">end program </span><span class="n">stock_gain</span>
+</pre></div>
+</div>
+</section>
+<section id="in-file-mod-arrays-f90">
+<h3>In file <em>mod_arrays.f90</em><a class="headerlink" href="#in-file-mod-arrays-f90" title="Permalink to this heading">#</a></h3>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">mod_arrays</span>
+
+<span class="w">  </span><span class="c">! Utility functions that operate on arrays.</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  private</span>
+<span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argsort</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">,</span><span class="w"> </span><span class="n">crossneg</span><span class="p">,</span><span class="w"> </span><span class="n">crosspos</span><span class="p">,</span><span class="w"> </span><span class="n">intdate</span><span class="p">,</span><span class="w"> </span><span class="n">moving_average</span><span class="p">,&amp;</span>
+<span class="w">            </span><span class="n">moving_std</span><span class="p">,</span><span class="w"> </span><span class="n">reverse</span><span class="p">,</span><span class="w"> </span><span class="n">std</span>
+
+<span class="k">contains</span>
+
+<span class="k">  pure function </span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns indices that sort x from low to high.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i0</span><span class="p">,</span><span class="w"> </span><span class="n">tmp1</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp2</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xwork</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+<span class="w">    </span><span class="n">xwork</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">i0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">minloc</span><span class="p">(</span><span class="n">xwork</span><span class="p">(</span><span class="n">i</span><span class="p">:),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i0</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">tmp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xwork</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">xwork</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xwork</span><span class="p">(</span><span class="n">i0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">xwork</span><span class="p">(</span><span class="n">i0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp2</span>
+<span class="w">        </span><span class="n">tmp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">a</span><span class="p">(</span><span class="n">i0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp1</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+<span class="k">  end function </span><span class="n">argsort</span>
+
+<span class="w">  </span><span class="k">pure </span><span class="kt">real </span><span class="k">function </span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns a average of x.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="n">average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">average</span>
+
+<span class="w">  </span><span class="k">pure function </span><span class="n">crossneg</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns indices where input array x crosses its</span>
+<span class="w">    </span><span class="c">! moving average with window w from positive to negative.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">w</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xavg</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">greater</span><span class="p">(:),</span><span class="w"> </span><span class="n">smaller</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+<span class="w">    </span><span class="n">xavg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moving_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span>
+<span class="w">    </span><span class="n">greater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xavg</span>
+<span class="w">    </span><span class="n">smaller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xavg</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">pack</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">smaller</span><span class="p">(</span><span class="mi">2</span><span class="p">:)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">greater</span><span class="p">(:</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">crossneg</span>
+
+<span class="w">  </span><span class="k">pure function </span><span class="n">crosspos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns indices where input array x crosses its</span>
+<span class="w">    </span><span class="c">! moving average with window w from negative to positive.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">w</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xavg</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">greater</span><span class="p">(:),</span><span class="w"> </span><span class="n">smaller</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+<span class="w">    </span><span class="n">xavg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moving_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span>
+<span class="w">    </span><span class="n">greater</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xavg</span>
+<span class="w">    </span><span class="n">smaller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xavg</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">pack</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">greater</span><span class="p">(</span><span class="mi">2</span><span class="p">:)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">smaller</span><span class="p">(:</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">crosspos</span>
+
+<span class="w">  </span><span class="k">pure elemental </span><span class="kt">integer </span><span class="k">function </span><span class="n">intdate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Converts a time stamp in format YYYY-mm-dd to integer.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">str</span>
+<span class="w">    </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="mi">6</span><span class="p">:</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="mi">9</span><span class="p">:</span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="k">read</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">intdate</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">intdate</span>
+
+<span class="w">  </span><span class="k">pure function </span><span class="n">moving_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns the moving average of x with one-sided window w.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">w</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i1</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">      </span><span class="n">i1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">res</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">i1</span><span class="p">:</span><span class="n">i</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end do </span>
+<span class="k">  end function </span><span class="n">moving_average</span>
+
+<span class="w">  </span><span class="k">pure function </span><span class="n">moving_std</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns the moving standard deviation of x with one-sided window w.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">w</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i1</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">      </span><span class="n">i1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">res</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">i1</span><span class="p">:</span><span class="n">i</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end do </span>
+<span class="k">  end function </span><span class="n">moving_std</span>
+
+<span class="w">  </span><span class="k">pure function </span><span class="n">reverse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Reverses the order of elements of x.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="w">    </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">):</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">reverse</span>
+
+<span class="w">  </span><span class="k">pure </span><span class="kt">real </span><span class="k">function </span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Returns the standard deviation of x.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(:)</span>
+<span class="w">    </span><span class="n">std</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">average</span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">std</span>
+
+<span class="k">end module </span><span class="n">mod_arrays</span>
+</pre></div>
+</div>
+<p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
+</section>
+</section>
+<section id="build-the-program-using-fpm-fortran-package-manager">
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">root_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following FPM configuration file (fpm.toml) was used:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Analyzing_Time_Series_Data_with_Arrays&quot;</span>
+
+<span class="k">[build]</span>
+<span class="n">auto-executables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">auto-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">auto-examples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[install]</span>
+<span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="k">[fortran]</span>
+<span class="n">implicit-typing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">implicit-external</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">source-form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;free&quot;</span>
+
+<span class="k">[[executable]]</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;Stock_Gain&quot;</span>
+<span class="n">source-dir</span><span class="o">=</span><span class="s2">&quot;app&quot;</span>
+<span class="n">main</span><span class="o">=</span><span class="s2">&quot;stock_gain.f90&quot;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_dir</span> <span class="o">=</span> <span class="n">root_dir</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;Fortran_Code/Analyzing_Time_Series_Data_with_Arrays&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">code_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-program-using-fpm-fortran-package-manager">
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> \
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 2000-01-03 through 2018-05-14
+ Symbol, Gain (USD), Relative Gain (%)
+ -------------------------------------
+ AAPL   184.594589            5192
+ AMZN   1512.16003            1692
+ CRAY   9.60000038              56
+ CSCO   1.71649933               4
+ HPQ    1.55270004               7
+ IBM    60.9193039              73
+ INTC   25.8368015              89
+ MSFT   59.4120979             154
+ NVDA   251.745300            6964
+ ORCL   20.3501987              77
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Modern_Fortran"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Print_Compiler_Version.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Print Compiler Version</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Programming Using Fortran</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-calculate-the-gain-of-a-stock-price">Program to Calculate the Gain of a Stock Price</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-stock-gain-f90">In file <em>stock_gain.f90</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-mod-arrays-f90">In file <em>mod_arrays.f90</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mark Khusid
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

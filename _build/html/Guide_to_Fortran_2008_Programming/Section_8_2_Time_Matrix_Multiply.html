@@ -1,37 +1,48 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section 8.2: Time Matrix Multiply &#8212; Fortran Programming</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,12 +51,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +64,104 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Section 8.7: Generic Elemental Procedures" href="Section_8_7_Generic_Elemental_Procedures.html" />
     <link rel="prev" title="Section 8.1: Submodules" href="Section_8_1_Submodules.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/fortran_code_integrate.jpeg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Fortran Programming</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-light" alt="Fortran Programming - Home"/>
+    <script>document.write(`<img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-dark" alt="Fortran Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,690 +170,381 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Modern Fortran
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modern Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">
-   Modern Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">
-     Cold Front Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">
-     Cold Front Calculator With Loop
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">
-     Tsunami Simulator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">
-     Tsunami Simulator Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">
-     Tsunami Simulator with Modules
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">
-     Tsunami Simulator with Modules Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">
-     Print Compiler Version
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">Modern Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">Cold Front Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">Cold Front Calculator With Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">Tsunami Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">Tsunami Simulator Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction to Programming Using Fortran
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Programming Using Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">
-   Introduction to Programming Using Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">
-     Section 7: Pendulum Period Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">
-     Section 9.3: Difference Between Sum of Squares and Square of Sums
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">
-     Section 12.8: Line Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">
-     Section 14: Pi Estimation
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">Introduction to Programming Using Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">Section 7: Pendulum Period Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">Section 9.3: Difference Between Sum of Squares and Square of Sums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">Section 12.8: Line Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">Section 14: Pi Estimation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Guide to Fortran 2008 Programming
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guide to Fortran 2008 Programming</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Guide_to_Fortran_2008_Programming.html">
-   Guide to Fortran 2008 Programming
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_1_8_Ex_2_Quadratic_Formula.html">
-     Section 1.8 Example 2: Quadratic Equation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_1_16_Factorial_Recursion.html">
-     Section 1.16: Factorial Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_2_1_Associate_Construct.html">
-     Section 2.1: Statement Blocks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_2_1_Statement_Blocks.html">
-     Section 2.1: Associate Construct
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_3_4_Putting_Procedures_in_a_Module.html">
-     Section 3.4: Putting Procedures in a Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_3_6_Ex_1_Median_of_Three.html">
-     Section 3.6: Median of Three
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_3_8_Argument_Passing.html">
-     Section 3.8: Argument Passing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">
-     Section 3.17: Case Study: Adaptive Numerical Integration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_4_1_Elsewhere_Example.html">
-     Section 4.1: Elsewhere Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_8_1_Submodules.html">
-     Section 8.1: Submodules
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Section 8.2: Time Matrix Multiply
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_8_7_Generic_Elemental_Procedures.html">
-     Section 8.7: Generic Elemental Procedures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Section_8_8_Findloc_Function.html">
-     Section 8.8: Findloc Function
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Guide_to_Fortran_2008_Programming.html">Guide to Fortran 2008 Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section_1_8_Ex_2_Quadratic_Formula.html">Section 1.8 Example 2: Quadratic Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_1_16_Factorial_Recursion.html">Section 1.16: Factorial Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_2_1_Associate_Construct.html">Section 2.1: Statement Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_2_1_Statement_Blocks.html">Section 2.1: Associate Construct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_3_4_Putting_Procedures_in_a_Module.html">Section 3.4: Putting Procedures in a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_3_6_Ex_1_Median_of_Three.html">Section 3.6: Median of Three</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_3_8_Argument_Passing.html">Section 3.8: Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">Section 3.17: Case Study: Adaptive Numerical Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_4_1_Elsewhere_Example.html">Section 4.1: Elsewhere Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_8_1_Submodules.html">Section 8.1: Submodules</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Section 8.2: Time Matrix Multiply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_8_7_Generic_Elemental_Procedures.html">Section 8.7: Generic Elemental Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_8_8_Findloc_Function.html">Section 8.8: Findloc Function</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Fortran MOOC
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Fortran_MOOC/Fortran_MOOC.html">
-   Fortran MOOC
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Fortran_MOOC/Section_Arrays.html">
-     Section: Arrays
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Allocate_from_Source.html">
-       Section Arrays: Allocate from Source
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Arithmetic.html">
-       Section Arrays: Array Arithmetic
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Elements.html">
-       Section Arrays: Array Elements
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Initialization.html">
-       Section Arrays: Array Initialization
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Timing.html">
-       Section Arrays: Array Timing
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Assumed.html">
-       Section Arrays: Assumed
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Compute_Factorial.html">
-       Section Arrays: Compute Factorial
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Elemental_Subroutine.html">
-       Section Arrays: Elemental Subroutine
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Enlarge_Array.html">
-       Section Arrays: Enlarge Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Identity.html">
-       Section Arrays: Identity
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Linear_Transform.html">
-       Section Arrays: Linear Transform
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Matrix.html">
-       Section Arrays: Matrix
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Max_Array.html">
-       Section Arrays: Max Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize.html">
-       Section Arrays: Normalize
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize_Performance.html">
-       Section Arrays: Normalize Performance
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Reshape.html">
-       Section Arrays: Reshape
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Subarrays.html">
-       Section Arrays: Subarrays
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Submatrices.html">
-       Section Arrays: Submatrices
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Trace.html">
-       Section Arrays: Trace
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Fortran_MOOC/Section_Floating_Point.html">
-     Section: Floating Point
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero.html">
-       Section IEEE754: Zero vs Non - Zero
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics.html">
-     Section: Call By Semantics
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_In_Reference.html">
-       Section Call By Semantics: Call By In Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Reference.html">
-       Section Call By Semantics: Call By Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.html">
-       Section Call By Semantics: Call By Value
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi.html">
-     Section: Computing Pi
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi.html">
-       Section Computing Pi: Compute Pi
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP.html">
-       Section Computing Pi: Compute Pi with OpenMP
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+</li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Miscellaneous
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fortran MOOC</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Fortran_MOOC/Fortran_MOOC.html">Fortran MOOC</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays.html">Section: Arrays</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Allocate_from_Source.html">Section Arrays: Allocate from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Arithmetic.html">Section Arrays: Array Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Elements.html">Section Arrays: Array Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Initialization.html">Section Arrays: Array Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Array_Timing.html">Section Arrays: Array Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Assumed.html">Section Arrays: Assumed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Compute_Factorial.html">Section Arrays: Compute Factorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Elemental_Subroutine.html">Section Arrays: Elemental Subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Enlarge_Array.html">Section Arrays: Enlarge Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Identity.html">Section Arrays: Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Linear_Transform.html">Section Arrays: Linear Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Matrix.html">Section Arrays: Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Max_Array.html">Section Arrays: Max Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize.html">Section Arrays: Normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Normalize_Performance.html">Section Arrays: Normalize Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Reshape.html">Section Arrays: Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Subarrays.html">Section Arrays: Subarrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Submatrices.html">Section Arrays: Submatrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Arrays_Trace.html">Section Arrays: Trace</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Floating_Point.html">Section: Floating Point</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero.html">Section IEEE754: Zero vs Non - Zero</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics.html">Section: Call By Semantics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_In_Reference.html">Section Call By Semantics: Call By In Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Reference.html">Section Call By Semantics: Call By Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Call_By_Semantics_Call_By_Value.html">Section Call By Semantics: Call By Value</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi.html">Section: Computing Pi</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi.html">Section Computing Pi: Compute Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Computing_Pi_Compute_Pi_OpenMP.html">Section Computing Pi: Compute Pi with OpenMP</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Implicit_vs_Explicit_Loops__Head__.html">Section: Implicit vs Explicit Loops</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Implicit_vs_Explicit_Loops.html">Section: Implicit vs. Explicit Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Ball_Throw__Head__.html">Section: Ball Throw</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Ball_Throw.html">Section: Ball Throw</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
-   Program to demonstrate the performance improvement of using matmul over do loops.
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section 8.2: Time Matrix Multiply</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
-   Program to demonstrate the performance improvement of using matmul over do loops.
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Section 8.2: Time Matrix Multiply</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">Program to demonstrate the performance improvement of using matmul over do loops.</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="section-8-2-time-matrix-multiply">
 <h1>Section 8.2: Time Matrix Multiply<a class="headerlink" href="#section-8-2-time-matrix-multiply" title="Permalink to this heading">#</a></h1>
 <p>Adapted from: “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015)</p>
 <section id="program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
 <h2>Program to demonstrate the performance improvement of using matmul over do loops.<a class="headerlink" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops" title="Permalink to this heading">#</a></h2>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">time_matrix_multiply</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">time_matrix_multiply</span>
 
 <span class="w">    </span><span class="c">! Compare times of the matmul intrinsic cs DO loops</span>
 
 <span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
-<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="w"></span>
-<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date</span><span class="w"></span>
-<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">stop_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">start_time_2</span><span class="p">,</span><span class="w"> </span><span class="n">stop_time_2</span><span class="w"></span>
-<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">total_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_2</span><span class="w"></span>
-<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"></span>
-<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;(t2, a, f0.10, a)&quot;</span><span class="w"></span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">stop_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">start_time_2</span><span class="p">,</span><span class="w"> </span><span class="n">stop_time_2</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">total_time_1</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_2</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;(t2, a, f0.10, a)&quot;</span>
 
 <span class="w">    </span><span class="c">! Get date to print on report</span>
 
-<span class="w">    </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Timing report dated: &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Timing report dated: &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">5</span><span class="p">:</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">date</span><span class="p">(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">call </span><span class="nb">random_seed</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time_1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="nb">random_seed</span><span class="p">()</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time_1</span><span class="p">)</span>
 <span class="w">   </span>
 <span class="w">    </span><span class="c">! Lines below added for effect</span>
 <span class="w">    </span><span class="c">! The matrices of random values will be printed to the screen</span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix A&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix A&quot;</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix B&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix B&quot;</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 
-<span class="w">    </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">        </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">                </span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">do </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span>
+<span class="w">        </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span>
+<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span>
+<span class="w">                </span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span>
 <span class="w">            </span><span class="k">end do</span>
 <span class="k">        end do</span>
 <span class="k">    end do</span>
 
-<span class="k">    call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">stop_time_1</span><span class="p">)</span><span class="w"></span>
+<span class="k">    call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">stop_time_1</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">total_time_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_time_1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time_1</span><span class="w"></span>
+<span class="w">    </span><span class="n">total_time_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_time_1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time_1</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
 
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix C1 is AxB using loops.&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix C1 is AxB using loops.&quot;</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time_2</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">stop_time_2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time_2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">stop_time_2</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">total_time_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_time_2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time_2</span><span class="w"></span>
+<span class="w">    </span><span class="n">total_time_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_time_2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time_2</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
 
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix C2 is AxB using matmul.&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Matrix C2 is AxB using matmul.&quot;</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(10f10.3)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">c1</span><span class="p">(</span><span class="n">i</span><span class="p">,:),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
 
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Time of Do loop version is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; seconds.&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Time of matmul version is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; seconds.&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Time of Do loop version is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; seconds.&quot;</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Time of matmul version is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; seconds.&quot;</span>
 
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">c1</span><span class="o">-</span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0e-4</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w">  </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;There are significantly different values between the matrices.&quot;</span><span class="w"></span>
+<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w">  </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;There are significantly different values between the matrices.&quot;</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w">  </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;The results are approximately the same.&quot;</span><span class="w"></span>
+<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w">  </span><span class="s2">&quot;(a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;The results are approximately the same.&quot;</span>
 <span class="w">    </span><span class="k">end if</span>
 
-<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="w"></span>
-<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a, f10.3, a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;The speedup ratio is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_1</span><span class="o">/</span><span class="n">total_time_2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"></span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(a, f10.3, a)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;The speedup ratio is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total_time_1</span><span class="o">/</span><span class="n">total_time_2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x&quot;</span>
 
-<span class="k">end program </span><span class="n">time_matrix_multiply</span><span class="w"></span>
+<span class="k">end program </span><span class="n">time_matrix_multiply</span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -831,6 +576,15 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%] section_8_2_time_matrix_multip
+[ 50%] section_8_2_time_matrix_multip  done.
+[ 50%] Section_8_2_Time_Matrix_Multip
+[100%] Section_8_2_Time_Matrix_Multip  done.
+[100%] Project compiled successfully.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -839,61 +593,61 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2022-12-23
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2023-12-26
 Matrix A
-     0.948     0.283     0.368     0.818     0.495     0.369     0.938     0.276     0.082     0.329
-     0.256     0.341     0.096     0.960     0.337     0.856     0.239     0.137     0.844     0.022
-     0.314     0.665     0.731     0.731     0.771     0.132     0.526     0.656     0.332     0.997
-     0.112     0.141     0.088     0.635     0.431     0.322     0.789     0.854     0.463     0.875
-     0.137     0.608     0.619     0.479     0.874     0.394     0.513     0.741     0.469     0.637
-     0.604     0.021     0.570     0.246     0.478     0.840     0.669     0.111     0.393     0.054
-     0.891     0.140     0.361     0.837     0.354     0.703     0.929     0.635     0.104     0.018
-     0.112     0.984     0.787     0.235     0.730     0.127     0.255     0.998     0.244     0.568
-     0.159     0.852     0.409     0.058     0.801     0.963     0.476     0.489     0.877     0.183
-     0.515     0.142     0.111     0.563     0.854     0.872     0.517     0.645     0.657     0.743
+     0.392     0.117     0.102     0.897     0.521     0.101     0.492     0.932     0.118     0.910
+     0.329     0.923     0.698     0.287     0.777     0.093     0.733     0.691     0.867     0.992
+     0.788     0.716     0.120     0.019     0.050     0.479     0.580     0.977     0.179     0.250
+     0.719     0.275     0.871     0.549     0.699     0.472     0.858     0.487     0.374     0.520
+     0.240     0.211     0.135     0.824     0.307     0.755     0.145     0.042     0.556     0.343
+     0.893     0.653     0.760     0.929     0.974     0.672     0.407     0.253     0.163     0.588
+     0.157     0.384     0.564     0.180     0.478     0.752     0.161     0.125     0.352     0.089
+     0.356     0.484     0.082     0.016     0.686     0.887     0.466     0.694     0.060     0.727
+     0.931     0.617     0.548     0.572     0.953     0.511     0.813     0.073     0.536     0.533
+     0.822     0.079     0.860     0.944     0.101     0.308     0.974     0.908     0.011     0.550
 
 Matrix B
-     0.214     0.542     0.808     0.762     0.337     0.954     0.937     0.952     0.965     0.182
-     0.700     0.632     0.489     0.852     0.663     0.720     0.567     0.274     0.529     0.194
-     0.070     0.053     0.569     0.248     0.477     0.382     0.313     0.781     0.683     0.289
-     0.108     0.967     0.352     0.073     0.943     0.542     0.357     0.762     0.673     0.474
-     0.247     0.996     0.053     0.630     0.215     0.918     0.120     0.754     0.041     0.604
-     0.590     0.890     0.349     0.863     0.503     0.215     0.889     0.305     0.517     0.479
-     0.917     0.698     0.941     0.884     0.133     0.172     0.058     0.720     0.509     0.964
-     0.901     0.235     0.330     0.430     0.821     0.052     0.533     0.762     0.664     0.827
-     0.661     0.451     0.356     0.348     0.585     0.039     0.241     0.568     0.210     0.428
-     0.379     0.335     0.425     0.801     0.846     0.203     0.496     0.906     0.026     0.349
+     0.805     0.247     0.362     0.313     0.877     0.454     0.322     0.476     0.424     0.418
+     0.094     0.120     0.029     0.677     0.161     0.865     0.554     0.546     0.525     0.021
+     0.179     0.569     0.827     0.980     0.643     0.001     0.140     0.161     0.485     0.676
+     0.120     0.471     0.792     0.901     0.249     0.062     0.406     0.872     0.147     0.055
+     0.672     0.255     0.817     0.890     0.242     0.320     0.552     0.099     0.888     0.163
+     0.431     0.439     0.651     0.256     0.167     0.824     0.761     0.539     0.397     0.961
+     0.520     0.283     0.460     0.090     0.010     0.561     0.778     0.758     0.517     0.496
+     0.508     0.521     0.515     0.533     0.307     0.446     0.869     0.029     0.892     0.418
+     0.412     0.264     0.942     0.953     0.264     0.170     0.440     0.081     0.205     0.877
+     0.928     0.807     0.594     0.321     0.166     0.266     0.506     0.815     0.934     0.501
 
 Matrix C1 is AxB using loops.
-     2.143     3.191     2.700     2.985     2.423     2.472     2.227     3.607     2.763     2.480
-     1.901     2.972     1.663     2.113     2.423     1.627     1.909     2.436     1.986     1.922
-     2.602     3.227     2.593     3.302     3.463     2.532     2.325     4.202     2.545     2.813
-     2.624     2.737     2.129     2.750     2.843     1.428     1.823     3.396     1.943     2.760
-     2.689     3.133     2.278     3.149     3.072     2.228     2.146     3.703     2.307     2.797
-     1.817     2.520     2.056     2.483     1.702     1.709     1.867     2.668     2.100     2.011
-     2.404     3.227     2.680     2.923     2.504     2.218     2.418     3.515     3.037     2.712
-     2.558     2.503     2.083     2.899     2.984     2.162     2.079     3.356     2.278     2.426
-     2.958     3.261     2.177     3.372     2.657     2.075     2.323     3.026     2.210     2.588
-     2.775     3.603     2.346     3.431     3.085     2.212     2.576     3.865     2.362     2.927
+     2.468     2.159     2.790     2.545     1.267     1.539     2.638     2.306     2.871     1.659
+     3.083     2.561     3.746     3.965     1.774     2.423     3.385     2.606     3.832     2.771
+     2.068     1.503     1.861     1.856     1.374     2.247     2.571     1.751     2.447     1.872
+     2.830     2.366     3.609     3.363     1.962     2.113     2.991     2.554     3.201     2.710
+     1.511     1.446     2.416     2.235     0.955     1.349     1.859     1.843     1.517     1.766
+     2.924     2.477     3.760     3.857     2.178     2.419     3.086     2.980     3.376     2.501
+     1.304     1.218     2.080     2.087     0.996     1.417     1.685     1.211     1.640     1.751
+     2.486     1.861     2.423     2.074     1.115     2.307     2.814     1.978     2.960     2.118
+     3.011     2.193     3.607     3.535     1.987     2.440     3.067     2.833     3.211     2.621
+     2.619     2.503     3.295     2.932     1.979     1.888     2.932     2.787     2.987     2.439
 
 Matrix C2 is AxB using matmul.
-     2.143     3.191     2.700     2.985     2.423     2.472     2.227     3.607     2.763     2.480
-     1.901     2.972     1.663     2.113     2.423     1.627     1.909     2.436     1.986     1.922
-     2.602     3.227     2.593     3.302     3.463     2.532     2.325     4.202     2.545     2.813
-     2.624     2.737     2.129     2.750     2.843     1.428     1.823     3.396     1.943     2.760
-     2.689     3.133     2.278     3.149     3.072     2.228     2.146     3.703     2.307     2.797
-     1.817     2.520     2.056     2.483     1.702     1.709     1.867     2.668     2.100     2.011
-     2.404     3.227     2.680     2.923     2.504     2.218     2.418     3.515     3.037     2.712
-     2.558     2.503     2.083     2.899     2.984     2.162     2.079     3.356     2.278     2.426
-     2.958     3.261     2.177     3.372     2.657     2.075     2.323     3.026     2.210     2.588
-     2.775     3.603     2.346     3.431     3.085     2.212     2.576     3.865     2.362     2.927
+     2.468     2.159     2.790     2.545     1.267     1.539     2.638     2.306     2.871     1.659
+     3.083     2.561     3.746     3.965     1.774     2.423     3.385     2.606     3.832     2.771
+     2.068     1.503     1.861     1.856     1.374     2.247     2.571     1.751     2.447     1.872
+     2.830     2.366     3.609     3.363     1.962     2.113     2.991     2.554     3.201     2.710
+     1.511     1.446     2.416     2.235     0.955     1.349     1.859     1.843     1.517     1.766
+     2.924     2.477     3.760     3.857     2.178     2.419     3.086     2.980     3.376     2.501
+     1.304     1.218     2.080     2.087     0.996     1.417     1.685     1.211     1.640     1.751
+     2.486     1.861     2.423     2.074     1.115     2.307     2.814     1.978     2.960     2.118
+     3.011     2.193     3.607     3.535     1.987     2.440     3.067     2.833     3.211     2.621
+     2.619     2.503     3.295     2.932     1.979     1.888     2.932     2.787     2.987     2.439
 
- Time of Do loop version is: .0000770000 seconds.
- Time of matmul version is: .0000100000 seconds.
+ Time of Do loop version is: .0001050001 seconds.
+ Time of matmul version is: .0003430001 seconds.
 
 The results are approximately the same.
 
-The speedup ratio is:      7.700x
+The speedup ratio is:      0.306x
 </pre></div>
 </div>
 </div>
@@ -913,7 +667,7 @@ The speedup ratio is:      7.700x
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Guide_to_Fortran_2008_Programming"
         },
         predefinedOutput: true
@@ -921,49 +675,95 @@ The speedup ratio is:      7.700x
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_8_1_Submodules.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section 8.1: Submodules</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_8_1_Submodules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Section 8.1: Submodules</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Section_8_7_Generic_Elemental_Procedures.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Section_8_7_Generic_Elemental_Procedures.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Section 8.7: Generic Elemental Procedures</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">Program to demonstrate the performance improvement of using matmul over do loops.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Mark Khusid<br/>
-  
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Mark Khusid
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,0 +1,14 @@
+name = "Cold_Front_Calculator"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+
+[install]
+library = false
+
+[[executable]]
+name="Cold_Front_Calculator"
+source-dir="app"
+main="cold_front_calculator.f90"

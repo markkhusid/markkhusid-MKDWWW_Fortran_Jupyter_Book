@@ -12,6 +12,8 @@ parts:
     - file: Modern_Fortran/Tsunami_Simulator_with_Modules
     - file: Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter
     - file: Modern_Fortran/Print_Compiler_Version
+    - file: Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays
+    
 - caption: Introduction to Programming Using Fortran
   chapters:
   - file: Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran

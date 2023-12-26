@@ -1,37 +1,48 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section: Ball Throw &#8212; Fortran Programming</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,12 +51,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +64,104 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Fortran_MOOC/Section_Ball_Throw';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="next" title="Section: BLAS/LAPACK" href="Section_BLAS_LAPACK__Head__.html" />
     <link rel="prev" title="Section: Ball Throw" href="Section_Ball_Throw__Head__.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/fortran_code_integrate.jpeg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Fortran Programming</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-light" alt="Fortran Programming - Home"/>
+    <script>document.write(`<img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-dark" alt="Fortran Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,724 +170,317 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Modern Fortran
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modern Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">
-   Modern Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">
-     Cold Front Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">
-     Cold Front Calculator With Loop
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">
-     Tsunami Simulator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">
-     Tsunami Simulator Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">
-     Tsunami Simulator with Modules
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">
-     Tsunami Simulator with Modules Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">
-     Print Compiler Version
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">Modern Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">Cold Front Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">Cold Front Calculator With Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">Tsunami Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">Tsunami Simulator Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction to Programming Using Fortran
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Programming Using Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">
-   Introduction to Programming Using Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">
-     Section 7: Pendulum Period Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">
-     Section 9.3: Difference Between Sum of Squares and Square of Sums
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">
-     Section 12.8: Line Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">
-     Section 14: Pi Estimation
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">Introduction to Programming Using Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">Section 7: Pendulum Period Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">Section 9.3: Difference Between Sum of Squares and Square of Sums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">Section 12.8: Line Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">Section 14: Pi Estimation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Guide to Fortran 2008 Programming
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guide to Fortran 2008 Programming</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">
-   Guide to Fortran 2008 Programming
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">
-     Section 1.8 Example 2: Quadratic Equation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">
-     Section 1.16: Factorial Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">
-     Section 2.1: Statement Blocks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">
-     Section 2.1: Associate Construct
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">
-     Section 3.4: Putting Procedures in a Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">
-     Section 3.6: Median of Three
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">
-     Section 3.8: Argument Passing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">
-     Section 3.17: Case Study: Adaptive Numerical Integration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">
-     Section 4.1: Elsewhere Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">
-     Section 8.1: Submodules
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">
-     Section 8.2: Time Matrix Multiply
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">
-     Section 8.7: Generic Elemental Procedures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">
-     Section 8.8: Findloc Function
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">Guide to Fortran 2008 Programming</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">Section 1.8 Example 2: Quadratic Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">Section 1.16: Factorial Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">Section 2.1: Statement Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">Section 2.1: Associate Construct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">Section 3.4: Putting Procedures in a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">Section 3.6: Median of Three</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">Section 3.8: Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">Section 3.17: Case Study: Adaptive Numerical Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">Section 4.1: Elsewhere Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">Section 8.1: Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">Section 8.2: Time Matrix Multiply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">Section 8.7: Generic Elemental Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">Section 8.8: Findloc Function</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Fortran MOOC
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fortran MOOC</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Fortran_MOOC.html">
-   Fortran MOOC
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Arrays.html">
-     Section: Arrays
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">
-       Section Arrays: Allocate from Source
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">
-       Section Arrays: Array Arithmetic
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Elements.html">
-       Section Arrays: Array Elements
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Initialization.html">
-       Section Arrays: Array Initialization
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Timing.html">
-       Section Arrays: Array Timing
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Assumed.html">
-       Section Arrays: Assumed
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Compute_Factorial.html">
-       Section Arrays: Compute Factorial
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">
-       Section Arrays: Elemental Subroutine
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Enlarge_Array.html">
-       Section Arrays: Enlarge Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Identity.html">
-       Section Arrays: Identity
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Linear_Transform.html">
-       Section Arrays: Linear Transform
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Matrix.html">
-       Section Arrays: Matrix
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Max_Array.html">
-       Section Arrays: Max Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Normalize.html">
-       Section Arrays: Normalize
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Normalize_Performance.html">
-       Section Arrays: Normalize Performance
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Reshape.html">
-       Section Arrays: Reshape
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Subarrays.html">
-       Section Arrays: Subarrays
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Submatrices.html">
-       Section Arrays: Submatrices
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Trace.html">
-       Section Arrays: Trace
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Floating_Point.html">
-     Section: Floating Point
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">
-       Section IEEE754: Zero vs Non - Zero
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Call_By_Semantics.html">
-     Section: Call By Semantics
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">
-       Section Call By Semantics: Call By In Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_Reference.html">
-       Section Call By Semantics: Call By Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">
-       Section Call By Semantics: Call By Value
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Computing_Pi.html">
-     Section: Computing Pi
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">
-       Section Computing Pi: Compute Pi
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">
-       Section Computing Pi: Compute Pi with OpenMP
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Implicit_vs_Explicit_Loops__Head__.html">
-     Section: Implicit vs Explicit Loops
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-    <label for="toctree-checkbox-9">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Implicit_vs_Explicit_Loops.html">
-       Section: Implicit vs. Explicit Loops
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="Section_Ball_Throw__Head__.html">
-     Section: Ball Throw
-    </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-    <label for="toctree-checkbox-10">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       Section: Ball Throw
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Fortran_MOOC.html">Fortran MOOC</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Arrays.html">Section: Arrays</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">Section Arrays: Allocate from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">Section Arrays: Array Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Elements.html">Section Arrays: Array Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Initialization.html">Section Arrays: Array Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Timing.html">Section Arrays: Array Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Assumed.html">Section Arrays: Assumed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Compute_Factorial.html">Section Arrays: Compute Factorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">Section Arrays: Elemental Subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Enlarge_Array.html">Section Arrays: Enlarge Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Identity.html">Section Arrays: Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Linear_Transform.html">Section Arrays: Linear Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Matrix.html">Section Arrays: Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Max_Array.html">Section Arrays: Max Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Normalize.html">Section Arrays: Normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Normalize_Performance.html">Section Arrays: Normalize Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Reshape.html">Section Arrays: Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Subarrays.html">Section Arrays: Subarrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Submatrices.html">Section Arrays: Submatrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Trace.html">Section Arrays: Trace</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Miscellaneous
- </span>
-</p>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Floating_Point.html">Section: Floating Point</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">Section IEEE754: Zero vs Non - Zero</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Call_By_Semantics.html">Section: Call By Semantics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">Section Call By Semantics: Call By In Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Reference.html">Section Call By Semantics: Call By Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">Section Call By Semantics: Call By Value</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Computing_Pi.html">Section: Computing Pi</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">Section Computing Pi: Compute Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">Section Computing Pi: Compute Pi with OpenMP</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Implicit_vs_Explicit_Loops__Head__.html">Section: Implicit vs Explicit Loops</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Implicit_vs_Explicit_Loops.html">Section: Implicit vs. Explicit Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="Section_Ball_Throw__Head__.html">Section: Ball Throw</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Section: Ball Throw</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Section_Ball_Throw.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/Fortran_MOOC/Section_Ball_Throw.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Fortran_MOOC/Section_Ball_Throw.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-simulating-a-ball-throw-in-fortran">
-   This program demonstrates simulating a ball throw in Fortran.
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-rk4-f90">
-     In rk4.f90
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-section-ball-throw-f90">
-     In section_ball_throw.f90
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
-   Build the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
-   Run the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data-dat-into-pandas">
-   Load
-   <em>
-    data.dat
-   </em>
-   into Pandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-the-height-vs-time-data">
-   Plot the Height vs Time Data
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section: Ball Throw</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-simulating-a-ball-throw-in-fortran">
-   This program demonstrates simulating a ball throw in Fortran.
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-rk4-f90">
-     In rk4.f90
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#in-section-ball-throw-f90">
-     In section_ball_throw.f90
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
-   Build the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
-   Run the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data-dat-into-pandas">
-   Load
-   <em>
-    data.dat
-   </em>
-   into Pandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plot-the-height-vs-time-data">
-   Plot the Height vs Time Data
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Section: Ball Throw</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-simulating-a-ball-throw-in-fortran">This program demonstrates simulating a ball throw in Fortran.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-rk4-f90">In rk4.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-section-ball-throw-f90">In section_ball_throw.f90</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-dat-into-pandas">Load <em>data.dat</em> into Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-height-vs-time-data">Plot the Height vs Time Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="section-ball-throw">
 <h1>Section: Ball Throw<a class="headerlink" href="#section-ball-throw" title="Permalink to this heading">#</a></h1>
-<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/ball_throw">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/ball_throw</a></p>
+<p>Adapted from: <a class="github reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/ball_throw">gjbex/Fortran-MOOC</a></p>
 <section id="this-program-demonstrates-simulating-a-ball-throw-in-fortran">
 <h2>This program demonstrates simulating a ball throw in Fortran.<a class="headerlink" href="#this-program-demonstrates-simulating-a-ball-throw-in-fortran" title="Permalink to this heading">#</a></h2>
 <section id="in-rk4-f90">
 <h3>In rk4.f90<a class="headerlink" href="#in-rk4-f90" title="Permalink to this heading">#</a></h3>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">rk4_mod</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">rk4_mod</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rk4</span><span class="p">,</span><span class="w"> </span><span class="n">rk4vec</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rk4</span><span class="p">,</span><span class="w"> </span><span class="n">rk4vec</span>
 
 <span class="k">contains</span>
 
-<span class="k">subroutine </span><span class="n">rk4</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">rk4</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">)</span>
 
 <span class="c">!*****************************************************************************80</span>
 <span class="c">!</span>
@@ -882,45 +529,45 @@ title="Print to PDF"
 <span class="c">!</span>
 <span class="w">  </span><span class="k">implicit none</span>
 
-<span class="k">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
-<span class="w">  </span><span class="k">external </span><span class="n">f</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f0</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f1</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f2</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f3</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t0</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t1</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t2</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t3</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u0</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u1</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u2</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u3</span><span class="w"></span>
+<span class="k">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dt</span>
+<span class="w">  </span><span class="k">external </span><span class="n">f</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f0</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f1</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f2</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f3</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t0</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t1</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t2</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t3</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u0</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u1</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u2</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u3</span>
 <span class="c">!</span>
 <span class="c">!  Get four sample values of the derivative.</span>
 <span class="c">!</span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="n">u1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="n">u1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="n">u2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="n">u2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
-<span class="w">  </span><span class="n">u3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="w"> </span><span class="n">u3</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span>
+<span class="w">  </span><span class="n">u3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="w"> </span><span class="n">u3</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span>
 <span class="c">!</span>
 <span class="c">!  Combine them to estimate the solution U at time T1.</span>
 <span class="c">!</span>
-<span class="w">  </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">6.0D+00</span><span class="w"></span>
+<span class="w">  </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">6.0D+00</span>
 
 <span class="w">  </span><span class="k">return</span>
 <span class="k">end</span>
-<span class="k">subroutine </span><span class="n">rk4vec</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">rk4vec</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="p">)</span>
 
 <span class="c">!*****************************************************************************80</span>
 <span class="c">!</span>
@@ -964,51 +611,51 @@ title="Print to PDF"
 <span class="c">!</span>
 <span class="w">  </span><span class="k">implicit none</span>
 
-<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">m</span><span class="w"></span>
+<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">m</span>
 
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
-<span class="w">  </span><span class="k">external </span><span class="n">f</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f0</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f3</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t0</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t1</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t2</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t3</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u1</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u2</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u3</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">dt</span>
+<span class="w">  </span><span class="k">external </span><span class="n">f</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f0</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">f3</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t0</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t1</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t2</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t3</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u1</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u2</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">u3</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="c">!</span>
 <span class="c">!  Get four sample values of the derivative.</span>
 <span class="c">!</span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u0</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="n">u1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="n">u1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="n">u2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="n">u2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0D+00</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">t3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
-<span class="w">  </span><span class="n">u3</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u3</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">t3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span>
+<span class="w">  </span><span class="n">u3</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span>
+<span class="w">  </span><span class="k">call </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">u3</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="p">)</span>
 <span class="c">!</span>
 <span class="c">!  Combine them to estimate the solution U at time T1.</span>
 <span class="c">!</span>
-<span class="w">  </span><span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">6.0D+00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">                 </span><span class="n">f0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">     </span><span class="o">+</span><span class="w">           </span><span class="n">f3</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">6.0D+00</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                 </span><span class="n">f0</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">     </span><span class="o">+</span><span class="w"> </span><span class="mf">2.0D+00</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">     </span><span class="o">+</span><span class="w">           </span><span class="n">f3</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 
 <span class="w">  </span><span class="k">return</span>
 <span class="k">end</span>
-<span class="k">subroutine </span><span class="n">timestamp</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">timestamp</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">)</span>
 
 <span class="c">!*****************************************************************************80</span>
 <span class="c">!</span>
@@ -1036,115 +683,115 @@ title="Print to PDF"
 <span class="c">!</span>
 <span class="w">  </span><span class="k">implicit none</span>
 
-<span class="k">  </span><span class="kt">character</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">ampm</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">d</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">h</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">m</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">mm</span><span class="w"></span>
-<span class="w">  </span><span class="kt">character</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">    </span><span class="s1">&#39;January  &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;February &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;March    &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;April    &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">    </span><span class="s1">&#39;May      &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;June     &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;July     &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;August   &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">    </span><span class="s1">&#39;September&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;October  &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;November &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;December &#39;</span><span class="w"> </span><span class="o">/</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="k">  </span><span class="kt">character</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">ampm</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">d</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">h</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">m</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">mm</span>
+<span class="w">  </span><span class="kt">character</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s1">&#39;January  &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;February &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;March    &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;April    &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s1">&#39;May      &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;June     &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;July     &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;August   &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s1">&#39;September&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;October  &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;November &#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;December &#39;</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">n</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">s</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">y</span>
 
-<span class="w">  </span><span class="k">call </span><span class="nb">date_and_time</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">call </span><span class="nb">date_and_time</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">mm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">  </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="w">  </span><span class="n">mm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">    </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span><span class="w"></span>
+<span class="k">    </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span>
 <span class="w">  </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Noon&#39;</span><span class="w"></span>
+<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Noon&#39;</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span><span class="w"></span>
+<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span>
 <span class="w">    </span><span class="k">end if</span>
 <span class="k">  else</span>
-<span class="k">    </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span><span class="w"></span>
+<span class="k">    </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span><span class="w"></span>
+<span class="k">      </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span>
 <span class="w">    </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">        </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Midnight&#39;</span><span class="w"></span>
+<span class="k">        </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Midnight&#39;</span>
 <span class="w">      </span><span class="k">else</span>
-<span class="k">        </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span><span class="w"></span>
+<span class="k">        </span><span class="n">ampm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span>
 <span class="w">      </span><span class="k">end if</span>
 <span class="k">    end if</span>
 <span class="k">  end if</span>
 
-<span class="k">  write</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(i2,1x,a,1x,i4,2x,i2,a1,i2.2,a1,i2.2,a1,i3.3,1x,a)&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">    </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">month</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mm</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ampm</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="k">  write</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(i2,1x,a,1x,i4,2x,i2,a1,i2.2,a1,i2.2,a1,i3.3,1x,a)&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">month</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mm</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ampm</span><span class="w"> </span><span class="p">)</span>
 
 <span class="w">  </span><span class="k">return</span>
 <span class="k">end</span>
 
-<span class="k">end module </span><span class="n">rk4_mod</span><span class="w"></span>
+<span class="k">end module </span><span class="n">rk4_mod</span>
 </pre></div>
 </div>
 </section>
 <section id="in-section-ball-throw-f90">
 <h3>In section_ball_throw.f90<a class="headerlink" href="#in-section-ball-throw-f90" title="Permalink to this heading">#</a></h3>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">ball_throw</span><span class="w"></span>
-<span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="p">,</span><span class="w"> </span><span class="n">INT32</span><span class="w"></span>
-<span class="w">  </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rk4_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="n">rk4vec</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">ball_throw</span>
+<span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="p">,</span><span class="w"> </span><span class="n">INT32</span>
+<span class="w">  </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rk4_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="n">rk4vec</span>
 <span class="w">  </span><span class="k">implicit none</span>
-<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">NR_EQS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">MAX_STEPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">DELTA_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01_DP</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
-<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">NR_EQS</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">u_new</span><span class="w"></span>
-<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">step</span><span class="w"></span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">NR_EQS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">MAX_STEPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">DELTA_T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01_DP</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">NR_EQS</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">u_new</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">step</span>
 
 <span class="cp">#define X u(1)</span>
 <span class="cp">#define Y u(2)</span>
 <span class="cp">#define VX u(3)</span>
 <span class="cp">#define VY u(4)</span>
 
-<span class="w">  </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">  </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">  </span><span class="n">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">  </span><span class="n">VX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0_DP</span><span class="w"></span>
-<span class="w">  </span><span class="n">VY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0_DP</span><span class="w"></span>
-<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">VX</span><span class="p">,</span><span class="w"> </span><span class="n">VY</span><span class="w"></span>
-<span class="w">  </span><span class="k">do </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_STEPS</span><span class="w"></span>
-<span class="w">      </span><span class="k">call </span><span class="n">rk4vec</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">NR_EQS</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">DELTA_T</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="n">u_new</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DELTA_T</span><span class="w"></span>
-<span class="w">      </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u_new</span><span class="w"></span>
+<span class="w">  </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
+<span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
+<span class="w">  </span><span class="n">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
+<span class="w">  </span><span class="n">VX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0_DP</span>
+<span class="w">  </span><span class="n">VY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0_DP</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">VX</span><span class="p">,</span><span class="w"> </span><span class="n">VY</span>
+<span class="w">  </span><span class="k">do </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_STEPS</span>
+<span class="w">      </span><span class="k">call </span><span class="n">rk4vec</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">NR_EQS</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">DELTA_T</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="n">u_new</span><span class="p">)</span>
+<span class="w">      </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DELTA_T</span>
+<span class="w">      </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u_new</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="p">)</span><span class="w"> </span><span class="k">exit</span>
-<span class="k">      print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">VX</span><span class="p">,</span><span class="w"> </span><span class="n">VY</span><span class="w"></span>
+<span class="k">      print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">step</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">VX</span><span class="p">,</span><span class="w"> </span><span class="n">VY</span>
 <span class="w">  </span><span class="k">end do</span>
 
-<span class="k">contains</span><span class="w"></span>
+<span class="k">contains</span>
 
 <span class="cp">#define X_prime  u_prime(1)</span>
 <span class="cp">#define Y_prime  u_prime(2)</span>
 <span class="cp">#define VX_prime u_prime(3)</span>
 <span class="cp">#define VY_prime u_prime(4)</span>
 
-<span class="w">  </span><span class="k">subroutine </span><span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">u_prime</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">subroutine </span><span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">u_prime</span><span class="p">)</span>
 <span class="w">      </span><span class="k">implicit none</span>
-<span class="k">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
-<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">INT32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u_prime</span><span class="w"></span>
+<span class="k">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">INT32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u_prime</span>
 
-<span class="w">      </span><span class="n">X_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VX</span><span class="w"></span>
-<span class="w">      </span><span class="n">Y_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VY</span><span class="w"></span>
-<span class="w">      </span><span class="n">VX_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span><span class="w"></span>
-<span class="w">      </span><span class="n">VY_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">9.81_DP</span><span class="w"></span>
-<span class="w">  </span><span class="k">end subroutine </span><span class="n">rhs</span><span class="w"></span>
+<span class="w">      </span><span class="n">X_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VX</span>
+<span class="w">      </span><span class="n">Y_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VY</span>
+<span class="w">      </span><span class="n">VX_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
+<span class="w">      </span><span class="n">VY_prime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">9.81_DP</span>
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">rhs</span>
 
-<span class="k">end program </span><span class="n">ball_throw</span><span class="w"></span>
+<span class="k">end program </span><span class="n">ball_throw</span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -1181,6 +828,19 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%]                        rk4.f90
+[ 25%]                        rk4.f90  done.
+
+././src/rk4.f90:158:26:
+
+  158 |   call f ( t0, m, u0, f0 )
+      |                          1
+Error: Procedure ‘f’ called with an implicit interface at (1) [-Werror=implicit-interface]
+compilation terminated due to -fmax-errors=1.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
@@ -1208,136 +868,66 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ParserError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;data.dat&quot;</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;VX&quot;</span><span class="p">,</span> <span class="s2">&quot;VY&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">data</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1282,</span> in <span class="ni">read_table</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1269</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1270</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1271</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1278</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1279</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1280</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1282</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>step</th>
-      <th>time</th>
-      <th>X</th>
-      <th>Y</th>
-      <th>VX</th>
-      <th>VY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>0.000000</td>
-      <td>5.0</td>
-      <td>5.0000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>0.01</td>
-      <td>0.05</td>
-      <td>0.049510</td>
-      <td>5.0</td>
-      <td>4.9019</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>0.02</td>
-      <td>0.10</td>
-      <td>0.098038</td>
-      <td>5.0</td>
-      <td>4.8038</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>0.03</td>
-      <td>0.15</td>
-      <td>0.145586</td>
-      <td>5.0</td>
-      <td>4.7057</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>0.04</td>
-      <td>0.20</td>
-      <td>0.192152</td>
-      <td>5.0</td>
-      <td>4.6076</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>97</td>
-      <td>0.97</td>
-      <td>4.85</td>
-      <td>0.234886</td>
-      <td>5.0</td>
-      <td>-4.5157</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>98</td>
-      <td>0.98</td>
-      <td>4.90</td>
-      <td>0.189238</td>
-      <td>5.0</td>
-      <td>-4.6138</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>99</td>
-      <td>0.99</td>
-      <td>4.95</td>
-      <td>0.142610</td>
-      <td>5.0</td>
-      <td>-4.7119</td>
-    </tr>
-    <tr>
-      <th>100</th>
-      <td>100</td>
-      <td>1.00</td>
-      <td>5.00</td>
-      <td>0.095000</td>
-      <td>5.0</td>
-      <td>-4.8100</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>101</td>
-      <td>1.01</td>
-      <td>5.05</td>
-      <td>0.046410</td>
-      <td>5.0</td>
-      <td>-4.9081</td>
-    </tr>
-  </tbody>
-</table>
-<p>102 rows × 6 columns</p>
-</div></div></div>
+<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:617,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
+<span class="g g-Whitespace">    </span><span class="mi">616</span> <span class="k">with</span> <span class="n">parser</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">617</span>     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
+
+<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1748,</span> in <span class="ni">TextFileReader.read</span><span class="nt">(self, nrows)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1741</span> <span class="n">nrows</span> <span class="o">=</span> <span class="n">validate_integer</span><span class="p">(</span><span class="s2">&quot;nrows&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="c1"># error: &quot;ParserBase&quot; has no attribute &quot;read&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span>     <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span>         <span class="n">index</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1746</span>         <span class="n">columns</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1747</span>         <span class="n">col_dict</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1748</span>     <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>  <span class="c1"># type: ignore[attr-defined]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1749</span>         <span class="n">nrows</span>
+<span class="g g-Whitespace">   </span><span class="mi">1750</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1751</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1752</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py:234,</span> in <span class="ni">CParserWrapper.read</span><span class="nt">(self, nrows)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_memory</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">234</span>         <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">read_low_memory</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="c1"># destructive to chunks</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_concatenate_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+<span class="nn">File parsers.pyx:843,</span> in <span class="ni">pandas._libs.parsers.TextReader.read_low_memory</span><span class="nt">()</span>
+
+<span class="nn">File parsers.pyx:904,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
+
+<span class="nn">File parsers.pyx:879,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
+
+<span class="nn">File parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
+
+<span class="nn">File parsers.pyx:2058,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
+
+<span class="ne">ParserError</span>: Error tokenizing data. C error: Expected 6 fields in line 6, saw 10
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="plot-the-height-vs-time-data">
@@ -1364,7 +954,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html"><div class="bk-root">
         <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
-        <span id="1002">Loading BokehJS ...</span>
+        <span id="1114">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -1523,7 +1113,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("1002");
+    const el = document.getElementById("1114");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -1629,7 +1219,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("1002")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("1114")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -1644,11 +1234,11 @@ if (force === true) {
     });
   }
 }(window));</script><div class="output text_html">
-<div class="bk-root" id="3995570a-c1e7-4ba9-bf92-fe9d8866a54c" data-root-id="1003"></div>
+  <div class="bk-root" id="2fc2f5f3-25cf-408d-9a97-06fb3be7a724" data-root-id="1115"></div>
 </div><script type="application/javascript">(function(root) {
   function embed_document(root) {
-  const docs_json = {"323d6bb3-5709-40dc-bad2-808f59ba990d":{"defs":[],"roots":{"references":[{"attributes":{"below":[{"id":"1014"}],"center":[{"id":"1017"},{"id":"1021"},{"id":"1052"}],"left":[{"id":"1018"}],"renderers":[{"id":"1040"}],"title":{"id":"1004"},"toolbar":{"id":"1029"},"x_range":{"id":"1006"},"x_scale":{"id":"1010"},"y_range":{"id":"1008"},"y_scale":{"id":"1012"}},"id":"1003","subtype":"Figure","type":"Plot"},{"attributes":{"source":{"id":"1036"}},"id":"1041","type":"CDSView"},{"attributes":{},"id":"1027","type":"HelpTool"},{"attributes":{},"id":"1045","type":"AllLabels"},{"attributes":{},"id":"1026","type":"ResetTool"},{"attributes":{},"id":"1047","type":"BasicTickFormatter"},{"attributes":{},"id":"1048","type":"AllLabels"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1028","type":"BoxAnnotation"},{"attributes":{"label":{"value":"Height [Arb]"},"renderers":[{"id":"1040"}]},"id":"1053","type":"LegendItem"},{"attributes":{},"id":"1006","type":"DataRange1d"},{"attributes":{},"id":"1049","type":"UnionRenderers"},{"attributes":{"axis":{"id":"1014"},"coordinates":null,"group":null,"ticker":null},"id":"1017","type":"Grid"},{"attributes":{"tools":[{"id":"1022"},{"id":"1023"},{"id":"1024"},{"id":"1025"},{"id":"1026"},{"id":"1027"}]},"id":"1029","type":"Toolbar"},{"attributes":{},"id":"1050","type":"Selection"},{"attributes":{"coordinates":null,"group":null,"text":"Ball Throw Plot"},"id":"1004","type":"Title"},{"attributes":{},"id":"1008","type":"DataRange1d"},{"attributes":{},"id":"1012","type":"LinearScale"},{"attributes":{},"id":"1015","type":"BasicTicker"},{"attributes":{},"id":"1010","type":"LinearScale"},{"attributes":{"fill_color":{"value":"#1f77b4"},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1037","type":"Scatter"},{"attributes":{"data":{"x":{"__ndarray__":"AAAAAAAAAACamZmZmZmpP5qZmZmZmbk/MzMzMzMzwz+amZmZmZnJPwAAAAAAANA/MTMzMzMz0z9lZmZmZmbWP5iZmZmZmdk/y8zMzMzM3D/+///////fP5mZmZmZmeE/MjMzMzMz4z/NzMzMzMzkP2ZmZmZmZuY/AQAAAAAA6D+bmZmZmZnpPzUzMzMzM+s/z8zMzMzM7D9oZmZmZmbuPwEAAAAAAPA/z8zMzMzM8D+bmZmZmZnxP2hmZmZmZvI/NTMzMzMz8z8CAAAAAAD0P8/MzMzMzPQ/m5mZmZmZ9T9pZmZmZmb2PzYzMzMzM/c/BAAAAAAA+D/QzMzMzMz4P52ZmZmZmfk/amZmZmZm+j83MzMzMzP7PwQAAAAAAPw/0MzMzMzM/D+dmZmZmZn9P2pmZmZmZv4/NzMzMzMz/z8CAAAAAAAAQGhmZmZmZgBAzszMzMzMAEA0MzMzMzMBQJqZmZmZmQFAAAAAAAAAAkBmZmZmZmYCQM3MzMzMzAJAMjMzMzMzA0CZmZmZmZkDQP7//////wNAZGZmZmZmBEDKzMzMzMwEQDAzMzMzMwVAlpmZmZmZBUD8//////8FQGJmZmZmZgZAx8zMzMzMBkAuMzMzMzMHQJOZmZmZmQdA+v//////B0BfZmZmZmYIQMbMzMzMzAhALDMzMzMzCUCSmZmZmZkJQPj//////wlAXmZmZmZmCkDEzMzMzMwKQCozMzMzMwtAkZmZmZmZC0D3//////8LQFxmZmZmZgxAwszMzMzMDEAoMzMzMzMNQI2ZmZmZmQ1A8///////DUBaZmZmZmYOQL7MzMzMzA5AJTMzMzMzD0CLmZmZmZkPQPL//////w9ALDMzMzMzEEBfZmZmZmYQQJGZmZmZmRBAxczMzMzMEED4//////8QQCszMzMzMxFAXmZmZmZmEUCRmZmZmZkRQMTMzMzMzBFA9///////EUAqMzMzMzMSQF1mZmZmZhJAkZmZmZmZEkDDzMzMzMwSQPb//////xJAKTMzMzMzE0BcZmZmZmYTQJCZmZmZmRNAwszMzMzME0D1//////8TQCgzMzMzMxRA","dtype":"float64","order":"little","shape":[102]},"y":{"__ndarray__":"AAAAAAAAAABzwK4mT1mpP0vnw7MEGbk/m8qisIuiwj/8NO7Nb5jIP8oyxLEubs4/AmISLuQR0j9X9IdmntzUP2HQQgJGl9c/IfZCAdtB2j+WZYhjXdzcP8QeEynNZt8/05DxKJXw4D8fN/xuuiXiP0iCqWbWUuM/S3L5D+l35D8oB+xq8pTlP+JAgXfyqeY/dR+5Nem25z/lopOl1rvoPy/LEMe6uOk/VJgwmpWt6j9UCvMeZ5rrPy8hWFUvf+w/5dxfPe5b7T92PQrXozDuP+JCVyJQ/e4/LO1GH/PB7z8nnuxmRj/wPyYYB5eOmfA/kuTyH9Lv8D9sA7ABEULxP7N0PjxLkPE/aDiez4Da8T+MTs+7sSDyPxy30QDeYvI/GnKlngWh8j+Ff0qVKNvyP17fwORGEfM/pJEIjWBD8z9YliGOdXHzP3ntC+iFm/M/CJfHmpHB8z8Ek1SmmOPzP2/hsgqbAfQ/RoLix5gb9D+LdePdkTH0Pz67tUyGQ/Q/XlNZFHZR9D/rPc40YVv0P+d6FK5HYfQ/TwosgClj9D8m7BSrBmH0P2ogzy7fWvQ/G6daC7NQ9D86gLdAgkL0P8er5c5MMPQ/wSnltRIa9D8q+rX10//zP/4cWI6Q4fM/QZLLf0i/8z/yWRDK+5jzPw90Jm2qbvM/m+ANaVRA8z+Tn8a9+Q3zP/mwUGua1/I/zhSscTad8j8Oy9jQzV7yP73T1ohgHPI/2y6mme7V8T9l3EYDeIvxP1zcuMX8PPE/wS784Hzq8D+U0xBV+JPwP9TK9iFvOfA/BClcj8K17z87YW2MnfDuP00+ITtvI+4/OcB3mzdO7T8B53Ct9nDsP6SyDHGsi+s/IiNL5lie6j98OCwN/KjpP7Dyr+WVq+g/vlHWbyam5z+pVZ+rrZjmP23+Cpkrg+U/D0wZOKBl5D+LPsqIC0DjP+HVHYttEuI/ExIUP8bc4D9A5llJKz7fPxHy0He3stw/l0eNCTEX2j/T5o7+l2vXP8bP1Vbsr9Q/bwJiEi7k0T+b/WZiuhDOP8WJlGbzOMg/XKlMMQdBwj/BuB6F61G4P0KLcmn8wqc/","dtype":"float64","order":"little","shape":[102]}},"selected":{"id":"1050"},"selection_policy":{"id":"1049"}},"id":"1036","type":"ColumnDataSource"},{"attributes":{},"id":"1023","type":"WheelZoomTool"},{"attributes":{"coordinates":null,"data_source":{"id":"1036"},"glyph":{"id":"1037"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1039"},"nonselection_glyph":{"id":"1038"},"view":{"id":"1041"}},"id":"1040","type":"GlyphRenderer"},{"attributes":{"axis_label":"Time [s]","coordinates":null,"formatter":{"id":"1047"},"group":null,"major_label_policy":{"id":"1048"},"ticker":{"id":"1015"}},"id":"1014","type":"LinearAxis"},{"attributes":{},"id":"1044","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.2},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1039","type":"Scatter"},{"attributes":{"axis_label":"Height [arb]","coordinates":null,"formatter":{"id":"1044"},"group":null,"major_label_policy":{"id":"1045"},"ticker":{"id":"1019"}},"id":"1018","type":"LinearAxis"},{"attributes":{"axis":{"id":"1018"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1021","type":"Grid"},{"attributes":{},"id":"1019","type":"BasicTicker"},{"attributes":{"coordinates":null,"group":null,"items":[{"id":"1053"}]},"id":"1052","type":"Legend"},{"attributes":{},"id":"1025","type":"SaveTool"},{"attributes":{"overlay":{"id":"1028"}},"id":"1024","type":"BoxZoomTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.1},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1038","type":"Scatter"},{"attributes":{},"id":"1022","type":"PanTool"}],"root_ids":["1003"]},"title":"Bokeh Application","version":"2.4.3"}};
-  const render_items = [{"docid":"323d6bb3-5709-40dc-bad2-808f59ba990d","root_ids":["1003"],"roots":{"1003":"3995570a-c1e7-4ba9-bf92-fe9d8866a54c"}}];
+  const docs_json = {"207947c5-5f62-4466-9547-7629e4f4d9fa":{"defs":[],"roots":{"references":[{"attributes":{"below":[{"id":"1126"}],"center":[{"id":"1129"},{"id":"1133"},{"id":"1164"}],"left":[{"id":"1130"}],"renderers":[{"id":"1152"}],"title":{"id":"1116"},"toolbar":{"id":"1141"},"x_range":{"id":"1118"},"x_scale":{"id":"1122"},"y_range":{"id":"1120"},"y_scale":{"id":"1124"}},"id":"1115","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1134","type":"PanTool"},{"attributes":{"axis":{"id":"1126"},"coordinates":null,"group":null,"ticker":null},"id":"1129","type":"Grid"},{"attributes":{},"id":"1124","type":"LinearScale"},{"attributes":{"axis_label":"Height [arb]","coordinates":null,"formatter":{"id":"1156"},"group":null,"major_label_policy":{"id":"1157"},"ticker":{"id":"1131"}},"id":"1130","type":"LinearAxis"},{"attributes":{"axis_label":"Time [s]","coordinates":null,"formatter":{"id":"1159"},"group":null,"major_label_policy":{"id":"1160"},"ticker":{"id":"1127"}},"id":"1126","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.2},"line_alpha":{"value":0.2},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1151","type":"Scatter"},{"attributes":{},"id":"1156","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"hatch_alpha":{"value":0.1},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1150","type":"Scatter"},{"attributes":{"coordinates":null,"data_source":{"id":"1148"},"glyph":{"id":"1149"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1151"},"nonselection_glyph":{"id":"1150"},"view":{"id":"1153"}},"id":"1152","type":"GlyphRenderer"},{"attributes":{},"id":"1120","type":"DataRange1d"},{"attributes":{},"id":"1157","type":"AllLabels"},{"attributes":{"label":{"value":"Height [Arb]"},"renderers":[{"id":"1152"}]},"id":"1165","type":"LegendItem"},{"attributes":{},"id":"1118","type":"DataRange1d"},{"attributes":{},"id":"1159","type":"BasicTickFormatter"},{"attributes":{},"id":"1122","type":"LinearScale"},{"attributes":{},"id":"1131","type":"BasicTicker"},{"attributes":{},"id":"1160","type":"AllLabels"},{"attributes":{"coordinates":null,"group":null,"items":[{"id":"1165"}]},"id":"1164","type":"Legend"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1140","type":"BoxAnnotation"},{"attributes":{"coordinates":null,"group":null,"text":"Ball Throw Plot"},"id":"1116","type":"Title"},{"attributes":{},"id":"1135","type":"WheelZoomTool"},{"attributes":{"axis":{"id":"1130"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1133","type":"Grid"},{"attributes":{},"id":"1139","type":"HelpTool"},{"attributes":{},"id":"1138","type":"ResetTool"},{"attributes":{},"id":"1127","type":"BasicTicker"},{"attributes":{},"id":"1161","type":"UnionRenderers"},{"attributes":{},"id":"1162","type":"Selection"},{"attributes":{"source":{"id":"1148"}},"id":"1153","type":"CDSView"},{"attributes":{"tools":[{"id":"1134"},{"id":"1135"},{"id":"1136"},{"id":"1137"},{"id":"1138"},{"id":"1139"}]},"id":"1141","type":"Toolbar"},{"attributes":{},"id":"1137","type":"SaveTool"},{"attributes":{"overlay":{"id":"1140"}},"id":"1136","type":"BoxZoomTool"},{"attributes":{"fill_color":{"value":"#1f77b4"},"line_color":{"value":"#1f77b4"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1149","type":"Scatter"},{"attributes":{"data":{"x":{"__ndarray__":"AAAAAAAAAACamZmZmZmpP5qZmZmZmbk/MzMzMzMzwz+amZmZmZnJPwAAAAAAANA/MTMzMzMz0z9lZmZmZmbWP5iZmZmZmdk/y8zMzMzM3D/+///////fP5mZmZmZmeE/MjMzMzMz4z/NzMzMzMzkP2ZmZmZmZuY/AQAAAAAA6D+bmZmZmZnpPzUzMzMzM+s/z8zMzMzM7D9oZmZmZmbuPwEAAAAAAPA/z8zMzMzM8D+bmZmZmZnxP2hmZmZmZvI/NTMzMzMz8z8CAAAAAAD0P8/MzMzMzPQ/m5mZmZmZ9T9pZmZmZmb2PzYzMzMzM/c/BAAAAAAA+D/QzMzMzMz4P52ZmZmZmfk/amZmZmZm+j83MzMzMzP7PwQAAAAAAPw/0MzMzMzM/D+dmZmZmZn9P2pmZmZmZv4/NzMzMzMz/z8CAAAAAAAAQGhmZmZmZgBAzszMzMzMAEA0MzMzMzMBQJqZmZmZmQFAAAAAAAAAAkBmZmZmZmYCQM3MzMzMzAJAMjMzMzMzA0CZmZmZmZkDQP7//////wNAZGZmZmZmBEDKzMzMzMwEQDAzMzMzMwVAlpmZmZmZBUD8//////8FQGJmZmZmZgZAx8zMzMzMBkAuMzMzMzMHQJOZmZmZmQdA+v//////B0BfZmZmZmYIQMbMzMzMzAhALDMzMzMzCUCSmZmZmZkJQPj//////wlAXmZmZmZmCkDEzMzMzMwKQCozMzMzMwtAkZmZmZmZC0D3//////8LQFxmZmZmZgxAwszMzMzMDEAoMzMzMzMNQI2ZmZmZmQ1A8///////DUBaZmZmZmYOQL7MzMzMzA5AJTMzMzMzD0CLmZmZmZkPQPL//////w9ALDMzMzMzEEBfZmZmZmYQQJGZmZmZmRBAxczMzMzMEED4//////8QQCszMzMzMxFAXmZmZmZmEUCRmZmZmZkRQMTMzMzMzBFA9///////EUAqMzMzMzMSQF1mZmZmZhJAkZmZmZmZEkDDzMzMzMwSQPb//////xJAKTMzMzMzE0BcZmZmZmYTQJCZmZmZmRNAwszMzMzME0D1//////8TQCgzMzMzMxRA","dtype":"float64","order":"little","shape":[102]},"y":{"__ndarray__":"AAAAAAAAAABzwK4mT1mpP0vnw7MEGbk/m8qisIuiwj/8NO7Nb5jIP8oyxLEubs4/AmISLuQR0j9X9IdmntzUP2HQQgJGl9c/IfZCAdtB2j+WZYhjXdzcP8QeEynNZt8/05DxKJXw4D8fN/xuuiXiP0iCqWbWUuM/S3L5D+l35D8oB+xq8pTlP+JAgXfyqeY/dR+5Nem25z/lopOl1rvoPy/LEMe6uOk/VJgwmpWt6j9UCvMeZ5rrPy8hWFUvf+w/5dxfPe5b7T92PQrXozDuP+JCVyJQ/e4/LO1GH/PB7z8nnuxmRj/wPyYYB5eOmfA/kuTyH9Lv8D9sA7ABEULxP7N0PjxLkPE/aDiez4Da8T+MTs+7sSDyPxy30QDeYvI/GnKlngWh8j+Ff0qVKNvyP17fwORGEfM/pJEIjWBD8z9YliGOdXHzP3ntC+iFm/M/CJfHmpHB8z8Ek1SmmOPzP2/hsgqbAfQ/RoLix5gb9D+LdePdkTH0Pz67tUyGQ/Q/XlNZFHZR9D/rPc40YVv0P+d6FK5HYfQ/TwosgClj9D8m7BSrBmH0P2ogzy7fWvQ/G6daC7NQ9D86gLdAgkL0P8er5c5MMPQ/wSnltRIa9D8q+rX10//zP/4cWI6Q4fM/QZLLf0i/8z/yWRDK+5jzPw90Jm2qbvM/m+ANaVRA8z+Tn8a9+Q3zP/mwUGua1/I/zhSscTad8j8Oy9jQzV7yP73T1ohgHPI/2y6mme7V8T9l3EYDeIvxP1zcuMX8PPE/wS784Hzq8D+U0xBV+JPwP9TK9iFvOfA/BClcj8K17z87YW2MnfDuP00+ITtvI+4/OcB3mzdO7T8B53Ct9nDsP6SyDHGsi+s/IiNL5lie6j98OCwN/KjpP7Dyr+WVq+g/vlHWbyam5z+pVZ+rrZjmP23+Cpkrg+U/D0wZOKBl5D+LPsqIC0DjP+HVHYttEuI/ExIUP8bc4D9A5llJKz7fPxHy0He3stw/l0eNCTEX2j/T5o7+l2vXP8bP1Vbsr9Q/bwJiEi7k0T+b/WZiuhDOP8WJlGbzOMg/XKlMMQdBwj/BuB6F61G4P0KLcmn8wqc/","dtype":"float64","order":"little","shape":[102]}},"selected":{"id":"1162"},"selection_policy":{"id":"1161"}},"id":"1148","type":"ColumnDataSource"}],"root_ids":["1115"]},"title":"Bokeh Application","version":"2.4.3"}};
+  const render_items = [{"docid":"207947c5-5f62-4466-9547-7629e4f4d9fa","root_ids":["1115"],"roots":{"1115":"2fc2f5f3-25cf-408d-9a97-06fb3be7a724"}}];
   root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -1685,7 +1275,7 @@ if (force === true) {
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Fortran_MOOC"
         },
         predefinedOutput: true
@@ -1693,49 +1283,103 @@ if (force === true) {
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_Ball_Throw__Head__.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section: Ball Throw</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Mark Khusid<br/>
-  
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_Ball_Throw__Head__.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Section: Ball Throw</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Section_BLAS_LAPACK__Head__.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Section: BLAS/LAPACK</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-simulating-a-ball-throw-in-fortran">This program demonstrates simulating a ball throw in Fortran.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-rk4-f90">In rk4.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-section-ball-throw-f90">In section_ball_throw.f90</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-dat-into-pandas">Load <em>data.dat</em> into Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-height-vs-time-data">Plot the Height vs Time Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mark Khusid
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

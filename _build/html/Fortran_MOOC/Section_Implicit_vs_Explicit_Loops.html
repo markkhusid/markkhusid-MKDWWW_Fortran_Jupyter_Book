@@ -1,37 +1,48 @@
 
+
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Section: Implicit vs. Explicit Loops &#8212; Fortran Programming</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,12 +51,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -55,61 +66,104 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Fortran_MOOC/Section_Implicit_vs_Explicit_Loops';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="next" title="Section: Ball Throw" href="Section_Ball_Throw__Head__.html" />
     <link rel="prev" title="Section: Implicit vs Explicit Loops" href="Section_Implicit_vs_Explicit_Loops__Head__.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/fortran_code_integrate.jpeg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Fortran Programming</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-light" alt="Fortran Programming - Home"/>
+    <script>document.write(`<img src="../_static/fortran_code_integrate.jpeg" class="logo__image only-dark" alt="Fortran Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -118,644 +172,300 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Modern Fortran
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Modern Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">
-   Modern Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">
-     Cold Front Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">
-     Cold Front Calculator With Loop
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">
-     Tsunami Simulator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">
-     Tsunami Simulator Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">
-     Tsunami Simulator with Modules
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">
-     Tsunami Simulator with Modules Plotter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">
-     Print Compiler Version
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Modern_Fortran/Modern_Fortran.html">Modern Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator.html">Cold Front Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Cold_Front_Calculator_with_Loop.html">Cold Front Calculator With Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator.html">Tsunami Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_Plotter.html">Tsunami Simulator Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction to Programming Using Fortran
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Programming Using Fortran</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">
-   Introduction to Programming Using Fortran
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">
-     Section 7: Pendulum Period Calculator
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">
-     Section 9.3: Difference Between Sum of Squares and Square of Sums
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">
-     Section 12.8: Line Numbers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">
-     Section 14: Pi Estimation
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Introduction_to_Programming_Using_Fortran.html">Introduction to Programming Using Fortran</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_7_Period_Calculator.html">Section 7: Pendulum Period Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_9_3_SOS_Difference.html">Section 9.3: Difference Between Sum of Squares and Square of Sums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_12_8_Line_Numbers.html">Section 12.8: Line Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation.html">Section 14: Pi Estimation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Guide to Fortran 2008 Programming
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Guide to Fortran 2008 Programming</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">
-   Guide to Fortran 2008 Programming
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">
-     Section 1.8 Example 2: Quadratic Equation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">
-     Section 1.16: Factorial Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">
-     Section 2.1: Statement Blocks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">
-     Section 2.1: Associate Construct
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">
-     Section 3.4: Putting Procedures in a Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">
-     Section 3.6: Median of Three
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">
-     Section 3.8: Argument Passing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">
-     Section 3.17: Case Study: Adaptive Numerical Integration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">
-     Section 4.1: Elsewhere Example
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">
-     Section 8.1: Submodules
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">
-     Section 8.2: Time Matrix Multiply
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">
-     Section 8.7: Generic Elemental Procedures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">
-     Section 8.8: Findloc Function
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Guide_to_Fortran_2008_Programming.html">Guide to Fortran 2008 Programming</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_8_Ex_2_Quadratic_Formula.html">Section 1.8 Example 2: Quadratic Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_1_16_Factorial_Recursion.html">Section 1.16: Factorial Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Associate_Construct.html">Section 2.1: Statement Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_2_1_Statement_Blocks.html">Section 2.1: Associate Construct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_4_Putting_Procedures_in_a_Module.html">Section 3.4: Putting Procedures in a Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_6_Ex_1_Median_of_Three.html">Section 3.6: Median of Three</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_8_Argument_Passing.html">Section 3.8: Argument Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_3_17_Case_Study__Adaptive_Numberical_Integration.html">Section 3.17: Case Study: Adaptive Numerical Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_4_1_Elsewhere_Example.html">Section 4.1: Elsewhere Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_1_Submodules.html">Section 8.1: Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply.html">Section 8.2: Time Matrix Multiply</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_7_Generic_Elemental_Procedures.html">Section 8.7: Generic Elemental Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Guide_to_Fortran_2008_Programming/Section_8_8_Findloc_Function.html">Section 8.8: Findloc Function</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Fortran MOOC
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fortran MOOC</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="Fortran_MOOC.html">
-   Fortran MOOC
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Arrays.html">
-     Section: Arrays
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">
-       Section Arrays: Allocate from Source
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">
-       Section Arrays: Array Arithmetic
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Elements.html">
-       Section Arrays: Array Elements
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Initialization.html">
-       Section Arrays: Array Initialization
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Array_Timing.html">
-       Section Arrays: Array Timing
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Assumed.html">
-       Section Arrays: Assumed
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Compute_Factorial.html">
-       Section Arrays: Compute Factorial
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">
-       Section Arrays: Elemental Subroutine
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Enlarge_Array.html">
-       Section Arrays: Enlarge Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Identity.html">
-       Section Arrays: Identity
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Linear_Transform.html">
-       Section Arrays: Linear Transform
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Matrix.html">
-       Section Arrays: Matrix
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Max_Array.html">
-       Section Arrays: Max Array
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Normalize.html">
-       Section Arrays: Normalize
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Normalize_Performance.html">
-       Section Arrays: Normalize Performance
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Reshape.html">
-       Section Arrays: Reshape
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Subarrays.html">
-       Section Arrays: Subarrays
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Submatrices.html">
-       Section Arrays: Submatrices
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Arrays_Trace.html">
-       Section Arrays: Trace
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Floating_Point.html">
-     Section: Floating Point
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">
-       Section IEEE754: Zero vs Non - Zero
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Call_By_Semantics.html">
-     Section: Call By Semantics
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">
-       Section Call By Semantics: Call By In Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_Reference.html">
-       Section Call By Semantics: Call By Reference
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">
-       Section Call By Semantics: Call By Value
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Section_Computing_Pi.html">
-     Section: Computing Pi
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-    <label for="toctree-checkbox-8">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">
-       Section Computing Pi: Compute Pi
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">
-       Section Computing Pi: Compute Pi with OpenMP
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="Section_Implicit_vs_Explicit_Loops__Head__.html">
-     Section: Implicit vs Explicit Loops
-    </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-    <label for="toctree-checkbox-9">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       Section: Implicit vs. Explicit Loops
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Fortran_MOOC.html">Fortran MOOC</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Arrays.html">Section: Arrays</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Allocate_from_Source.html">Section Arrays: Allocate from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Arithmetic.html">Section Arrays: Array Arithmetic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Elements.html">Section Arrays: Array Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Initialization.html">Section Arrays: Array Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Array_Timing.html">Section Arrays: Array Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Assumed.html">Section Arrays: Assumed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Compute_Factorial.html">Section Arrays: Compute Factorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Elemental_Subroutine.html">Section Arrays: Elemental Subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Enlarge_Array.html">Section Arrays: Enlarge Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Identity.html">Section Arrays: Identity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Linear_Transform.html">Section Arrays: Linear Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Matrix.html">Section Arrays: Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Max_Array.html">Section Arrays: Max Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Normalize.html">Section Arrays: Normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Normalize_Performance.html">Section Arrays: Normalize Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Reshape.html">Section Arrays: Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Subarrays.html">Section Arrays: Subarrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Submatrices.html">Section Arrays: Submatrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Arrays_Trace.html">Section Arrays: Trace</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Miscellaneous
- </span>
-</p>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Floating_Point.html">Section: Floating Point</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_IEEE754_16_Zero_vs_Non_Zero.html">Section IEEE754: Zero vs Non - Zero</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Call_By_Semantics.html">Section: Call By Semantics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_In_Reference.html">Section Call By Semantics: Call By In Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Reference.html">Section Call By Semantics: Call By Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Call_By_Semantics_Call_By_Value.html">Section Call By Semantics: Call By Value</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Computing_Pi.html">Section: Computing Pi</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi.html">Section Computing Pi: Compute Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_Computing_Pi_Compute_Pi_OpenMP.html">Section Computing Pi: Compute Pi with OpenMP</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="Section_Implicit_vs_Explicit_Loops__Head__.html">Section: Implicit vs Explicit Loops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Section: Implicit vs. Explicit Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Ball_Throw__Head__.html">Section: Ball Throw</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Ball_Throw.html">Section: Ball Throw</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Content with notebooks</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book/master?urlpath=tree/Fortran_MOOC/Section_Implicit_vs_Explicit_Loops.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/markkhusid/markkhusid-MKDWWW_Fortran_Jupyter_Book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/Fortran_MOOC/Section_Implicit_vs_Explicit_Loops.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Fortran_MOOC/Section_Implicit_vs_Explicit_Loops.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran">
-   This program demonstrates the speed of implicit vs. explicit loops in Fortran.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
-   Build the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
-   Run the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Section: Implicit vs. Explicit Loops</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran">
-   This program demonstrates the speed of implicit vs. explicit loops in Fortran.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">
-   Build the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">
-   Run the Program using FPM (Fortran Package Manager)
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Section: Implicit vs. Explicit Loops</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran">This program demonstrates the speed of implicit vs. explicit loops in Fortran.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="section-implicit-vs-explicit-loops">
 <h1>Section: Implicit vs. Explicit Loops<a class="headerlink" href="#section-implicit-vs-explicit-loops" title="Permalink to this heading">#</a></h1>
-<p>Adapted from: <a class="reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/implicit_loops">https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/implicit_loops</a></p>
+<p>Adapted from: <a class="github reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/implicit_loops">gjbex/Fortran-MOOC</a></p>
 <section id="this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran">
 <h2>This program demonstrates the speed of implicit vs. explicit loops in Fortran.<a class="headerlink" href="#this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran" title="Permalink to this heading">#</a></h2>
 <p>The program will take in a command line argument and construct two argument X argument sized matrices composed of random numbers.  The program will then compute the following:</p>
@@ -766,74 +476,74 @@ title="Print to PDF"
 <p>where: <br>
 <span class="math notranslate nohighlight">\(Result\)</span> is the summation result <br>
 <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are command line argument X command line argument sized matrices</p>
-<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">real32_vs_real64</span><span class="w"></span>
-<span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">I8</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">INT64</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
-<span class="w">        </span><span class="n">SP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL32</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="w"></span>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">real32_vs_real64</span>
+<span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">I8</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">INT64</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="n">SP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL32</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span>
 <span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_values</span><span class="w"></span>
-<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">SP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span><span class="w"></span>
+<span class="k">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_values</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">SP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span>
 <span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">SP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">result</span>
-<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start_time</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="w"></span>
-<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="k">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">start_time</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
 
-<span class="w">    </span><span class="k">call </span><span class="n">get_argument</span><span class="p">(</span><span class="n">nr_values</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">get_argument</span><span class="p">(</span><span class="n">nr_values</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c">! implicit loops</span>
-<span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: can not allocate x_sp/y_sp&#39;</span><span class="w"></span>
-<span class="w">        </span><span class="k">stop </span><span class="mi">1</span><span class="w"></span>
+<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: can not allocate x_sp/y_sp&#39;</span>
+<span class="w">        </span><span class="k">stop </span><span class="mi">1</span>
 <span class="w">    </span><span class="k">end if</span>
-<span class="k">    call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">y_sp</span><span class="p">)</span><span class="w"></span>
+<span class="k">    call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">y_sp</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x_sp</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y_sp</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Implicit loop time [s]: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x_sp</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y_sp</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Implicit loop time [s]: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span>
 <span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Summation result: &#39;</span><span class="p">,</span><span class="w"> </span><span class="k">result</span>
-<span class="k">    deallocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span><span class="p">)</span><span class="w"></span>
+<span class="k">    deallocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c">! explicit loops</span>
-<span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">nr_values</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: can not allocate x_sp/y_sp&#39;</span><span class="w"></span>
-<span class="w">        </span><span class="k">stop </span><span class="mi">1</span><span class="w"></span>
+<span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: can not allocate x_sp/y_sp&#39;</span>
+<span class="w">        </span><span class="k">stop </span><span class="mi">1</span>
 <span class="w">    </span><span class="k">end if</span>
-<span class="k">    call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">y_sp</span><span class="p">)</span><span class="w"></span>
+<span class="k">    call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">random_number</span><span class="p">(</span><span class="n">y_sp</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_SP</span><span class="w"></span>
-<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">start_time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_SP</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">x_sp</span><span class="p">)</span>
+<span class="w">        </span><span class="k">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">x_sp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y_sp</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end do</span>
-<span class="k">    call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Explicit loop time [s]: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="w"></span>
+<span class="k">    call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">end_time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Explicit loop time [s]: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span>
 <span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F20.8)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Summation result: &#39;</span><span class="p">,</span><span class="w"> </span><span class="k">result</span>
-<span class="k">    deallocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span><span class="p">)</span><span class="w"></span>
+<span class="k">    deallocate</span><span class="w"> </span><span class="p">(</span><span class="n">x_sp</span><span class="p">,</span><span class="w"> </span><span class="n">y_sp</span><span class="p">)</span>
 
 <span class="k">contains</span>
 
-<span class="k">    subroutine </span><span class="n">get_argument</span><span class="p">(</span><span class="n">nr_values</span><span class="p">)</span><span class="w"></span>
+<span class="k">    subroutine </span><span class="n">get_argument</span><span class="p">(</span><span class="n">nr_values</span><span class="p">)</span>
 <span class="w">        </span><span class="k">implicit none</span>
-<span class="k">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">Kind</span><span class="o">=</span><span class="n">I8</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_values</span><span class="w"></span>
-<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="w"></span>
-<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span><span class="w"></span>
+<span class="k">        </span><span class="kt">integer</span><span class="p">(</span><span class="nb">Kind</span><span class="o">=</span><span class="n">I8</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_values</span>
+<span class="w">        </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">command_argument_count</span><span class="p">()</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: expect number of values&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="k">stop </span><span class="mi">2</span><span class="w"></span>
+<span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: expect number of values&#39;</span>
+<span class="w">            </span><span class="k">stop </span><span class="mi">2</span>
 <span class="w">        </span><span class="k">end if</span>
-<span class="k">        call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=*</span><span class="p">,</span><span class="w"> </span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="n">nr_values</span><span class="w"></span>
+<span class="k">        call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=*</span><span class="p">,</span><span class="w"> </span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="n">nr_values</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(2A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="k">stop </span><span class="mi">3</span><span class="w"></span>
+<span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(2A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">            </span><span class="k">stop </span><span class="mi">3</span>
 <span class="w">        </span><span class="k">end if</span>
-<span class="k">    end subroutine </span><span class="n">get_argument</span><span class="w"></span>
+<span class="k">    end subroutine </span><span class="n">get_argument</span>
 
-<span class="k">end program </span><span class="n">real32_vs_real64</span><span class="w"></span>
+<span class="k">end program </span><span class="n">real32_vs_real64</span>
 </pre></div>
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
@@ -869,6 +579,19 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%] libSection_Implicit_vs_Explici
+[ 33%] libSection_Implicit_vs_Explici  done.
+[ 33%] section_implicit_vs_explicit_l
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 66%] section_implicit_vs_explicit_l  done.
+[ 66%] Section_Implicit_vs_Explicit_L
+[100%] Section_Implicit_vs_Explicit_L  done.
+[100%] Project compiled successfully.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
@@ -880,10 +603,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000200
-Summation result:           4.65919161
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000100
+Summation result:           8.62599087
 Explicit loop time [s]:           0.00000100
-Summation result:           7.27051687
+Summation result:          10.00116730
 </pre></div>
 </div>
 </div>
@@ -895,10 +618,10 @@ Summation result:           7.27051687
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000100
-Summation result:          74.83058167
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000200
+Summation result:          77.57578278
 Explicit loop time [s]:           0.00000100
-Summation result:          75.44337463
+Summation result:          74.62050629
 </pre></div>
 </div>
 </div>
@@ -911,9 +634,9 @@ Summation result:          75.44337463
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000200
-Summation result:         765.04614258
+Summation result:         753.60321045
 Explicit loop time [s]:           0.00000300
-Summation result:         752.54040527
+Summation result:         760.39465332
 </pre></div>
 </div>
 </div>
@@ -926,9 +649,9 @@ Summation result:         752.54040527
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00001000
-Summation result:        7596.40478516
-Explicit loop time [s]:           0.00002200
-Summation result:        7636.32568359
+Summation result:        7601.47216797
+Explicit loop time [s]:           0.00002100
+Summation result:        7652.75732422
 </pre></div>
 </div>
 </div>
@@ -940,10 +663,10 @@ Summation result:        7636.32568359
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00010400
-Summation result:       76596.13281250
-Explicit loop time [s]:           0.00031700
-Summation result:       76612.98437500
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00012000
+Summation result:       76693.43750000
+Explicit loop time [s]:           0.00023900
+Summation result:       76563.52343750
 </pre></div>
 </div>
 </div>
@@ -955,10 +678,10 @@ Summation result:       76612.98437500
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00123900
-Summation result:      765123.62500000
-Explicit loop time [s]:           0.00224100
-Summation result:      765026.37500000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00107400
+Summation result:      765408.50000000
+Explicit loop time [s]:           0.00234000
+Summation result:      765084.75000000
 </pre></div>
 </div>
 </div>
@@ -970,12 +693,12 @@ Summation result:      765026.37500000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.01246800
-Summation result:     7670431.00000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.01097000
+Summation result:     7670658.00000000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.02434500
-Summation result:     7669630.00000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.02409799
+Summation result:     7669361.50000000
 </pre></div>
 </div>
 </div>
@@ -987,11 +710,11 @@ Summation result:     7669630.00000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.09551001
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.11800799
 Summation result:    33554432.00000000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.21556097
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.23821402
 Summation result:    33554432.00000000
 </pre></div>
 </div>
@@ -1012,7 +735,7 @@ Summation result:    33554432.00000000
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./Fortran_MOOC"
         },
         predefinedOutput: true
@@ -1020,49 +743,97 @@ Summation result:    33554432.00000000
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Section_Implicit_vs_Explicit_Loops__Head__.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Section: Implicit vs Explicit Loops</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Mark Khusid<br/>
-  
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_Implicit_vs_Explicit_Loops__Head__.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Section: Implicit vs Explicit Loops</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Section_Ball_Throw__Head__.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Section: Ball Throw</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-the-speed-of-implicit-vs-explicit-loops-in-fortran">This program demonstrates the speed of implicit vs. explicit loops in Fortran.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Mark Khusid
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
