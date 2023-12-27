@@ -450,9 +450,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp-the-program-uses-the-following-equation-for-computation">This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran using OpenMP.  The program uses the following equation for computation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp-the-program-uses-the-following-equation-for-computation">This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran using OpenMP.  The program uses the following equation for computation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-section-computing-pi-compute-pi-openmp-f90">In file section_computing_pi_compute_pi_openmp.f90</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterations">10 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">100 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">100,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">100,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1,000,000,000 Iterations</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -473,13 +487,17 @@ document.write(`
 \[
 \Large \pi = 4 \int_{0}^{1} \sqrt{1-x^2}dx
 \]</div>
+<section id="in-file-section-computing-pi-compute-pi-openmp-f90">
+<h3>In file section_computing_pi_compute_pi_openmp.f90<a class="headerlink" href="#in-file-section-computing-pi-compute-pi-openmp-f90" title="Permalink to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">compute_pi_omp</span>
 <span class="w">  </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span><span class="p">,</span><span class="w"> </span><span class="n">I8</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">INT64</span>
 <span class="w">  </span><span class="k">implicit none</span>
 <span class="k">  </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span>
 <span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">delta</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi_val_actual</span>
 
 <span class="w">  </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
+<span class="w">  </span><span class="n">pi_val_actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0_DP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">acos</span><span class="p">(</span><span class="mf">0.0_DP</span><span class="p">)</span>
 <span class="w">  </span><span class="n">nr_iters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_nr_iters</span><span class="p">()</span>
 <span class="w">  </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_DP</span><span class="o">/</span><span class="n">nr_iters</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_DP</span>
@@ -492,8 +510,9 @@ document.write(`
 <span class="w">  </span><span class="c">!$omp end parallel do</span>
 
 <span class="w">  </span><span class="n">pi_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.0_DP</span><span class="o">*</span><span class="n">pi_val</span><span class="o">/</span><span class="n">nr_iters</span>
-<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, I10, A, F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;After &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; loops, Pi = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span>
-
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, I15, A, F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;After &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nr_iters</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot; loops, Pi = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Actual value of Pi = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_val_actual</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="s1">&#39;(A, F25.15)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Absolute difference = &quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">pi_val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pi_val_actual</span><span class="p">)</span>
 <span class="k">contains</span>
 <span class="k">   </span>
 <span class="k">  function </span><span class="n">get_nr_iters</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">nr_iters</span><span class="p">)</span>
@@ -522,6 +541,7 @@ document.write(`
 </div>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 </section>
+</section>
 <section id="build-the-program-using-fpm-fortran-package-manager">
 <h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -532,6 +552,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<p>Since this program uses the OpenMP external library, the fpm.toml file had to be augmented as below.</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;</span>
+
+<span class="k">[build]</span>
+<span class="n">auto-executables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">auto-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">auto-examples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[dependencies]</span>
+<span class="n">openmp</span><span class="o">=</span><span class="s2">&quot;*&quot;</span>
+
+<span class="k">[install]</span>
+<span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="k">[[executable]]</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">&quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;</span>
+<span class="n">source-dir</span><span class="o">=</span><span class="s2">&quot;app&quot;</span>
+<span class="n">main</span><span class="o">=</span><span class="s2">&quot;section_computing_pi_compute_pi_openmp.f90&quot;</span>
+</pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,40 +587,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Since this program uses the OpenMP external library, the fpm.toml file had to be augmented as below.</p>
+<p>We use FPM (Fortran Package Manager) to build and link OpenMP into the executable with the –flag -fopenmp switches.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>bat<span class="w"> </span>fpm.toml
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C238">───────┬────────────────────────────────────────────────────────────────────────</span>
-       <span class=" -Color -Color-C238">│ </span>File: <span class=" -Color -Color-Bold">fpm.toml</span>
-<span class=" -Color -Color-C238">───────┼────────────────────────────────────────────────────────────────────────</span>
-<span class=" -Color -Color-C238">   1</span>   <span class=" -Color -Color-C238">│</span> name = &quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;
-<span class=" -Color -Color-C238">   2</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">   3</span>   <span class=" -Color -Color-C238">│</span> [<span class=" -Color -Color-BGCyan">build</span>]
-<span class=" -Color -Color-C238">   4</span>   <span class=" -Color -Color-C238">│</span> auto-executables = true
-<span class=" -Color -Color-C238">   5</span>   <span class=" -Color -Color-C238">│</span> auto-tests = true
-<span class=" -Color -Color-C238">   6</span>   <span class=" -Color -Color-C238">│</span> auto-examples = true
-<span class=" -Color -Color-C238">   7</span>   <span class=" -Color -Color-C238">│</span> external-modules = &quot;openmp&quot;
-<span class=" -Color -Color-C238">   8</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">   9</span>   <span class=" -Color -Color-C238">│</span> [<span class=" -Color -Color-BGCyan">install</span>]
-<span class=" -Color -Color-C238">  10</span>   <span class=" -Color -Color-C238">│</span> library = false
-<span class=" -Color -Color-C238">  11</span>   <span class=" -Color -Color-C238">│</span> 
-<span class=" -Color -Color-C238">  12</span>   <span class=" -Color -Color-C238">│</span> [[<span class=" -Color -Color-BGCyan">executable</span>]]
-<span class=" -Color -Color-C238">  13</span>   <span class=" -Color -Color-C238">│</span> name=&quot;Section_Computing_Pi_Compute_Pi_OpenMP&quot;
-<span class=" -Color -Color-C238">  14</span>   <span class=" -Color -Color-C238">│</span> source-dir=&quot;app&quot;
-<span class=" -Color -Color-C238">  15</span>   <span class=" -Color -Color-C238">│</span> main=&quot;section_computing_pi_compute_pi_openmp.f90&quot;
-<span class=" -Color -Color-C238">───────┴────────────────────────────────────────────────────────────────────────</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build --flag -fopenmp 2&gt;/dev/null&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -588,289 +598,276 @@ document.write(`
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
 <h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<section id="iterations">
+<h3>10 Iterations<a class="headerlink" href="#iterations" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         10 loops, Pi =         2.904518326248318
-After         10 loops, Pi =         2.904518326248318
-32.4 ms ± 2.69 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.3 ms ± 6.08 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After              10 loops, Pi =         2.904518326248318
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.237074327341475
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>100 Iterations<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
-After        100 loops, Pi =         3.120417031779045
-33.4 ms ± 4.85 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.9 ms ± 9.57 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After             100 loops, Pi =         3.120417031779046
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.021175621810747
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>1,000 Iterations<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
-After       1000 loops, Pi =         3.139555466911023
-32.6 ms ± 2.77 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.2 ms ± 11.1 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After            1000 loops, Pi =         3.139555466911027
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.002037186678766
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>10,000 Iterations<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
-After      10000 loops, Pi =         3.141391477611321
-32.8 ms ± 3.68 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37 ms ± 9.62 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After           10000 loops, Pi =         3.141391477611325
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000201175978468
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
+</div>
+</div>
+</section>
+<section id="id4">
+<h3>100,000 Iterations<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
-After     100000 loops, Pi =         3.141572616402007
-31.5 ms ± 2.81 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>45.9 ms ± 13.8 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After          100000 loops, Pi =         3.141572616401988
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000020037187805
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>1,000,000 Iterations<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
-After    1000000 loops, Pi =         3.141590652413977
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After    1000000 loops, Pi =         3.141590652413977
-35.7 ms ± 3.1 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48 ms ± 14.4 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10000000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After         1000000 loops, Pi =         3.141590652413799
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000002001175994
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-After   10000000 loops, Pi =         3.141592453552712
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>10,000,000 Iterations<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 2
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 10000000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-After   10000000 loops, Pi =         3.141592453552712
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After   10000000 loops, Pi =         3.141592453552712
-58.9 ms ± 4.68 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.7 ms ± 9.44 ms per loop (mean ± std. dev. of 10 runs, 2 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100000000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After        10000000 loops, Pi =         3.141592453552619
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000000200037174
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-After  100000000 loops, Pi =         3.141592633586875
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>100,000,000 Iterations<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 2
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 100000000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-After  100000000 loops, Pi =         3.141592633586875
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  100000000 loops, Pi =         3.141592633586875
-After  100000000 loops, Pi =         3.141592633586875
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>267 ms ± 14.6 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80.4 ms ± 16.6 ms per loop (mean ± std. dev. of 10 runs, 2 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 1
-<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000000000 2&gt;/dev/null&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 1000000000 loops, Pi =         3.141592651590121
-2.21 s ± 49.4 ms per loop (mean ± std. dev. of 10 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After       100000000 loops, Pi =         3.141592633588637
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000000020001156
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="id8">
+<h3>1,000,000,000 Iterations<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it -r 10 -n 2
+<span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run -- 1000000000 2&gt;/dev/null &gt; output.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>367 ms ± 18.9 ms per loop (mean ± std. dev. of 10 runs, 2 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cat</span> output.txt
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After      1000000000 loops, Pi =         3.141592651589789
+Actual value of Pi =         3.141592653589793
+Absolute difference =         0.000000002000004
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -937,9 +934,23 @@ After  100000000 loops, Pi =         3.141592633586875
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp-the-program-uses-the-following-equation-for-computation">This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran using OpenMP.  The program uses the following equation for computation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-computing-pi-in-fortran-using-openmp-the-program-uses-the-following-equation-for-computation">This program demonstrates computing <span class="math notranslate nohighlight">\(\pi\)</span> in Fortran using OpenMP.  The program uses the following equation for computation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-section-computing-pi-compute-pi-openmp-f90">In file section_computing_pi_compute_pi_openmp.f90</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-program-using-fpm-fortran-package-manager">Build the Program using FPM (Fortran Package Manager)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-program-using-fpm-fortran-package-manager">Run the Program using FPM (Fortran Package Manager)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterations">10 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">100 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">100,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">100,000,000 Iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1,000,000,000 Iterations</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

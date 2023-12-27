@@ -4,7 +4,9 @@ name = "Section_Computing_Pi_Compute_Pi_OpenMP"
 auto-executables = true
 auto-tests = true
 auto-examples = true
-external-modules = "openmp"
+
+[dependencies]
+openmp="*"
 
 [install]
 library = false

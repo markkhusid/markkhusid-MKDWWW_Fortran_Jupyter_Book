@@ -3,8 +3,10 @@ program compute_pi_omp
   implicit none
   integer(kind=I8) :: i, nr_iters
   real(kind=DP) :: delta, x, pi_val
+  real(kind=DP) :: pi_val_actual
 
   pi_val = 0.0_DP
+  pi_val_actual = 2.0_DP * acos(0.0_DP)
   nr_iters = get_nr_iters()
   delta = 1.0_DP/nr_iters
   x = 0.0_DP
@@ -17,8 +19,9 @@ program compute_pi_omp
   !$omp end parallel do
 
   pi_val = 4.0_DP*pi_val/nr_iters
-  print '(A, I10, A, F25.15)', "After ", nr_iters, " loops, Pi = ", pi_val
-
+  print '(A, I15, A, F25.15)', "After ", nr_iters, " loops, Pi = ", pi_val
+  print '(A, F25.15)', "Actual value of Pi = ", pi_val_actual
+  print '(A, F25.15)', "Absolute difference = ", abs(pi_val - pi_val_actual)
 contains
    
   function get_nr_iters() result(nr_iters)
