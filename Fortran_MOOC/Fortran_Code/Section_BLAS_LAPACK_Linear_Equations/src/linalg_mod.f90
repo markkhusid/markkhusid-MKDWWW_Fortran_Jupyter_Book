@@ -136,7 +136,7 @@ contains
         end if
 
         do i = 1, size(vector)
-            write (unit=unit_nr, fmt='(E27.15)') vector(i)
+            write (unit=unit_nr, fmt='(F27.15)') vector(i)
         end do
 
         if (present(file_name)) close (unit_nr)
@@ -161,7 +161,7 @@ contains
         end if
 
         do i = 1, size(matrix, 1)
-            write (unit=unit_nr, fmt='(*(E27.15))') matrix(i, :)
+            write (unit=unit_nr, fmt='(*(F27.15))') matrix(i, :)
         end do
 
         if (present(file_name)) close (unit_nr)

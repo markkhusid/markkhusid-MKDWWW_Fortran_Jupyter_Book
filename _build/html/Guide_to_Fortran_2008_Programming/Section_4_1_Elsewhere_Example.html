@@ -180,6 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays.html">Analyzing Time Series Data with Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -531,15 +532,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%] section_4_1_elsewhere_example.
-[ 50%] section_4_1_elsewhere_example.  done.
-[ 50%]  Section_4_1_Elsewhere_Example
-[100%]  Section_4_1_Elsewhere_Example  done.
-[100%] Project compiled successfully.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -548,21 +540,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.0  2.3  2.8  2.7  2.4  2.4  2.2  3.0  2.8  2.1  2.7  2.6  2.1  2.3  2.4
- -2.9  0.0  2.3  2.1  2.7  2.2  2.2  2.1  2.5  2.9  2.4  2.0  2.4  2.4  2.7
- -2.1 -2.9  0.0  2.2  2.3  2.9  2.7  2.4  2.6  3.0  2.9  2.0  2.4  2.2  2.5
- -2.3 -2.0 -2.4  0.0  2.7  2.9  2.7  2.4  2.8  2.8  2.4  2.3  2.2  2.7  2.4
- -2.8 -2.9 -2.9 -2.1  0.0  2.5  2.8  2.6  2.9  2.2  2.9  2.2  2.1  2.9  2.7
- -2.7 -2.4 -3.0 -2.8 -2.1  0.0  2.4  2.9  2.9  2.3  2.8  2.5  3.0  2.7  2.0
- -2.1 -2.9 -2.9 -2.5 -2.2 -2.0  0.0  2.6  2.8  2.9  2.8  2.7  2.4  2.6  2.4
- -2.2 -2.9 -2.3 -2.5 -2.6 -2.3 -2.4  0.0  2.6  2.5  2.0  2.7  2.9  2.6  2.5
- -2.1 -2.6 -2.5 -2.0 -2.3 -2.8 -2.8 -2.8  0.0  2.4  2.8  2.9  2.6  2.9  2.4
- -2.1 -2.9 -2.1 -2.5 -3.0 -2.5 -2.3 -2.8 -2.6  0.0  2.3  2.8  2.4  2.1  2.9
- -2.4 -2.8 -2.1 -2.6 -2.8 -2.8 -2.5 -2.4 -2.2 -2.5  0.0  2.8  2.9  2.4  2.6
- -3.0 -2.9 -2.1 -2.4 -2.1 -3.0 -2.6 -2.4 -2.1 -2.2 -2.8  0.0  2.6  2.5  2.9
- -2.3 -2.6 -2.9 -2.3 -2.9 -2.6 -2.6 -2.0 -2.4 -2.3 -2.9 -2.5  0.0  2.8  2.7
- -2.7 -2.1 -2.6 -2.1 -2.4 -2.3 -2.1 -2.4 -2.2 -3.0 -2.9 -2.3 -2.4  0.0  2.4
- -2.0 -2.1 -2.3 -2.4 -2.9 -2.3 -2.3 -2.0 -2.5 -2.4 -2.9 -2.5 -2.1 -2.6  0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.0  2.8  2.8  2.5  3.0  2.8  2.2  2.2  3.0  2.5  2.4  2.8  2.3  2.8  2.5
+ -2.3  0.0  2.3  2.7  2.3  2.3  2.9  2.5  2.9  2.8  2.3  2.4  2.4  2.8  3.0
+ -2.7 -2.2  0.0  2.0  2.1  2.2  2.8  2.3  2.2  2.5  2.3  2.9  2.4  2.5  2.9
+ -2.4 -2.2 -2.2  0.0  2.6  2.1  2.2  2.6  2.5  2.9  2.6  2.4  2.2  2.7  2.7
+ -2.5 -2.5 -2.9 -2.5  0.0  2.5  2.0  2.9  2.4  2.6  2.8  2.9  2.6  2.8  2.6
+ -2.4 -2.2 -2.1 -2.4 -2.3  0.0  2.5  2.6  2.5  2.6  2.5  2.6  2.5  2.9  2.8
+ -2.7 -2.9 -2.2 -2.9 -2.8 -3.0  0.0  2.5  2.8  3.0  2.9  2.8  2.9  2.6  2.0
+ -2.1 -2.8 -2.9 -2.7 -2.9 -2.7 -2.2  0.0  2.2  2.2  2.1  2.5  2.9  2.1  2.8
+ -2.5 -2.3 -2.1 -2.2 -2.6 -2.0 -2.2 -2.3  0.0  2.7  2.9  2.1  2.3  2.7  2.8
+ -2.8 -2.7 -3.0 -2.1 -2.5 -2.8 -2.1 -2.1 -2.7  0.0  2.5  2.8  2.9  2.7  2.3
+ -3.0 -2.9 -2.3 -2.5 -2.8 -2.5 -2.2 -2.7 -2.6 -2.2  0.0  2.4  3.0  2.4  2.8
+ -2.5 -3.0 -3.0 -2.2 -2.9 -3.0 -2.2 -2.2 -2.4 -2.7 -2.4  0.0  2.7  2.8  2.9
+ -2.7 -2.8 -2.7 -2.5 -2.9 -2.8 -2.4 -2.5 -2.8 -2.8 -3.0 -2.2  0.0  2.1  2.8
+ -2.0 -2.8 -3.0 -2.1 -2.1 -2.9 -2.2 -2.0 -2.1 -2.0 -2.2 -3.0 -2.8  0.0  2.2
+ -2.6 -2.6 -3.0 -2.2 -2.5 -2.3 -2.8 -2.4 -2.9 -2.4 -2.9 -2.6 -2.8 -2.9  0.0
 
     0    1    1    1    1    1    1    1    1    1    1    1    1    1    1
    -1    0    1    1    1    1    1    1    1    1    1    1    1    1    1

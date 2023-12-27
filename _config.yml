@@ -32,4 +32,12 @@ sphinx:
   config:
     html_show_copyright: false
     
+# Configuration file for Jupyter Book
 
+# Use the PyData Sphinx Theme
+html_theme: pydata_sphinx_theme
+
+# Theme options
+html_theme_options:
+  # Set the color theme (light, dark, or auto)
+  color_theme: dark

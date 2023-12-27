@@ -182,6 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays.html">Analyzing Time Series Data with Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -667,7 +668,7 @@ b_{n}
 <span class="w">        </span><span class="k">end if</span>
 
 <span class="k">        do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span>
-<span class="w">            </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">unit_nr</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(E27.15)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">            </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">unit_nr</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(F27.15)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">vector</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="w">        </span><span class="k">end do</span>
 
 <span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span><span class="w"> </span><span class="k">close</span><span class="w"> </span><span class="p">(</span><span class="n">unit_nr</span><span class="p">)</span>
@@ -692,7 +693,7 @@ b_{n}
 <span class="w">        </span><span class="k">end if</span>
 
 <span class="k">        do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">            </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">unit_nr</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(*(E27.15))&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span>
+<span class="w">            </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">unit_nr</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(*(F27.15))&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span>
 <span class="w">        </span><span class="k">end do</span>
 
 <span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">file_name</span><span class="p">))</span><span class="w"> </span><span class="k">close</span><span class="w"> </span><span class="p">(</span><span class="n">unit_nr</span><span class="p">)</span>
@@ -803,33 +804,62 @@ b_{n}
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span>
 <span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linalg_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">read_array</span><span class="p">,</span><span class="w"> </span><span class="n">write_array</span>
 <span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">status</span>
-<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">vector_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">info</span>
+<span class="w">    </span><span class="c">! Made info an integer because the LAPACK routine DGESV uses an explicit</span>
+<span class="w">    </span><span class="c">! interface.  In the explicit interface, the argument info is an integer.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">info</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">matrix_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">vector_file_name</span>
+<span class="w">    </span><span class="c">! The following line no longer works because the LAPACK routine DGESV uses</span>
+<span class="w">    </span><span class="c">! an explicit interface.  In the explicit interface, the argument info</span>
+<span class="w">    </span><span class="c">! is an integer, but in the implicit interface, it is a character(len=1024).</span>
+<span class="w">    </span><span class="c">!character(len=1024) :: matrix_file_name, vector_file_name, info</span>
 <span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pivot</span>
 <span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">DP</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">A</span>
-<span class="w">    </span><span class="k">external</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dgesv</span>
+<span class="w">    </span><span class="c">!external :: dgesv ! not needed in gfortran and throws an error</span>
 
-<span class="w">    </span><span class="k">call </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">matrix_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">vector_file_name</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Explicit interface for the LAPACK routine DGESV</span>
+<span class="w">    </span><span class="k">interface</span>
+<span class="k">        subroutine </span><span class="n">dgesv</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">nrhs</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">lda</span><span class="p">,</span><span class="w"> </span><span class="n">ipiv</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">ldb</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="p">)</span>
+<span class="w">            </span><span class="k">import</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">DP</span>
+<span class="w">            </span><span class="k">implicit none</span>
+<span class="w">            </span><span class="c">! .. Scalar Arguments ..</span>
+<span class="w">            </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">Out</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">info</span>
+<span class="w">            </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">In</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">lda</span><span class="p">,</span><span class="w"> </span><span class="n">ldb</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">nrhs</span>
+<span class="w">            </span><span class="c">! .. Array Arguments ..</span>
+<span class="w">            </span><span class="kt">real</span><span class="w"> </span><span class="p">(</span><span class="nb">Kind</span><span class="o">=</span><span class="n">dp</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="w"> </span><span class="p">(</span><span class="n">Inout</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">ldb</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span>
+<span class="w">            </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">Intent</span><span class="w"> </span><span class="p">(</span><span class="n">Out</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">ipiv</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end subroutine </span><span class="n">dgesv</span>
+<span class="w">    </span><span class="k">end interface</span>
+
+<span class="k">    call </span><span class="n">get_arguments</span><span class="p">(</span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">matrix_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">vector_file_name</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">nr_eqns</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;#error: can not allocate A&#39;</span>
 <span class="w">        </span><span class="k">stop </span><span class="mi">15</span>
 <span class="w">    </span><span class="k">end if</span>
+
 <span class="k">    call </span><span class="n">read_array</span><span class="p">(</span><span class="n">matrix_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">nr_eqns</span><span class="p">,</span><span class="w"> </span><span class="n">nr_eqns</span><span class="w"> </span><span class="p">])</span>
 
 <span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="n">nr_eqns</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;#error: can not allocate b&#39;</span>
 <span class="w">        </span><span class="k">stop </span><span class="mi">15</span>
 <span class="w">    </span><span class="k">end if</span>
+
 <span class="k">    call </span><span class="n">read_array</span><span class="p">(</span><span class="n">vector_file_name</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">nr_eqns</span><span class="w"> </span><span class="p">])</span>
+
 <span class="w">    </span><span class="k">allocate</span><span class="w"> </span><span class="p">(</span><span class="n">pivot</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">b</span><span class="p">)),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">        write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(A, I0)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;# error: can not allocate pivot of size &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="w">        </span><span class="k">stop </span><span class="mi">12</span>
 <span class="w">    </span><span class="k">end if</span>
+
 <span class="k">    call </span><span class="n">dgesv</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">pivot</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">info</span><span class="p">)</span>
+<span class="w">    </span>
 <span class="w">    </span><span class="k">call </span><span class="n">write_array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">deallocate</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">pivot</span><span class="p">)</span>
@@ -848,12 +878,14 @@ b_{n}
 <span class="w">                </span><span class="s1">&#39;# error: argument nr_eqns, matrix_file_name, vector_file_name&#39;</span>
 <span class="w">            </span><span class="k">stop </span><span class="mi">10</span>
 <span class="w">        </span><span class="k">end if</span>
+
 <span class="k">        call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span>
 <span class="w">        </span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=*</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="n">nr_eqns</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">            write</span><span class="w"> </span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;(2A)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;# error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 <span class="w">            </span><span class="k">stop </span><span class="mi">11</span>
 <span class="w">        </span><span class="k">end if</span>
+
 <span class="k">        call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">matrix_file_name</span><span class="p">)</span>
 <span class="w">        </span><span class="k">call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">vector_file_name</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end subroutine </span><span class="n">get_arguments</span>
@@ -911,23 +943,6 @@ b_{n}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%]                 linalg_mod.f90
-[ 16%]                 linalg_mod.f90  done.
-[ 16%] libSection_BLAS_LAPACK_Linear_
-[ 33%] libSection_BLAS_LAPACK_Linear_  done.
-[ 33%]            solve_equations.f90
-[ 50%]            solve_equations.f90  done.
-
-app/solve_equations.f90:31:69:
-
-   31 |     call dgesv(size(A, 2), 1, A, size(A, 1), pivot, b, size(b), info)
-      |                                                                     1
-Error: Procedure ‘dgesv’ called with an implicit interface at (1) [-Werror=implicit-interface]
-f951: some warnings being treated as errors
 </pre></div>
 </div>
 </div>
@@ -1047,15 +1062,8 @@ x_2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%]            solve_equations.f90
-[ 25%]            solve_equations.f90  done.
-
-app/solve_equations.f90:31:69:
-
-   31 |     call dgesv(size(A, 2), 1, A, size(A, 1), pivot, b, size(b), info)
-      |                                                                     1
-Error: Procedure ‘dgesv’ called with an implicit interface at (1) [-Werror=implicit-interface]
-f951: some warnings being treated as errors
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         -2.000000000000000
+          3.000000000000000
 </pre></div>
 </div>
 </div>
@@ -1106,65 +1114,170 @@ x2 = 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ParserError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">A</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s2">&quot;A_test2.txt&quot;</span><span class="p">,</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">A</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1282,</span> in <span class="ni">read_table</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1269</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1270</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1271</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1279</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1280</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1282</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:617,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
-<span class="g g-Whitespace">    </span><span class="mi">616</span> <span class="k">with</span> <span class="n">parser</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">617</span>     <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
-
-<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1748,</span> in <span class="ni">TextFileReader.read</span><span class="nt">(self, nrows)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1741</span> <span class="n">nrows</span> <span class="o">=</span> <span class="n">validate_integer</span><span class="p">(</span><span class="s2">&quot;nrows&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="c1"># error: &quot;ParserBase&quot; has no attribute &quot;read&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1744</span>     <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1745</span>         <span class="n">index</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1746</span>         <span class="n">columns</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1747</span>         <span class="n">col_dict</span><span class="p">,</span>
-<span class="ne">-&gt; </span><span class="mi">1748</span>     <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>  <span class="c1"># type: ignore[attr-defined]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1749</span>         <span class="n">nrows</span>
-<span class="g g-Whitespace">   </span><span class="mi">1750</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1751</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1752</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="nn">File ~/mambaforge/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py:234,</span> in <span class="ni">CParserWrapper.read</span><span class="nt">(self, nrows)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">low_memory</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">234</span>         <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">read_low_memory</span><span class="p">(</span><span class="n">nrows</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span>         <span class="c1"># destructive to chunks</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">_concatenate_chunks</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
-
-<span class="nn">File parsers.pyx:843,</span> in <span class="ni">pandas._libs.parsers.TextReader.read_low_memory</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:904,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:879,</span> in <span class="ni">pandas._libs.parsers.TextReader._tokenize_rows</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._check_tokenize_status</span><span class="nt">()</span>
-
-<span class="nn">File parsers.pyx:2058,</span> in <span class="ni">pandas._libs.parsers.raise_parser_error</span><span class="nt">()</span>
-
-<span class="ne">ParserError</span>: Error tokenizing data. C error: Expected 3 fields in line 2, saw 4
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.999518</td>
+      <td>0.730765</td>
+      <td>0.537666</td>
+      <td>0.795326</td>
+      <td>0.603042</td>
+      <td>0.514691</td>
+      <td>0.831528</td>
+      <td>0.655578</td>
+      <td>0.111146</td>
+      <td>0.082799</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.067642</td>
+      <td>0.386842</td>
+      <td>0.623416</td>
+      <td>0.654566</td>
+      <td>0.878998</td>
+      <td>0.212095</td>
+      <td>0.339116</td>
+      <td>0.775732</td>
+      <td>0.590531</td>
+      <td>0.464570</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.953720</td>
+      <td>0.701895</td>
+      <td>0.236746</td>
+      <td>0.974274</td>
+      <td>0.209965</td>
+      <td>0.894153</td>
+      <td>0.376570</td>
+      <td>0.604952</td>
+      <td>0.099158</td>
+      <td>0.752079</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.848380</td>
+      <td>0.970414</td>
+      <td>0.734678</td>
+      <td>0.842611</td>
+      <td>0.004515</td>
+      <td>0.360217</td>
+      <td>0.726035</td>
+      <td>0.220156</td>
+      <td>0.699322</td>
+      <td>0.373664</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.753073</td>
+      <td>0.852045</td>
+      <td>0.271745</td>
+      <td>0.513939</td>
+      <td>0.733491</td>
+      <td>0.542768</td>
+      <td>0.225936</td>
+      <td>0.160468</td>
+      <td>0.132893</td>
+      <td>0.867734</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.742051</td>
+      <td>0.243374</td>
+      <td>0.280300</td>
+      <td>0.453874</td>
+      <td>0.291326</td>
+      <td>0.816184</td>
+      <td>0.008935</td>
+      <td>0.680387</td>
+      <td>0.685971</td>
+      <td>0.391845</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.164353</td>
+      <td>0.021572</td>
+      <td>0.544100</td>
+      <td>0.833401</td>
+      <td>0.069831</td>
+      <td>0.650157</td>
+      <td>0.046093</td>
+      <td>0.739940</td>
+      <td>0.667629</td>
+      <td>0.489956</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.791057</td>
+      <td>0.430724</td>
+      <td>0.472571</td>
+      <td>0.803526</td>
+      <td>0.362557</td>
+      <td>0.165131</td>
+      <td>0.622104</td>
+      <td>0.220706</td>
+      <td>0.627711</td>
+      <td>0.180417</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.711276</td>
+      <td>0.639827</td>
+      <td>0.230442</td>
+      <td>0.427381</td>
+      <td>0.801841</td>
+      <td>0.001238</td>
+      <td>0.341765</td>
+      <td>0.447621</td>
+      <td>0.770039</td>
+      <td>0.686256</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.757372</td>
+      <td>0.328852</td>
+      <td>0.339171</td>
+      <td>0.750230</td>
+      <td>0.048634</td>
+      <td>0.502985</td>
+      <td>0.078318</td>
+      <td>0.591186</td>
+      <td>0.299787</td>
+      <td>0.249752</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>And now we generate the <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> vector:</p>
 <div class="cell docutils container">
@@ -1209,43 +1322,43 @@ x2 = 3.0
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.914628</td>
+      <td>0.479316</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.261707</td>
+      <td>0.457936</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.588643</td>
+      <td>0.627673</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.334762</td>
+      <td>0.870522</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.600650</td>
+      <td>0.559231</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.724658</td>
+      <td>0.574622</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.723074</td>
+      <td>0.998691</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.347790</td>
+      <td>0.416950</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.495246</td>
+      <td>0.409137</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.771957</td>
+      <td>0.408319</td>
     </tr>
   </tbody>
 </table>
@@ -1260,16 +1373,16 @@ x2 = 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     -0.202071285945788E+00
-     -0.633784665553714E+00
-     -0.631080704368926E+00
-     -0.208873435610023E-01
-      0.335360198881879E+00
-      0.993230206615972E-01
-      0.315450977232440E+00
-      0.229422519458424E+00
-      0.488438759811549E+00
-      0.104047447511920E+01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1.203620834091756
+         -1.984366354348622
+          2.874657614865468
+         -1.705254305975049
+         -0.887113089376159
+         -0.361063012952124
+          1.079714037557591
+          0.374300467040254
+         -0.756175023503045
+          2.399298615295449
 </pre></div>
 </div>
 </div>
@@ -1287,16 +1400,16 @@ x2 = 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x1 = -0.202071
-x2 = -0.633785
-x3 = -0.631081
-x4 = -0.020887
-x5 = 0.335360
-x6 = 0.099323
-x7 = 0.315451
-x8 = 0.229423
-x9 = 0.488439
-x10 = 1.040474
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x1 = 1.203621
+x2 = -1.984366
+x3 = 2.874658
+x4 = -1.705254
+x5 = -0.887113
+x6 = -0.361063
+x7 = 1.079714
+x8 = 0.374300
+x9 = -0.756175
+x10 = 2.399299
 </pre></div>
 </div>
 </div>

@@ -182,6 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules.html">Tsunami Simulator with Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Tsunami_Simulator_with_Modules_Plotter.html">Tsunami Simulator with Modules Plotter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Print_Compiler_Version.html">Print Compiler Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Modern_Fortran/Analyzing_Time_Series_Data_with_Arrays.html">Analyzing Time Series Data with Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -579,19 +580,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0%] libSection_Implicit_vs_Explici
-[ 33%] libSection_Implicit_vs_Explici  done.
-[ 33%] section_implicit_vs_explicit_l
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 66%] section_implicit_vs_explicit_l  done.
-[ 66%] Section_Implicit_vs_Explicit_L
-[100%] Section_Implicit_vs_Explicit_L  done.
-[100%] Project compiled successfully.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
@@ -604,9 +592,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000100
-Summation result:           8.62599087
-Explicit loop time [s]:           0.00000100
-Summation result:          10.00116730
+Summation result:           9.14517498
+Explicit loop time [s]:           0.00000000
+Summation result:           8.40009499
 </pre></div>
 </div>
 </div>
@@ -618,10 +606,10 @@ Summation result:          10.00116730
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000200
-Summation result:          77.57578278
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000300
+Summation result:          75.26865387
 Explicit loop time [s]:           0.00000100
-Summation result:          74.62050629
+Summation result:          77.89282227
 </pre></div>
 </div>
 </div>
@@ -634,9 +622,9 @@ Summation result:          74.62050629
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00000200
-Summation result:         753.60321045
+Summation result:         764.68182373
 Explicit loop time [s]:           0.00000300
-Summation result:         760.39465332
+Summation result:         750.94226074
 </pre></div>
 </div>
 </div>
@@ -649,9 +637,9 @@ Summation result:         760.39465332
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00001000
-Summation result:        7601.47216797
+Summation result:        7604.53320312
 Explicit loop time [s]:           0.00002100
-Summation result:        7652.75732422
+Summation result:        7610.01464844
 </pre></div>
 </div>
 </div>
@@ -663,10 +651,10 @@ Summation result:        7652.75732422
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00012000
-Summation result:       76693.43750000
-Explicit loop time [s]:           0.00023900
-Summation result:       76563.52343750
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00010400
+Summation result:       76586.07812500
+Explicit loop time [s]:           0.00021900
+Summation result:       76451.57812500
 </pre></div>
 </div>
 </div>
@@ -678,10 +666,10 @@ Summation result:       76563.52343750
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00107400
-Summation result:      765408.50000000
-Explicit loop time [s]:           0.00234000
-Summation result:      765084.75000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.00114600
+Summation result:      765288.87500000
+Explicit loop time [s]:           0.00219800
+Summation result:      765370.56250000
 </pre></div>
 </div>
 </div>
@@ -693,12 +681,12 @@ Summation result:      765084.75000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.01097000
-Summation result:     7670658.00000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.01087100
+Summation result:     7669132.50000000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.02409799
-Summation result:     7669361.50000000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.02468000
+Summation result:     7669701.50000000
 </pre></div>
 </div>
 </div>
@@ -710,11 +698,11 @@ Summation result:     7669361.50000000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.11800799
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Implicit loop time [s]:           0.10556400
 Summation result:    33554432.00000000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.23821402
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Explicit loop time [s]:           0.23091799
 Summation result:    33554432.00000000
 </pre></div>
 </div>
