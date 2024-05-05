@@ -12,5 +12,5 @@ library = false
 [[executable]]
 name="Section_3_8_Argument_Passing"
 source-dir="app"
-main="series_sum.f90"
+main="section_3_8_argument_passing.f90"
 

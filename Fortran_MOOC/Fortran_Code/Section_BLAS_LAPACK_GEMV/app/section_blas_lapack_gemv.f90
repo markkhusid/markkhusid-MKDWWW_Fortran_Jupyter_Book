@@ -7,7 +7,18 @@ program gemv_test
     real, dimension(cols) :: v = [ 1.0, 2.0 ]
     real, dimension(rows) :: u
     character(len=12) :: fmt_str = '(*(F6.1))'
-    
+   
+    ! Define explicit interface for the BLAS subroutine sgemv
+    interface
+        subroutine sgemv(trans, m, n, alpha, A, lda, x, incx, beta, y, incy)
+            character :: trans
+            integer :: m, n, lda, incx, incy
+            real :: alpha, beta
+            real, dimension(lda, *) :: A
+            real, dimension(*) :: x, y
+        end subroutine sgemv
+    end interface
+
     call print_matrix(A, 'A', fmt_str)
     call print_vector(v, 'v', fmt_str)
     call sgemv('n', rows, cols, 1.0, A, rows, v, 1, 0.0, u, 1)

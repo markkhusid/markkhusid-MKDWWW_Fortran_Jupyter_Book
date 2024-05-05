@@ -6,6 +6,16 @@ program scal
   real(kind=DP), dimension(rows) :: norm
   integer :: row
 
+  ! Define the explicit interface for the BLAS subroutine dscal
+  interface
+      subroutine dscal(n, da, dx, incx)
+          import :: DP
+          integer :: n, incx
+          real(kind=DP) :: da
+          real(kind=DP), dimension(*) :: dx
+      end subroutine dscal
+  end interface
+
   ! Initialize matrix with random numbers
   call random_number(matrix)
   

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Section 8.2: Time Matrix Multiply &#8212; Fortran Programming</title>
   
@@ -19,51 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d5fdc4d5" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Guide_to_Fortran_2008_Programming/Section_8_2_Time_Matrix_Multiply';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -78,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -160,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -261,21 +269,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Ball_Throw.html">Section: Ball Throw</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_Block_Matrices__Head__.html">Section: Block Matrices</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_Block_Matrices.html">Section: Block Matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations.html">Section: BLAS/LAPACK - Linear Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Fortran_MOOC/Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
 </ul>
 </li>
 </ul>
@@ -458,13 +470,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="section-8-2-time-matrix-multiply">
-<h1>Section 8.2: Time Matrix Multiply<a class="headerlink" href="#section-8-2-time-matrix-multiply" title="Permalink to this heading">#</a></h1>
+<h1>Section 8.2: Time Matrix Multiply<a class="headerlink" href="#section-8-2-time-matrix-multiply" title="Link to this heading">#</a></h1>
 <p>Adapted from: “Guide to Fortran 2008 Programming” by Walter S. Brainerd (Springer 2015)</p>
 <section id="program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops">
-<h2>Program to demonstrate the performance improvement of using matmul over do loops.<a class="headerlink" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops" title="Permalink to this heading">#</a></h2>
+<h2>Program to demonstrate the performance improvement of using matmul over do loops.<a class="headerlink" href="#program-to-demonstrate-the-performance-improvement-of-using-matmul-over-do-loops" title="Link to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">time_matrix_multiply</span>
 
 <span class="w">    </span><span class="c">! Compare times of the matmul intrinsic cs DO loops</span>
@@ -585,61 +597,61 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2023-12-26
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Timing report dated: 2024-05-05
 Matrix A
-     0.826     0.448     0.546     0.144     0.603     0.849     0.846     0.219     0.846     0.739
-     0.632     0.084     0.131     0.831     0.200     0.475     0.203     0.888     0.657     0.233
-     0.411     0.608     0.760     0.897     0.168     0.972     0.645     0.256     0.273     0.205
-     0.334     0.336     0.374     0.596     0.145     0.710     0.388     0.228     0.667     0.258
-     0.950     0.955     0.299     0.765     0.102     0.008     0.697     0.787     0.956     0.870
-     0.431     0.481     0.756     0.338     0.040     0.535     0.220     0.938     0.463     0.284
-     0.456     0.401     0.751     0.462     0.479     0.059     0.202     0.961     0.231     0.616
-     0.980     0.113     0.497     0.692     0.737     0.252     0.040     0.882     0.086     0.918
-     0.165     0.311     0.723     0.574     0.615     0.201     0.756     0.159     0.348     0.385
-     0.001     0.049     0.936     0.031     0.015     0.085     0.560     0.034     0.027     0.665
+     0.002     0.823     0.563     0.533     0.332     0.031     0.789     0.888     0.509     0.445
+     0.069     0.056     0.204     0.167     0.160     0.653     0.756     0.027     0.386     0.847
+     0.120     0.878     0.163     0.250     0.462     0.016     0.843     0.646     0.736     0.236
+     0.809     0.777     0.402     0.680     0.374     0.323     0.904     0.056     0.026     0.569
+     0.438     0.297     0.848     0.910     0.756     0.354     0.215     0.360     0.256     0.760
+     0.999     0.836     0.167     0.732     0.377     0.364     0.068     0.577     0.516     0.568
+     0.712     0.817     0.668     0.418     0.564     0.229     0.849     0.790     0.856     0.137
+     0.194     0.198     0.755     0.798     0.562     0.975     0.941     0.645     0.797     0.682
+     0.102     0.576     0.064     0.399     0.024     0.975     0.117     0.523     0.454     0.537
+     0.621     0.957     0.211     0.659     0.387     0.619     0.388     0.841     0.479     0.351
 
 Matrix B
-     0.569     0.915     0.244     0.353     0.468     0.857     0.220     0.736     0.494     0.455
-     0.371     0.300     0.803     0.528     0.200     0.312     0.478     0.751     0.343     0.814
-     0.044     0.581     0.253     0.413     0.791     0.350     0.762     0.359     0.991     0.360
-     0.131     0.048     0.687     0.774     0.364     0.163     0.961     0.421     0.797     0.873
-     0.670     0.260     0.791     0.261     0.672     0.873     0.755     0.263     0.933     0.136
-     0.193     0.974     0.983     0.754     0.639     0.694     0.100     0.705     0.954     0.528
-     0.981     0.383     0.138     0.212     0.317     0.428     0.713     0.123     0.341     0.081
-     0.521     0.655     0.152     0.644     0.203     0.802     0.306     0.047     0.114     0.376
-     0.299     0.691     0.382     0.577     0.555     0.583     0.449     0.105     0.693     0.451
-     0.104     0.617     0.612     0.442     0.339     0.749     0.237     0.324     0.875     0.543
+     0.763     0.017     0.167     0.528     0.570     0.012     0.439     0.120     0.261     0.124
+     0.219     0.893     0.823     0.729     0.946     0.898     0.242     0.152     0.835     0.660
+     0.098     0.899     0.901     0.668     0.859     0.509     0.778     0.191     0.870     0.625
+     0.101     0.415     0.768     0.592     0.794     0.937     0.085     0.762     0.933     0.960
+     0.807     0.923     0.007     0.883     0.185     0.414     0.432     0.949     0.655     0.847
+     0.646     0.764     0.718     0.726     0.056     0.747     0.979     0.777     0.553     0.272
+     0.307     0.214     0.558     0.282     0.087     0.569     0.165     0.400     0.640     0.741
+     0.268     0.980     0.654     0.305     0.365     0.381     0.676     0.959     0.582     0.447
+     0.784     0.718     0.998     0.688     0.197     0.336     0.737     0.828     0.865     0.683
+     0.820     0.529     0.861     0.309     0.924     0.520     0.753     0.610     0.005     0.833
 
 Matrix C1 is AxB using loops.
-     2.520     3.706     3.037     2.798     2.940     3.762     2.715     2.401     4.136     2.527
-     1.613     2.492     2.008     2.472     1.844     2.610     2.042     1.524     2.602     2.180
-     1.780     2.765     2.844     2.801     2.453     2.570     2.755     2.326     3.581     2.657
-     1.369     2.300     2.169     2.212     1.914     2.170     1.979     1.634     2.785     2.033
-     2.547     3.379     2.802     3.178     2.429     3.574     3.078     2.383     3.555     3.259
-     1.504     2.719     1.996     2.437     2.001     2.575     2.028     1.691     2.696     2.176
-     1.667     2.425     2.017     2.278     2.012     2.767     2.364     1.562     2.856     2.121
-     1.874     2.909     2.496     2.561     2.333     3.442     2.449     2.000     3.471     2.426
-     1.736     1.920     2.049     1.911     2.058     2.204     2.606     1.421     2.981     1.766
-     0.735     1.313     0.893     0.955     1.251     1.202     1.366     0.739     1.859     0.882
+     1.822     3.432     3.530     2.589     2.653     2.876     2.296     2.838     3.373     3.397
+     1.889     1.866     2.395     1.677     1.401     1.877     1.990     2.008     1.702     2.189
+     1.910     2.943     2.927     2.394     1.995     2.406     1.924     2.530     3.003     2.945
+     2.185     2.512     2.951     2.695     2.798     2.786     2.026     2.201     2.904     3.109
+     2.399     3.366     3.305     3.059     3.044     2.875     2.713     3.053     3.212     3.519
+     2.621     3.095     3.251     3.005     3.018     2.690     2.561     2.833     3.063     3.036
+     2.688     3.855     3.846     3.441     2.858     3.022     2.941     3.258     4.079     3.667
+     3.076     4.222     4.523     3.649     2.843     3.678     3.678     4.169     4.195     4.233
+     1.871     2.653     2.878     2.152     1.819     2.360     2.344     2.448     2.264     2.178
+     2.491     3.596     3.582     3.152     2.829     3.100     2.747     3.184     3.509     3.253
 
 Matrix C2 is AxB using matmul.
-     2.520     3.706     3.037     2.798     2.940     3.762     2.715     2.401     4.136     2.527
-     1.613     2.492     2.008     2.472     1.844     2.610     2.042     1.524     2.602     2.180
-     1.780     2.765     2.844     2.801     2.453     2.570     2.755     2.326     3.581     2.657
-     1.369     2.300     2.169     2.212     1.914     2.170     1.979     1.634     2.785     2.033
-     2.547     3.379     2.802     3.178     2.429     3.574     3.078     2.383     3.555     3.259
-     1.504     2.719     1.996     2.437     2.001     2.575     2.028     1.691     2.696     2.176
-     1.667     2.425     2.017     2.278     2.012     2.767     2.364     1.562     2.856     2.121
-     1.874     2.909     2.496     2.561     2.333     3.442     2.449     2.000     3.471     2.426
-     1.736     1.920     2.049     1.911     2.058     2.204     2.606     1.421     2.981     1.766
-     0.735     1.313     0.893     0.955     1.251     1.202     1.366     0.739     1.859     0.882
+     1.822     3.432     3.530     2.589     2.653     2.876     2.296     2.838     3.373     3.397
+     1.889     1.866     2.395     1.677     1.401     1.877     1.990     2.008     1.702     2.189
+     1.910     2.943     2.927     2.394     1.995     2.406     1.924     2.530     3.003     2.945
+     2.185     2.512     2.951     2.695     2.798     2.786     2.026     2.201     2.904     3.109
+     2.399     3.366     3.305     3.059     3.044     2.875     2.713     3.053     3.212     3.519
+     2.621     3.095     3.251     3.005     3.018     2.690     2.561     2.833     3.063     3.036
+     2.688     3.855     3.846     3.441     2.858     3.022     2.941     3.258     4.079     3.667
+     3.076     4.222     4.523     3.649     2.843     3.678     3.678     4.169     4.195     4.233
+     1.871     2.653     2.878     2.152     1.819     2.360     2.344     2.448     2.264     2.178
+     2.491     3.596     3.582     3.152     2.829     3.100     2.747     3.184     3.509     3.253
 
- Time of Do loop version is: .0000829999 seconds.
- Time of matmul version is: .0000109999 seconds.
+ Time of Do loop version is: .0000890000 seconds.
+ Time of matmul version is: .0000100001 seconds.
 
 The results are approximately the same.
 
-The speedup ratio is:      7.546x
+The speedup ratio is:      8.900x
 </pre></div>
 </div>
 </div>
@@ -704,6 +716,7 @@ The speedup ratio is:      7.546x
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -752,8 +765,8 @@ By Mark Khusid
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

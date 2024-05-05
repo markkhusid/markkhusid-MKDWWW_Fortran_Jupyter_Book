@@ -1,0 +1,21 @@
+name = "Section_Block_Matrices"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+
+[install]
+library = false
+
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
+[[executable]]
+name="Section_Block_Matrices"
+source-dir="app"
+main="section_block_matrices.f90"
+

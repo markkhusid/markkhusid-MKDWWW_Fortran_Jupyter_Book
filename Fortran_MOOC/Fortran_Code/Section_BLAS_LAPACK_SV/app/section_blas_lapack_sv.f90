@@ -7,6 +7,26 @@ program sv
   real, dimension(n_matrix, nr_rhs) :: X, B, B_orig
   integer, dimension(n_matrix) :: P
   integer :: info
+  
+  ! Explicit interface for LAPACK routine sgesv
+  interface
+      subroutine sgesv(n, nrhs, A, lda, ipiv, B, ldb, info)
+          integer, intent(in) :: n, nrhs, lda, ldb
+          integer, intent(out) :: info
+          integer, dimension(*), intent(out) :: ipiv
+          real, dimension(lda, *), intent(inout) :: A
+          real, dimension(ldb, *), intent(inout) :: B
+      end subroutine sgesv
+
+      subroutine sgemm(transa, transb, m, n, k, alpha, A, lda, B, ldb, beta, C, ldc)
+          character :: transa, transb
+          integer :: m, n, k, lda, ldb, ldc
+          real :: alpha, beta
+          real, dimension(lda, *) :: A
+          real, dimension(ldb, *) :: B
+          real, dimension(ldc, *) :: C
+      end subroutine sgemm
+  end interface
 
   A = reshape( [ &
       3.0, 5.0, 7.0, &

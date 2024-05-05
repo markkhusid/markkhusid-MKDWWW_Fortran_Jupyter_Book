@@ -7,8 +7,14 @@ program dot_test
   real, dimension(v_size, v_size) :: matrix = reshape( &
       [ (real(i), i=1, v_size*v_size) ], [ v_size, v_size ] &
   )
-  real, external :: sdot
-  
+
+  interface
+    real function sdot(n, sx, incx, sy, incy)
+      integer :: n, incx, incy
+      real, dimension(*) :: sx, sy
+    end function sdot
+  end interface
+
   print '(A20, *(F5.1))', 'vector 1: ', vector1
   print '(A20, *(F5.1))', 'vector 2: ', vector2
   print '(A20, F6.2)', 'vector1 . vector2 = ', &

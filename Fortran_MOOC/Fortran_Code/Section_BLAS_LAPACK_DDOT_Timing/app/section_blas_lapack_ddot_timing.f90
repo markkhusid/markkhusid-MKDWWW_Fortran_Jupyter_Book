@@ -4,9 +4,16 @@ program ddot_timing
   integer :: n, runs, run, i, istat
   real(kind=DP), dimension(:), allocatable :: u, v
   real(kind=DP) :: scale_u, scale_v, r, r_ddot
-  real(kind=DP), external :: ddot
-  real :: start_time, end_time, ddot_time, loop_time
+  real(kind=DP) :: ddot_time, loop_time
+  real :: start_time, end_time 
 
+  interface
+    real(kind=DP) function ddot(n, dx, incx, dy, incy)
+      import :: DP
+      integer :: n, incx, incy
+      real(kind=DP), dimension(*) :: dx, dy
+    end function ddot
+  end interface
 
   call get_arguments(runs, n)
   allocate (u(n), v(n), stat=istat)

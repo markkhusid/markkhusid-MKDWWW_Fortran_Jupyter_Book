@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Section: BLAS/LAPACK - Linear Equations &#8212; Fortran Programming</title>
   
@@ -19,51 +18,47 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d5fdc4d5" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/style-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations';</script>
@@ -80,10 +75,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -124,11 +118,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -162,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -263,21 +271,25 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="Section_Ball_Throw.html">Section: Ball Throw</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Section_Block_Matrices__Head__.html">Section: Block Matrices</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="Section_Block_Matrices.html">Section: Block Matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="Section_BLAS_LAPACK__Head__.html">Section: BLAS/LAPACK</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95__Head__.html">Section: BLAS/LAPACK - BLAS95</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_BLAS95.html">Section: BLAS/LAPACK - BLAS95</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="Section_BLAS_LAPACK_Linear_Equations__Head__.html">Section: BLAS/LAPACK - Linear Equations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">Section: BLAS/LAPACK - Linear Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Dot.html">Section: BLAS/LAPACK - Dot Product</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Copy.html">Section: BLAS/LAPACK - Vector Copy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_DDOT_Timing.html">Section: BLAS/LAPACK - DDOT Timing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_GEMV.html">Section: BLAS/LAPACK - GEMV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_Scal.html">Section: BLAS/LAPACK - SCAL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Section_BLAS_LAPACK_SV.html">Section: BLAS/LAPACK - SV</a></li>
 </ul>
 </li>
 </ul>
@@ -452,6 +464,33 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-solving-linear-algebra-equations-in-fortran">This program demonstrates solving linear algebra equations in Fortran.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-equation-problem">Linear Equation Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-the-programs">Explanation of the Programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-generate-array-f90">Explaining <code class="docutils literal notranslate"><span class="pre">generate_array.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-structure">Program Structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-get-arguments">Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functionalities">Key Functionalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-solve-equations-f90">Explaining <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Program Structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Key Functionalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-linalg-mod-f90">Explaining <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-structure-and-functions">Module Structure and Functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutines-for-vector-and-matrix-handling">Subroutines for Vector and Matrix Handling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functionalities-and-error-handling">Key Functionalities and Error Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-code">Program Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-linalg-mod-f90">In file linalg_mod.f90</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-generate-array-f90">In file generate_array.f90</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-solve-equations-f90">In solve_equations.f90</a></li>
@@ -472,15 +511,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="section-blas-lapack-linear-equations">
-<h1>Section: BLAS/LAPACK - Linear Equations<a class="headerlink" href="#section-blas-lapack-linear-equations" title="Permalink to this heading">#</a></h1>
+<h1>Section: BLAS/LAPACK - Linear Equations<a class="headerlink" href="#section-blas-lapack-linear-equations" title="Link to this heading">#</a></h1>
 <p>Adapted from: <a class="github reference external" href="https://github.com/gjbex/Fortran-MOOC/tree/master/source_code/blas_lapack/linear_equations">gjbex/Fortran-MOOC</a></p>
 <section id="this-program-demonstrates-solving-linear-algebra-equations-in-fortran">
-<h2>This program demonstrates solving linear algebra equations in Fortran.<a class="headerlink" href="#this-program-demonstrates-solving-linear-algebra-equations-in-fortran" title="Permalink to this heading">#</a></h2>
+<h2>This program demonstrates solving linear algebra equations in Fortran.<a class="headerlink" href="#this-program-demonstrates-solving-linear-algebra-equations-in-fortran" title="Link to this heading">#</a></h2>
 <section id="linear-equation-problem">
-<h3>Linear Equation Problem<a class="headerlink" href="#linear-equation-problem" title="Permalink to this heading">#</a></h3>
+<h3>Linear Equation Problem<a class="headerlink" href="#linear-equation-problem" title="Link to this heading">#</a></h3>
 <p>In this notebook we will use Fortran to solve a system of linear equations of the form:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -526,10 +565,241 @@ b_{n}
 <p>The approach will be to have a main program that reads in as parameters the number of equations, the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and the vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as text files.  The main program is called <em>solve_equations.f90</em>.  It makes use of the LAPACK linear equation solver routine called <strong>DGESV</strong>.  Information on this routine can be found at <a class="reference external" href="https://netlib.org/lapack/explore-html/d7/d3b/group__double_g_esolve_ga5ee879032a8365897c3ba91e3dc8d512.html#ga5ee879032a8365897c3ba91e3dc8d512">LAPACK - DGESV</a>.</p>
 <p>The main program makes use of a module called <em>linalg_mod.f90</em>, which contains subroutines to read and write matrices and arrays to and from text files.</p>
 <p>Finally, there is a helper program called <em>generate_array.f90</em> which has a subroutine that gets arguments from the command line and generates either of vector or matrix of specified size.  Every element in the array or matrix is a random number.</p>
-<p>The individual program files are listed below:</p>
 </section>
+</section>
+<section id="explanation-of-the-programs">
+<h2>Explanation of the Programs<a class="headerlink" href="#explanation-of-the-programs" title="Link to this heading">#</a></h2>
+<section id="explaining-generate-array-f90">
+<h3>Explaining <code class="docutils literal notranslate"><span class="pre">generate_array.f90</span></code><a class="headerlink" href="#explaining-generate-array-f90" title="Link to this heading">#</a></h3>
+<p>The Fortran program <code class="docutils literal notranslate"><span class="pre">generate_array.f90</span></code> serves to generate either a vector or a matrix with random elements, depending on the command line arguments provided. It uses routines from a module named <code class="docutils literal notranslate"><span class="pre">linalg_mod</span></code> to handle array creation and output. Below is an explanation of the program structure and its key components:</p>
+<section id="program-structure">
+<h4>Program Structure<a class="headerlink" href="#program-structure" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Module Usage</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_fortran_env</span></code>: Utilized for standard environment variables and constants, specifically <code class="docutils literal notranslate"><span class="pre">error_unit</span></code> for error messages and <code class="docutils literal notranslate"><span class="pre">DP</span></code> alias for <code class="docutils literal notranslate"><span class="pre">REAL64</span></code>, indicating double precision.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linalg_mod</span></code>: Externally defined module used here for <code class="docutils literal notranslate"><span class="pre">write_array</span></code> and <code class="docutils literal notranslate"><span class="pre">generate_random_array</span></code>, which handle array operations.</p></li>
+</ul>
+</li>
+<li><p><strong>Variable Declarations</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dimensions</span></code>: An allocatable integer array to store dimensions provided via command-line arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code>: An allocatable vector of type <code class="docutils literal notranslate"><span class="pre">real(kind=DP)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code>: An allocatable 2D array of type <code class="docutils literal notranslate"><span class="pre">real(kind=DP)</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Main Execution Logic</strong></p>
+<ul class="simple">
+<li><p>It begins by fetching command-line arguments into <code class="docutils literal notranslate"><span class="pre">dimensions</span></code>.</p></li>
+<li><p>Based on the size of <code class="docutils literal notranslate"><span class="pre">dimensions</span></code>, it either generates a 1D vector or a 2D matrix:</p>
+<ul>
+<li><p>For a single dimension, a vector of random elements is created and written.</p></li>
+<li><p>For two dimensions, a matrix is created and written.</p></li>
+</ul>
+</li>
+<li><p>If neither one nor two dimensions are provided, it outputs an error indicating that only rank 1 and 2 arrays are supported.</p></li>
+</ul>
+</li>
+<li><p><strong>Error Handling</strong></p>
+<ul class="simple">
+<li><p>The program checks for proper memory allocation and command-line argument processing, with appropriate error messages and stops if any issues occur.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="subroutine-get-arguments">
+<h4>Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code><a class="headerlink" href="#subroutine-get-arguments" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Fetches command-line arguments to determine the size of the array to be generated.</p></li>
+<li><p><strong>Process</strong>:</p>
+<ul>
+<li><p>Determines the number of arguments (<code class="docutils literal notranslate"><span class="pre">rank</span></code>).</p></li>
+<li><p>Allocates the <code class="docutils literal notranslate"><span class="pre">dimensions</span></code> array based on <code class="docutils literal notranslate"><span class="pre">rank</span></code>.</p></li>
+<li><p>Reads each command argument into <code class="docutils literal notranslate"><span class="pre">dimensions</span></code>, converting from string to integer.</p></li>
+<li><p>Handles errors in conversion and allocation, stopping the program if necessary.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="key-functionalities">
+<h3>Key Functionalities<a class="headerlink" href="#key-functionalities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Array Generation</strong>: Depending on the input dimensions, it generates either a vector or a matrix with random values.</p></li>
+<li><p><strong>Modular Design</strong>: Leverages external modules for specific functionalities, which simplifies the main program.</p></li>
+<li><p><strong>Flexibility</strong>: The ability to handle both vectors and matrices makes the program versatile for different kinds of numerical data generation tasks.</p></li>
+</ul>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The program is executed with command-line arguments specifying the dimensions of the array to generate. For example:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">./generate_array</span> <span class="pre">10</span></code> would generate a vector of size 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./generate_array</span> <span class="pre">3</span> <span class="pre">4</span></code> would generate a 3x4 matrix.</p></li>
+</ul>
+</li>
+</ul>
+<p>Now, let’s move on to read and explain the <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code> file.</p>
+</section>
+<section id="explaining-solve-equations-f90">
+<h3>Explaining <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code><a class="headerlink" href="#explaining-solve-equations-f90" title="Link to this heading">#</a></h3>
+<p>The Fortran program <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code> is designed to solve a system of linear equations using LAPACK’s <code class="docutils literal notranslate"><span class="pre">dgesv</span></code> subroutine, which solves systems of linear equations ( AX = B ) by performing LU decomposition with partial pivoting. Here’s a breakdown of its key components and functionalities:</p>
+<section id="id1">
+<h4>Program Structure<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Module Usage</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iso_fortran_env</span></code>: Standard intrinsic module providing access to the <code class="docutils literal notranslate"><span class="pre">error_unit</span></code> and <code class="docutils literal notranslate"><span class="pre">DP</span></code> (double precision kind type alias).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linalg_mod</span></code>: Custom module providing <code class="docutils literal notranslate"><span class="pre">read_array</span></code> and <code class="docutils literal notranslate"><span class="pre">write_array</span></code> functions, used to handle input/output operations for matrices and vectors.</p></li>
+</ul>
+</li>
+<li><p><strong>Variable Declarations</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nr_eqns</span></code>: Number of equations in the system, derived from command-line arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">info</span></code>: Variables for checking statuses of operations; <code class="docutils literal notranslate"><span class="pre">info</span></code> is used specifically with <code class="docutils literal notranslate"><span class="pre">dgesv</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix_file_name</span></code>, <code class="docutils literal notranslate"><span class="pre">vector_file_name</span></code>: File names for storing matrix ( A ) and vector ( B ).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code>: Vector ( B ) in the equation ( AX = B ).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pivot</span></code>: Integer array for pivot indices from the LU decomposition.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: Matrix ( A ) of the system.</p></li>
+</ul>
+</li>
+<li><p><strong>Explicit Interface for <code class="docutils literal notranslate"><span class="pre">dgesv</span></code></strong></p>
+<ul class="simple">
+<li><p>The subroutine’s interface is explicitly defined to ensure correct passing of arguments:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">nrhs</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">lda</span></code>, <code class="docutils literal notranslate"><span class="pre">ipiv</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">ldb</span></code>, and <code class="docutils literal notranslate"><span class="pre">info</span></code> describe the system dimensions, matrix and vector storage details, and output for status information.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Main Execution Logic</strong></p>
+<ul class="simple">
+<li><p><strong>Argument Reading</strong>: Fetches command-line arguments to determine the number of equations and file names for matrix ( A ) and vector ( B ).</p></li>
+<li><p><strong>Array Allocation</strong>: Allocates memory for ( A ), ( B ), and pivot indices.</p></li>
+<li><p><strong>File Reading</strong>: Reads matrix ( A ) and vector ( B ) from files specified by the user.</p></li>
+<li><p><strong>System Solving</strong>: Calls <code class="docutils literal notranslate"><span class="pre">dgesv</span></code> to solve the linear system, where ( A ) is modified to store the factors from the LU decomposition, and ( B ) is overwritten with the solution ( X ).</p></li>
+<li><p><strong>Output</strong>: Writes the solution vector ( X ) back to a file.</p></li>
+</ul>
+</li>
+<li><p><strong>Error Handling</strong></p>
+<ul class="simple">
+<li><p>Checks for successful allocation and reading operations, with appropriate error messages and program termination on failures.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id2">
+<h4>Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Fetches and validates command-line arguments to ensure correct program setup.</p></li>
+<li><p><strong>Parameters</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">nr_eqns</span></code>: Number of equations/system size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matrix_file_name</span></code>, <code class="docutils literal notranslate"><span class="pre">vector_file_name</span></code>: File paths for the matrix and vector data.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h3>Key Functionalities<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Linear System Solver</strong>: Uses <code class="docutils literal notranslate"><span class="pre">dgesv</span></code> for robust and efficient solving of linear systems, leveraging LAPACK’s optimized routines.</p></li>
+<li><p><strong>Modular File Handling</strong>: Employs modular functions from <code class="docutils literal notranslate"><span class="pre">linalg_mod</span></code> for input/output operations, promoting code reuse and organization.</p></li>
+<li><p><strong>Error Management</strong>: Extensive error checking ensures the program gracefully handles common issues like invalid input or memory allocation failures.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Usage<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>The program is intended to be executed with three command-line arguments specifying the number of equations, matrix file name, and vector file name. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./solve_equations<span class="w"> </span><span class="m">3</span><span class="w"> </span>matrix.dat<span class="w"> </span>vector.dat
+</pre></div>
+</div>
+<p>This would solve a 3x3 system of equations using matrix and vector data from <code class="docutils literal notranslate"><span class="pre">matrix.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">vector.dat</span></code>.</p>
+<p>Next, let’s proceed to read and explain the <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code> file.</p>
+</section>
+<section id="explaining-linalg-mod-f90">
+<h3>Explaining <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code><a class="headerlink" href="#explaining-linalg-mod-f90" title="Link to this heading">#</a></h3>
+<p>The Fortran module <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code> provides utility functions for reading, writing, and generating arrays. This module likely supports the functionality required by the other programs you uploaded (<code class="docutils literal notranslate"><span class="pre">generate_array.f90</span></code> and <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code>). Here’s a breakdown of its contents and functionalities:</p>
+<section id="module-structure-and-functions">
+<h4>Module Structure and Functions<a class="headerlink" href="#module-structure-and-functions" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Module <code class="docutils literal notranslate"><span class="pre">linalg_mod</span></code></strong></p>
+<ul class="simple">
+<li><p>Utilizes <code class="docutils literal notranslate"><span class="pre">iso_fortran_env</span></code> for standard environment definitions, such as <code class="docutils literal notranslate"><span class="pre">output_unit</span></code>, <code class="docutils literal notranslate"><span class="pre">error_unit</span></code>, and <code class="docutils literal notranslate"><span class="pre">DP</span></code> (double precision floating-point kind).</p></li>
+</ul>
+</li>
+<li><p><strong>Functionality Exposed</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">read_array</span></code>: Reads an array from a file whose dimensions and rank are defined by the inputs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">write_array</span></code>: Writes an array to a file or standard output, handling both vectors and matrices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generate_random_array</span></code>: Fills an allocatable array with random numbers, based on the dimensions provided.</p></li>
+</ul>
+</li>
+<li><p><strong>Detailed Function Descriptions</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">read_array</span></code></strong>:</p>
+<ul>
+<li><p>Takes a file name, an array (allocatable), and its expected dimensions.</p></li>
+<li><p>Checks if the rank of the array matches the number of dimensions provided.</p></li>
+<li><p>Depending on the rank, it calls <code class="docutils literal notranslate"><span class="pre">read_vector</span></code> or <code class="docutils literal notranslate"><span class="pre">read_matrix</span></code> to perform the read operation.</p></li>
+<li><p>Errors are managed by stopping the program if the ranks or dimensions do not match expectations.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">write_array</span></code></strong>:</p>
+<ul>
+<li><p>Accepts an array and an optional file name for output.</p></li>
+<li><p>Uses rank-specific procedures (<code class="docutils literal notranslate"><span class="pre">write_vector</span></code> or <code class="docutils literal notranslate"><span class="pre">write_matrix</span></code>) to handle the output based on the array’s rank.</p></li>
+<li><p>If no file name is provided, the output is directed to the standard output (<code class="docutils literal notranslate"><span class="pre">output_unit</span></code>).</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">generate_random_array</span></code></strong>:</p>
+<ul>
+<li><p>Designed to allocate and populate an array (either vector or matrix) with random numbers.</p></li>
+<li><p>Checks the allocation status and initializes the array with random numbers using the intrinsic <code class="docutils literal notranslate"><span class="pre">random_number</span></code> procedure.</p></li>
+<li><p>Manages errors related to mismatched ranks or failed allocations.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="subroutines-for-vector-and-matrix-handling">
+<h4>Subroutines for Vector and Matrix Handling<a class="headerlink" href="#subroutines-for-vector-and-matrix-handling" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">read_vector</span></code> and <code class="docutils literal notranslate"><span class="pre">write_vector</span></code></strong>:</p>
+<ul>
+<li><p>Handle reading and writing operations for vectors, respectively.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">read_matrix</span></code> and <code class="docutils literal notranslate"><span class="pre">write_matrix</span></code></strong>:</p>
+<ul>
+<li><p>Handle reading and writing operations for matrices, respectively.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="key-functionalities-and-error-handling">
+<h3>Key Functionalities and Error Handling<a class="headerlink" href="#key-functionalities-and-error-handling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The module is equipped to handle errors related to input/output operations and array manipulations, which is critical for robust numerical software.</p></li>
+<li><p>Error messages are detailed, including specific issues like mismatched array ranks or failed memory allocations, which aids in debugging and user feedback.</p></li>
+<li><p>Flexibility to output to either a file or standard output enhances the module’s usability across different computational scenarios.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Usage<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>This module is utilized by other programs for managing arrays, particularly in numerical computations involving linear algebra. It abstracts away the details of file I/O and array initialization, allowing other parts of the software to focus on core computational logic.</p>
+<p>Overall, <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code> serves as a foundational component for array management in Fortran programs, providing essential services such as reading, writing, and generating arrays with a focus on error handling and user feedback.</p>
+</section>
+</section>
+<section id="program-code">
+<h2>Program Code<a class="headerlink" href="#program-code" title="Link to this heading">#</a></h2>
+<p>The individual program files are listed below:</p>
 <section id="in-file-linalg-mod-f90">
-<h3>In file linalg_mod.f90<a class="headerlink" href="#in-file-linalg-mod-f90" title="Permalink to this heading">#</a></h3>
+<h3>In file linalg_mod.f90<a class="headerlink" href="#in-file-linalg-mod-f90" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">linalg_mod</span>
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">output_unit</span><span class="p">,</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span>
 <span class="w">    </span><span class="k">implicit none</span>
@@ -743,7 +1013,7 @@ b_{n}
 </div>
 </section>
 <section id="in-file-generate-array-f90">
-<h3>In file generate_array.f90<a class="headerlink" href="#in-file-generate-array-f90" title="Permalink to this heading">#</a></h3>
+<h3>In file generate_array.f90<a class="headerlink" href="#in-file-generate-array-f90" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">generate_array</span>
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span>
 <span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linalg_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">write_array</span><span class="p">,</span><span class="w"> </span><span class="n">generate_random_array</span>
@@ -799,7 +1069,7 @@ b_{n}
 </div>
 </section>
 <section id="in-solve-equations-f90">
-<h3>In solve_equations.f90<a class="headerlink" href="#in-solve-equations-f90" title="Permalink to this heading">#</a></h3>
+<h3>In solve_equations.f90<a class="headerlink" href="#in-solve-equations-f90" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">main</span>
 <span class="w">    </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="n">DP</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">REAL64</span>
 <span class="w">    </span><span class="k">use</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">linalg_mod</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">read_array</span><span class="p">,</span><span class="w"> </span><span class="n">write_array</span>
@@ -897,7 +1167,7 @@ b_{n}
 </section>
 </section>
 <section id="build-the-program-using-fpm-fortran-package-manager">
-<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<h2>Build the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#build-the-program-using-fpm-fortran-package-manager" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -949,9 +1219,9 @@ b_{n}
 </div>
 </section>
 <section id="run-the-program-using-fpm-fortran-package-manager">
-<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Permalink to this heading">#</a></h2>
+<h2>Run the Program using FPM (Fortran Package Manager)<a class="headerlink" href="#run-the-program-using-fpm-fortran-package-manager" title="Link to this heading">#</a></h2>
 <section id="solve-a-test-linear-system-of-two-equations">
-<h3>Solve a Test Linear System of Two Equations<a class="headerlink" href="#solve-a-test-linear-system-of-two-equations" title="Permalink to this heading">#</a></h3>
+<h3>Solve a Test Linear System of Two Equations<a class="headerlink" href="#solve-a-test-linear-system-of-two-equations" title="Link to this heading">#</a></h3>
 <p>As our first run, we wish to solve the following set of linear equations:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1092,7 +1362,7 @@ x2 = 3.0
 <p>We can see that the Fortran code and Numpy produce the same results.</p>
 </section>
 <section id="solve-a-test-linear-system-of-equations-of-arbitrary-size">
-<h3>Solve a Test Linear System of Equations of Arbitrary Size<a class="headerlink" href="#solve-a-test-linear-system-of-equations-of-arbitrary-size" title="Permalink to this heading">#</a></h3>
+<h3>Solve a Test Linear System of Equations of Arbitrary Size<a class="headerlink" href="#solve-a-test-linear-system-of-equations-of-arbitrary-size" title="Link to this heading">#</a></h3>
 <p>The Fortran code can be used to solve an arbitrarily large system of equations.  To test this functionality, we make use of the <em>generate_array.f90</em> program to generate arrays or matrices of arbitrary size filled with random numbers.</p>
 <p>As a start, we will use the <em>generate_array.f90</em> to generate a matrix file A_test2.txt that contains a 10x10 matrix.</p>
 <div class="cell docutils container">
@@ -1147,133 +1417,133 @@ x2 = 3.0
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.999518</td>
-      <td>0.730765</td>
-      <td>0.537666</td>
-      <td>0.795326</td>
-      <td>0.603042</td>
-      <td>0.514691</td>
-      <td>0.831528</td>
-      <td>0.655578</td>
-      <td>0.111146</td>
-      <td>0.082799</td>
+      <td>0.421673</td>
+      <td>0.935618</td>
+      <td>0.126794</td>
+      <td>0.255176</td>
+      <td>0.408764</td>
+      <td>0.928710</td>
+      <td>0.145421</td>
+      <td>0.558095</td>
+      <td>0.468621</td>
+      <td>0.257515</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.067642</td>
-      <td>0.386842</td>
-      <td>0.623416</td>
-      <td>0.654566</td>
-      <td>0.878998</td>
-      <td>0.212095</td>
-      <td>0.339116</td>
-      <td>0.775732</td>
-      <td>0.590531</td>
-      <td>0.464570</td>
+      <td>0.587095</td>
+      <td>0.467240</td>
+      <td>0.245670</td>
+      <td>0.200381</td>
+      <td>0.511438</td>
+      <td>0.813974</td>
+      <td>0.086570</td>
+      <td>0.034281</td>
+      <td>0.430556</td>
+      <td>0.280993</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.953720</td>
-      <td>0.701895</td>
-      <td>0.236746</td>
-      <td>0.974274</td>
-      <td>0.209965</td>
-      <td>0.894153</td>
-      <td>0.376570</td>
-      <td>0.604952</td>
-      <td>0.099158</td>
-      <td>0.752079</td>
+      <td>0.903030</td>
+      <td>0.182116</td>
+      <td>0.502272</td>
+      <td>0.869994</td>
+      <td>0.693967</td>
+      <td>0.937254</td>
+      <td>0.661794</td>
+      <td>0.070945</td>
+      <td>0.381007</td>
+      <td>0.212883</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.848380</td>
-      <td>0.970414</td>
-      <td>0.734678</td>
-      <td>0.842611</td>
-      <td>0.004515</td>
-      <td>0.360217</td>
-      <td>0.726035</td>
-      <td>0.220156</td>
-      <td>0.699322</td>
-      <td>0.373664</td>
+      <td>0.263161</td>
+      <td>0.868036</td>
+      <td>0.597302</td>
+      <td>0.340067</td>
+      <td>0.078363</td>
+      <td>0.629179</td>
+      <td>0.596100</td>
+      <td>0.681268</td>
+      <td>0.570964</td>
+      <td>0.017023</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.753073</td>
-      <td>0.852045</td>
-      <td>0.271745</td>
-      <td>0.513939</td>
-      <td>0.733491</td>
-      <td>0.542768</td>
-      <td>0.225936</td>
-      <td>0.160468</td>
-      <td>0.132893</td>
-      <td>0.867734</td>
+      <td>0.244690</td>
+      <td>0.891965</td>
+      <td>0.608509</td>
+      <td>0.529229</td>
+      <td>0.296088</td>
+      <td>0.655500</td>
+      <td>0.021702</td>
+      <td>0.930641</td>
+      <td>0.830929</td>
+      <td>0.902585</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.742051</td>
-      <td>0.243374</td>
-      <td>0.280300</td>
-      <td>0.453874</td>
-      <td>0.291326</td>
-      <td>0.816184</td>
-      <td>0.008935</td>
-      <td>0.680387</td>
-      <td>0.685971</td>
-      <td>0.391845</td>
+      <td>0.403680</td>
+      <td>0.857524</td>
+      <td>0.225238</td>
+      <td>0.414229</td>
+      <td>0.644367</td>
+      <td>0.370850</td>
+      <td>0.294341</td>
+      <td>0.029291</td>
+      <td>0.638900</td>
+      <td>0.628002</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.164353</td>
-      <td>0.021572</td>
-      <td>0.544100</td>
-      <td>0.833401</td>
-      <td>0.069831</td>
-      <td>0.650157</td>
-      <td>0.046093</td>
-      <td>0.739940</td>
-      <td>0.667629</td>
-      <td>0.489956</td>
+      <td>0.617487</td>
+      <td>0.682296</td>
+      <td>0.879799</td>
+      <td>0.765662</td>
+      <td>0.240073</td>
+      <td>0.716382</td>
+      <td>0.222183</td>
+      <td>0.962739</td>
+      <td>0.107814</td>
+      <td>0.132789</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.791057</td>
-      <td>0.430724</td>
-      <td>0.472571</td>
-      <td>0.803526</td>
-      <td>0.362557</td>
-      <td>0.165131</td>
-      <td>0.622104</td>
-      <td>0.220706</td>
-      <td>0.627711</td>
-      <td>0.180417</td>
+      <td>0.142222</td>
+      <td>0.959092</td>
+      <td>0.023716</td>
+      <td>0.353006</td>
+      <td>0.240515</td>
+      <td>0.581517</td>
+      <td>0.122547</td>
+      <td>0.019490</td>
+      <td>0.628463</td>
+      <td>0.969933</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.711276</td>
-      <td>0.639827</td>
-      <td>0.230442</td>
-      <td>0.427381</td>
-      <td>0.801841</td>
-      <td>0.001238</td>
-      <td>0.341765</td>
-      <td>0.447621</td>
-      <td>0.770039</td>
-      <td>0.686256</td>
+      <td>0.149716</td>
+      <td>0.985596</td>
+      <td>0.001668</td>
+      <td>0.628802</td>
+      <td>0.158205</td>
+      <td>0.474989</td>
+      <td>0.826883</td>
+      <td>0.571380</td>
+      <td>0.378739</td>
+      <td>0.623974</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.757372</td>
-      <td>0.328852</td>
-      <td>0.339171</td>
-      <td>0.750230</td>
-      <td>0.048634</td>
-      <td>0.502985</td>
-      <td>0.078318</td>
-      <td>0.591186</td>
-      <td>0.299787</td>
-      <td>0.249752</td>
+      <td>0.038831</td>
+      <td>0.107022</td>
+      <td>0.134601</td>
+      <td>0.835905</td>
+      <td>0.813101</td>
+      <td>0.316593</td>
+      <td>0.897804</td>
+      <td>0.212598</td>
+      <td>0.479313</td>
+      <td>0.891057</td>
     </tr>
   </tbody>
 </table>
@@ -1322,43 +1592,43 @@ x2 = 3.0
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.479316</td>
+      <td>0.884898</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.457936</td>
+      <td>0.427984</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.627673</td>
+      <td>0.308936</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.870522</td>
+      <td>0.180324</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.559231</td>
+      <td>0.740749</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.574622</td>
+      <td>0.636743</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.998691</td>
+      <td>0.007627</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.416950</td>
+      <td>0.508185</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.409137</td>
+      <td>0.202605</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.408319</td>
+      <td>0.263376</td>
     </tr>
   </tbody>
 </table>
@@ -1373,16 +1643,16 @@ x2 = 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          1.203620834091756
-         -1.984366354348622
-          2.874657614865468
-         -1.705254305975049
-         -0.887113089376159
-         -0.361063012952124
-          1.079714037557591
-          0.374300467040254
-         -0.756175023503045
-          2.399298615295449
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         -0.300619545614419
+          0.147645143403048
+         -1.273611728694176
+          1.305132415355371
+          0.557331029770800
+          0.025935962246598
+         -1.111310819419793
+          0.291430520533678
+          1.523017222769444
+         -1.027865673834484
 </pre></div>
 </div>
 </div>
@@ -1400,16 +1670,16 @@ x2 = 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x1 = 1.203621
-x2 = -1.984366
-x3 = 2.874658
-x4 = -1.705254
-x5 = -0.887113
-x6 = -0.361063
-x7 = 1.079714
-x8 = 0.374300
-x9 = -0.756175
-x10 = 2.399299
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x1 = -0.300620
+x2 = 0.147645
+x3 = -1.273612
+x4 = 1.305132
+x5 = 0.557331
+x6 = 0.025936
+x7 = -1.111311
+x8 = 0.291431
+x9 = 1.523017
+x10 = -1.027866
 </pre></div>
 </div>
 </div>
@@ -1476,6 +1746,7 @@ x10 = 2.399299
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1484,6 +1755,33 @@ x10 = 2.399299
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-program-demonstrates-solving-linear-algebra-equations-in-fortran">This program demonstrates solving linear algebra equations in Fortran.</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-equation-problem">Linear Equation Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-the-programs">Explanation of the Programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-generate-array-f90">Explaining <code class="docutils literal notranslate"><span class="pre">generate_array.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-structure">Program Structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-get-arguments">Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functionalities">Key Functionalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-solve-equations-f90">Explaining <code class="docutils literal notranslate"><span class="pre">solve_equations.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Program Structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Subroutine: <code class="docutils literal notranslate"><span class="pre">get_arguments</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Key Functionalities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-linalg-mod-f90">Explaining <code class="docutils literal notranslate"><span class="pre">linalg_mod.f90</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-structure-and-functions">Module Structure and Functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutines-for-vector-and-matrix-handling">Subroutines for Vector and Matrix Handling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functionalities-and-error-handling">Key Functionalities and Error Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-code">Program Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-linalg-mod-f90">In file linalg_mod.f90</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-file-generate-array-f90">In file generate_array.f90</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-solve-equations-f90">In solve_equations.f90</a></li>
@@ -1536,8 +1834,8 @@ By Mark Khusid
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
