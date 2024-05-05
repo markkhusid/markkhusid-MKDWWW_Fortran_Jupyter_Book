@@ -460,6 +460,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-advection-equation">The Advection Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-predict-the-linear-advection-of-an-object-with-periodic-boundary-conditions">Program to Predict the Linear Advection of an Object, with Periodic Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-explanation">Program Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-elements-of-the-program">Key Elements of the Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-execution-details">Program Execution Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications">Practical Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
             </nav>
         </div>
@@ -553,6 +560,85 @@ Adapted from: “Modern Fortan” by Milan Curcic (Manning)</p>
 <span class="k">end program </span><span class="n">tsunami</span>
 </pre></div>
 </div>
+</section>
+<section id="program-explanation">
+<h2>Program Explanation<a class="headerlink" href="#program-explanation" title="Link to this heading">#</a></h2>
+<p>The Fortran program <code class="docutils literal notranslate"><span class="pre">tsunami</span></code> simulates the propagation of a wave in a one-dimensional grid using a basic numerical scheme akin to the finite difference method. The purpose of the program is to approximate how a disturbance, initialized in the middle of the domain, evolves over time given the specified parameters.</p>
+<section id="key-elements-of-the-program">
+<h3>Key Elements of the Program<a class="headerlink" href="#key-elements-of-the-program" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Variable Declarations and Constants</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_size</span></code>: The number of grid points in the simulation domain.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_time_steps</span></code>: The number of time steps for which the simulation will run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dt</span></code>: Time step in seconds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dx</span></code>: Spatial grid spacing in meters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code>: Phase speed of the wave in meters per second.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">h</span></code>: Height of the wave at each grid point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dh</span></code>: Temporal change in height at each grid point between consecutive steps.</p></li>
+</ul>
+</li>
+<li><p><strong>Initialization</strong>:</p>
+<ul class="simple">
+<li><p>An initial wave profile is set using a Gaussian-like exponential decay formula centered at <code class="docutils literal notranslate"><span class="pre">icenter</span></code>, influencing how sharply the wave amplitude decreases away from the center.</p></li>
+</ul>
+</li>
+<li><p><strong>File Handling</strong>:</p>
+<ul class="simple">
+<li><p>The program opens a file named ‘tsunami_simulator_data.txt’ for output and checks for its existence before each write operation to handle potential errors or file state changes during execution.</p></li>
+</ul>
+</li>
+<li><p><strong>Numerical Scheme</strong>:</p>
+<ul class="simple">
+<li><p>The simulation uses a simple difference scheme to approximate the temporal evolution of the wave:</p>
+<ul>
+<li><p><strong>Boundary Condition</strong>: A cyclic boundary condition is assumed (<code class="docutils literal notranslate"><span class="pre">dh(1)</span> <span class="pre">=</span> <span class="pre">h(1)</span> <span class="pre">-</span> <span class="pre">h(grid_size)</span></code>), which allows the wave to wrap around the domain, simulating an infinite or periodic space.</p></li>
+<li><p><strong>Interior Points</strong>: The change in height (<code class="docutils literal notranslate"><span class="pre">dh</span></code>) at each internal grid point is computed based on the difference with its immediate left neighbor.</p></li>
+<li><p><strong>Update Step</strong>: The wave height at each grid point is updated using the computed differences, scaled by the wave speed, grid spacing, and time step.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Looping Structure</strong>:</p>
+<ul class="simple">
+<li><p>The main loop (<code class="docutils literal notranslate"><span class="pre">time_loop</span></code>) iterates over the number of time steps, updating the wave’s profile at each step and writing the results to the output file.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">inquire</span></code> statement checks if the output file still exists before attempting to append new data, which helps in managing output data integrity.</p></li>
+</ul>
+</li>
+<li><p><strong>Output</strong>:</p>
+<ul class="simple">
+<li><p>For each time step, the wave heights across the grid are written to the file. This output can be used for further analysis or visualization of the wave’s propagation.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="program-execution-details">
+<h3>Program Execution Details<a class="headerlink" href="#program-execution-details" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Initialization of <code class="docutils literal notranslate"><span class="pre">h</span></code></strong>:</p>
+<ul>
+<li><p>The wave height at each grid point is initialized to create a localized disturbance. The exponential decay formula makes the initial wave amplitude highest at the center and decreases moving away from the center.</p></li>
+</ul>
+</li>
+<li><p><strong>Time Evolution</strong>:</p>
+<ul>
+<li><p>At each time step, the program computes the spatial gradient of the wave heights, then adjusts the heights based on this gradient, effectively simulating the wave propagation.</p></li>
+</ul>
+</li>
+<li><p><strong>File Operations</strong>:</p>
+<ul>
+<li><p>Before writing to the file, the program ensures it’s in the correct state (open and ready for appending), handling the possibility that the file might not be available or already open from previous operations.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="practical-applications">
+<h3>Practical Applications<a class="headerlink" href="#practical-applications" title="Link to this heading">#</a></h3>
+<p>This program is a simplistic representation useful for educational purposes in teaching numerical methods for solving partial differential equations, specifically hyperbolic equations like the wave equation. It can also serve as a basic model in physical sciences and engineering for understanding wave dynamics in a controlled setting.</p>
+</section>
+</section>
+<section id="program-compilation-and-execution">
+<h2>Program Compilation and Execution<a class="headerlink" href="#program-compilation-and-execution" title="Link to this heading">#</a></h2>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -982,6 +1068,13 @@ Adapted from: “Modern Fortan” by Milan Curcic (Manning)</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-advection-equation">The Advection Equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-predict-the-linear-advection-of-an-object-with-periodic-boundary-conditions">Program to Predict the Linear Advection of an Object, with Periodic Boundary Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-explanation">Program Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-elements-of-the-program">Key Elements of the Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-execution-details">Program Execution Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-applications">Practical Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
   </nav></div>
 
