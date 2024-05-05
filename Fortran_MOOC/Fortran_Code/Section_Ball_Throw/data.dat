@@ -1,9 +1,0 @@
-[  0%]                        rk4.f90
-[ 25%]                        rk4.f90  done.
-
-././src/rk4.f90:158:26:
-
-  158 |   call f ( t0, m, u0, f0 )
-      |                          1
-Error: Procedure ‘f’ called with an implicit interface at (1) [-Werror=implicit-interface]
-compilation terminated due to -fmax-errors=1.

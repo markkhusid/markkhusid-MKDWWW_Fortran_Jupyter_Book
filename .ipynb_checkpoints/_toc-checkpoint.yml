@@ -65,7 +65,7 @@ parts:
       - file: Fortran_MOOC/Section_Arrays_Subarrays
       - file: Fortran_MOOC/Section_Arrays_Submatrices
       - file: Fortran_MOOC/Section_Arrays_Trace
-
+      
     - file: Fortran_MOOC/Section_Floating_Point
       sections:
       - file: Fortran_MOOC/Section_IEEE754_16_Zero_vs_Non_Zero 
@@ -85,9 +85,13 @@ parts:
       sections:
       - file: Fortran_MOOC/Section_Implicit_vs_Explicit_Loops
 
-    - file: Fortran_MOOC/Section_Ball_Throw__Head__
+    #- file: Fortran_MOOC/Section_Ball_Throw__Head__
+      #sections:
+      #- file: Fortran_MOOC/Section_Ball_Throw
+
+    - file: Fortran_MOOC/Section_Block_Matrices__Head__
       sections:
-      - file: Fortran_MOOC/Section_Ball_Throw
+      - file: Fortran_MOOC/Section_Block_Matrices  
 
     - file: Fortran_MOOC/Section_BLAS_LAPACK__Head__
       sections:
@@ -99,13 +103,12 @@ parts:
       - file: Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations__Head__
         sections:
         - file: Fortran_MOOC/Section_BLAS_LAPACK_Linear_Equations
-      
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_Dot
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_Copy
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_GEMV
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_Scal
-      - file: Fortran_MOOC/Section_BLAS_LAPACK_SV
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_Dot
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_Copy
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_DDOT_Timing
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_GEMV
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_Scal
+        - file: Fortran_MOOC/Section_BLAS_LAPACK_SV
       
 - caption: Miscellaneous
   chapters:
