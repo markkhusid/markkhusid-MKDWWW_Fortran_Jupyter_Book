@@ -456,7 +456,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-add-line-numbers-to-each-line-in-a-text-file">Program to add line numbers to each line in a text file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-add-line-numbers-to-each-line-in-a-text-file">Program to add line numbers to each line in a text file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-description">Program Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likely-code-structure">Likely Code Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
             </nav>
         </div>
@@ -560,6 +565,48 @@ document.write(`
 <span class="k">end program </span><span class="n">linenumbers</span>
 </pre></div>
 </div>
+<p>The following explanation is given by “Code Copilot” within ChatGPT 4.</p>
+<p>The Fortran program you’re inquiring about seems to involve reading data from an input file, manipulating or processing this data in some way, and then writing the output to another file, formatting it with line numbers. Based on the content of the input and output files, here’s a likely explanation:</p>
+<section id="program-description">
+<h3>Program Description<a class="headerlink" href="#program-description" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Input Handling</strong>: The program reads lines from an input file named <code class="docutils literal notranslate"><span class="pre">input_test_file.txt</span></code>, which contains the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">test</span> <span class="mi">1</span>
+<span class="n">this</span> <span class="ow">is</span> <span class="n">another</span> <span class="n">test</span> <span class="n">line</span> <span class="mi">345</span>
+<span class="n">one</span> <span class="n">more</span> <span class="n">line</span> <span class="k">if</span> <span class="n">you</span> <span class="n">please</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Processing</strong>: The main functionality of the program likely involves:</p>
+<ul class="simple">
+<li><p>Reading each line from the input file.</p></li>
+<li><p>Keeping track of the line numbers as it reads each line.</p></li>
+</ul>
+</li>
+<li><p><strong>Output Handling</strong>: The output of the program is written to another file named <code class="docutils literal notranslate"><span class="pre">output_test_file.txt</span></code>. Each line of the input file is prefixed with its line number in a formatted manner, shown as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="mi">1</span>  <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">test</span> <span class="mi">1</span>
+      <span class="mi">2</span>  <span class="n">this</span> <span class="ow">is</span> <span class="n">another</span> <span class="n">test</span> <span class="n">line</span> <span class="mi">345</span>
+      <span class="mi">3</span>  <span class="n">one</span> <span class="n">more</span> <span class="n">line</span> <span class="k">if</span> <span class="n">you</span> <span class="n">please</span>
+</pre></div>
+</div>
+<p>The line numbers are formatted to be right-aligned, possibly using formatted output capabilities in Fortran, which allows specifying field widths and alignments.</p>
+</li>
+</ol>
+</section>
+<section id="likely-code-structure">
+<h3>Likely Code Structure<a class="headerlink" href="#likely-code-structure" title="Link to this heading">#</a></h3>
+<p>The program might include:</p>
+<ul class="simple">
+<li><p>Opening and reading from the input file.</p></li>
+<li><p>Looping through each line, incrementing a line counter.</p></li>
+<li><p>Writing each line to the output file with the line number formatted to be right-aligned.</p></li>
+<li><p>Closing both the input and output files after processing is complete.</p></li>
+</ul>
+<p>This approach is commonly used in programs that need to display or log data with line numbers for easier tracking and referencing, particularly useful in contexts like debugging or data reviewing. If you need the actual Fortran code or further explanation on how it could be implemented, please let me know!</p>
+</section>
+</section>
+<section id="program-compilation-and-execution">
+<h2>Program Compilation and Execution<a class="headerlink" href="#program-compilation-and-execution" title="Link to this heading">#</a></h2>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,7 +729,12 @@ Wrote line to output file -&gt;          3  one more line if you please
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-add-line-numbers-to-each-line-in-a-text-file">Program to add line numbers to each line in a text file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-add-line-numbers-to-each-line-in-a-text-file">Program to add line numbers to each line in a text file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-description">Program Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likely-code-structure">Likely Code Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
   </nav></div>
 

@@ -457,6 +457,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-calculate-the-difference-between-the-sum-of-squares-and-the-square-of-sums">Program to Calculate the Difference Between the Sum of Squares and the Square of Sums</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
             </nav>
         </div>
@@ -522,6 +523,50 @@ document.write(`
 <span class="k">end program </span><span class="n">SOSdifference</span>
 </pre></div>
 </div>
+<p>The following explanation is given by “Code Copilot” within ChatGPT 4.</p>
+<p>The Fortran program <code class="docutils literal notranslate"><span class="pre">SOSdifference</span></code> is designed to calculate and display the difference between two mathematical quantities: the square of the sum of the first <code class="docutils literal notranslate"><span class="pre">n</span></code> natural numbers and the sum of the squares of the first <code class="docutils literal notranslate"><span class="pre">n</span></code> natural numbers. Here is a step-by-step explanation of how the program works:</p>
+<ol class="arabic simple">
+<li><p><strong>Variable Declaration</strong>: The program begins by declaring the necessary variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code> are integers used for looping and setting the upper limit, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SumOfSqrs</span></code> and <code class="docutils literal notranslate"><span class="pre">SqrOfSums</span></code> are initialized to zero. They are used to store the sum of squares and the square of sums, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">difference</span></code> is declared to store the computed difference between the two calculated values.</p></li>
+</ul>
+</li>
+<li><p><strong>User Interface Messages</strong>: The program uses <code class="docutils literal notranslate"><span class="pre">write</span></code> statements to print messages to the user explaining what the program does. These messages are:</p>
+<ul class="simple">
+<li><p>“This program calculates the difference between sum of squares and square of sums.”</p></li>
+</ul>
+</li>
+<li><p><strong>Input Handling</strong>: Originally, the program likely had code to prompt the user to enter the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> (number of terms). In this specific version, the user input is commented out, and <code class="docutils literal notranslate"><span class="pre">n</span></code> is set to 100 directly in the code. This adjustment might be for simplification, especially in environments like Jupyter Notebooks where interactive inputs can be cumbersome.</p></li>
+<li><p><strong>Computation Loop</strong>:</p>
+<ul class="simple">
+<li><p>The program uses a <code class="docutils literal notranslate"><span class="pre">do</span></code> loop from 1 to <code class="docutils literal notranslate"><span class="pre">n</span></code>. Inside this loop:</p>
+<ul>
+<li><p>It calculates the sum of squares (<code class="docutils literal notranslate"><span class="pre">SumOfSqrs</span></code>) by adding the square of each number <code class="docutils literal notranslate"><span class="pre">i</span></code> to the existing sum.</p></li>
+<li><p>It also calculates the sum of the numbers (<code class="docutils literal notranslate"><span class="pre">SqrOfSums</span></code>) by adding each number <code class="docutils literal notranslate"><span class="pre">i</span></code> to the cumulative sum.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Final Calculation</strong>:</p>
+<ul class="simple">
+<li><p>After exiting the loop, it squares the total sum (<code class="docutils literal notranslate"><span class="pre">SqrOfSums</span></code>) to get the square of the sum of the numbers from 1 to <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>It calculates the <code class="docutils literal notranslate"><span class="pre">difference</span></code> by subtracting the sum of squares from the square of sums.</p></li>
+</ul>
+</li>
+<li><p><strong>Result Display</strong>: Finally, the program prints the results:</p>
+<ul class="simple">
+<li><p>It displays the square of the sums.</p></li>
+<li><p>It displays the sum of the squares.</p></li>
+<li><p>It displays the computed difference between these two values.</p></li>
+</ul>
+</li>
+</ol>
+<p>This program highlights a classic mathematical problem often used to demonstrate algebraic identities or computational capabilities in programming.</p>
+</section>
+<section id="program-compilation-and-execution">
+<h2>Program Compilation and Execution<a class="headerlink" href="#program-compilation-and-execution" title="Link to this heading">#</a></h2>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,20 +592,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build &gt; /dev/null&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Project is up to date
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">build_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm build 2&gt;/dev/null&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>fpm run output is piped into sed to suppress the status of the run command and only print the output of the executable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run | sed 1,1d&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exec_status</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;fpm run 2&gt;/dev/null&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -576,9 +615,6 @@ The square of the sums from 1 to   100 is -&gt;   25502500
 The sum of the squares from 1 to   100 is -&gt;     338350
 
 The difference between the square of the sums and sum of the squares is -&gt;   25164150
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Project is up to date
 </pre></div>
 </div>
 </div>
@@ -651,6 +687,7 @@ The difference between the square of the sums and sum of the squares is -&gt;   
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-calculate-the-difference-between-the-sum-of-squares-and-the-square-of-sums">Program to Calculate the Difference Between the Sum of Squares and the Square of Sums</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
   </nav></div>
 
