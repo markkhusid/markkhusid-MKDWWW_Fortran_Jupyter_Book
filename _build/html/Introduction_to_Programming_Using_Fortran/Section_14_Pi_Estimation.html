@@ -59,6 +59,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Introduction_to_Programming_Using_Fortran/Section_14_Pi_Estimation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -456,7 +458,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-estimate-the-value-of-pi">Program to Estimate the Value of Pi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-estimate-the-value-of-pi">Program to Estimate the Value of Pi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-declaration">Variable Declaration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interaction">User Interaction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-parameters">Setting Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-allocation">Memory Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-point-generation">Random Point Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-estimation">Monte Carlo Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
             </nav>
         </div>
@@ -561,8 +572,74 @@ document.write(`
 <span class="w">    </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a, f16.8)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Estimated Pi Value: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pi_est</span>
 <span class="w">    </span><span class="k">print</span><span class="w"> </span><span class="o">*</span>
 <span class="k">end program </span><span class="n">piestimation</span>
+
+<span class="w">            </span>
 </pre></div>
 </div>
+<p>The following explanation is given by “Code Copilot” within ChatGPT 4.</p>
+<p>The Fortran program <code class="docutils literal notranslate"><span class="pre">piestimation</span></code> is designed to estimate the value of <span class="math notranslate nohighlight">\(\pi\)</span> using a Monte Carlo method. This method is a statistical technique that uses random sampling to approximate mathematical constants or solve mathematical problems. Here’s a breakdown of the program’s structure and functionality:</p>
+<section id="variable-declaration">
+<h3>Variable Declaration<a class="headerlink" href="#variable-declaration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>: The number of random points to be generated for the estimation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alstat</span></code>: Status variable for array allocation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code>: Loop control variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">incount</span></code>: Counter for the number of points that fall inside the unit circle.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>: Coordinates of a randomly generated point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pi_est</span></code>: The estimated value of <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pt</span></code>: Temporary variable to store the sum of squares of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">points</span></code>: A 2-dimensional allocatable array to store the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates of each point.</p></li>
+</ul>
+</section>
+<section id="user-interaction">
+<h3>User Interaction<a class="headerlink" href="#user-interaction" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The program begins by printing a header message to indicate its function.</p></li>
+<li><p>It initially contains commented-out code that prompts the user to enter a value for <code class="docutils literal notranslate"><span class="pre">count</span></code> with validations to ensure the input is within a specified range (100 to 1,000,000). This interactive portion is omitted in this version, likely to accommodate automated execution environments like Jupyter Notebooks.</p></li>
+</ul>
+</section>
+<section id="setting-parameters">
+<h3>Setting Parameters<a class="headerlink" href="#setting-parameters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Directly sets <code class="docutils literal notranslate"><span class="pre">count</span></code> to 1,000,000 for simplicity, meaning one million points will be used for the estimation.</p></li>
+</ul>
+</section>
+<section id="memory-allocation">
+<h3>Memory Allocation<a class="headerlink" href="#memory-allocation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Allocates space for the <code class="docutils literal notranslate"><span class="pre">points</span></code> array, which will hold the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates of the randomly generated points. It checks for successful allocation and terminates the program if memory allocation fails.</p></li>
+</ul>
+</section>
+<section id="random-point-generation">
+<h3>Random Point Generation<a class="headerlink" href="#random-point-generation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Initializes the random number generator.</p></li>
+<li><p>Loops <code class="docutils literal notranslate"><span class="pre">count</span></code> times to generate random <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates for each point. These coordinates are stored in the <code class="docutils literal notranslate"><span class="pre">points</span></code> array.</p></li>
+</ul>
+</section>
+<section id="monte-carlo-estimation">
+<h3>Monte Carlo Estimation<a class="headerlink" href="#monte-carlo-estimation" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Resets the <code class="docutils literal notranslate"><span class="pre">incount</span></code> (inside count) to zero.</p></li>
+<li><p>Loops through each point, calculating the distance from the origin using the Euclidean distance formula (i.e., checking if <span class="math notranslate nohighlight">\(x^2 + y^2 &lt; 1\)</span>). If the condition is true, the point is inside the unit circle, and <code class="docutils literal notranslate"><span class="pre">incount</span></code> is incremented.</p></li>
+<li><p>Calculates the estimated value of <span class="math notranslate nohighlight">\(\pi\)</span> using the formula:
+$<span class="math notranslate nohighlight">\(
+  \pi_{\text{est}} = 4 \times \frac{\text{incount}}{\text{count}}
+\)</span><span class="math notranslate nohighlight">\(
+  This formula derives from the ratio of the area of the unit circle to the area of the bounding square (since the radius of the circle is 1, the area of the circle is \)</span>\pi<span class="math notranslate nohighlight">\(, and the area of the square is \)</span>2^2 = 4$).</p>
+<h3 class="rubric" id="display-results">Display Results</h3>
+<ul class="simple">
+<li><p>Prints the total number of points processed.</p></li>
+<li><p>Displays the number of points that fell inside the unit circle.</p></li>
+<li><p>Outputs the estimated value of <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
+</ul>
+<p>This program is an excellent example of using random sampling methods for numerical approximation and demonstrates fundamental concepts of probabilistic simulation in Fortran.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="program-compilation-and-execution">
+<h2>Program Compilation and Execution<a class="headerlink" href="#program-compilation-and-execution" title="Link to this heading">#</a></h2>
 <p>The above program is compiled and run using Fortran Package Manager (fpm):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -604,9 +681,9 @@ document.write(`
 
 The number of points to process is -&gt;    1000000
 
-The number of points inside the circle were -&gt;     785793
+The number of points inside the circle were -&gt;     785890
 
-Estimated Pi Value:       3.14317203
+Estimated Pi Value:       3.14355993
 </pre></div>
 </div>
 </div>
@@ -678,7 +755,16 @@ Estimated Pi Value:       3.14317203
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-estimate-the-value-of-pi">Program to Estimate the Value of Pi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-to-estimate-the-value-of-pi">Program to Estimate the Value of Pi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-declaration">Variable Declaration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interaction">User Interaction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-parameters">Setting Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-allocation">Memory Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-point-generation">Random Point Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-estimation">Monte Carlo Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
 </ul>
   </nav></div>
 
