@@ -465,6 +465,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-allocation">Memory Allocation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-point-generation">Random Point Generation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-estimation">Monte Carlo Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-results">Display Results</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
@@ -619,23 +620,25 @@ document.write(`
 </section>
 <section id="monte-carlo-estimation">
 <h3>Monte Carlo Estimation<a class="headerlink" href="#monte-carlo-estimation" title="Link to this heading">#</a></h3>
-<ul>
+<ul class="simple">
 <li><p>Resets the <code class="docutils literal notranslate"><span class="pre">incount</span></code> (inside count) to zero.</p></li>
 <li><p>Loops through each point, calculating the distance from the origin using the Euclidean distance formula (i.e., checking if <span class="math notranslate nohighlight">\(x^2 + y^2 &lt; 1\)</span>). If the condition is true, the point is inside the unit circle, and <code class="docutils literal notranslate"><span class="pre">incount</span></code> is incremented.</p></li>
-<li><p>Calculates the estimated value of <span class="math notranslate nohighlight">\(\pi\)</span> using the formula:
-$<span class="math notranslate nohighlight">\(
-  \pi_{\text{est}} = 4 \times \frac{\text{incount}}{\text{count}}
-\)</span><span class="math notranslate nohighlight">\(
-  This formula derives from the ratio of the area of the unit circle to the area of the bounding square (since the radius of the circle is 1, the area of the circle is \)</span>\pi<span class="math notranslate nohighlight">\(, and the area of the square is \)</span>2^2 = 4$).</p>
-<h3 class="rubric" id="display-results">Display Results</h3>
+<li><p>Calculates the estimated value of <span class="math notranslate nohighlight">\(\pi\)</span> using the formula:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\Large \pi_{\text{est}} = 4 \times \frac{\text{incount}}{\text{count}}
+\]</div>
+<p>This formula derives from the ratio of the area of the unit circle to the area of the bounding square (since the radius of the circle is 1, the area of the circle is <span class="math notranslate nohighlight">\(\pi\)</span>, and the area of the square is <span class="math notranslate nohighlight">\(2^2 = 4\)</span>).</p>
+</section>
+<section id="display-results">
+<h3>Display Results<a class="headerlink" href="#display-results" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Prints the total number of points processed.</p></li>
 <li><p>Displays the number of points that fell inside the unit circle.</p></li>
 <li><p>Outputs the estimated value of <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
 </ul>
 <p>This program is an excellent example of using random sampling methods for numerical approximation and demonstrates fundamental concepts of probabilistic simulation in Fortran.</p>
-</li>
-</ul>
 </section>
 </section>
 <section id="program-compilation-and-execution">
@@ -681,9 +684,9 @@ $<span class="math notranslate nohighlight">\(
 
 The number of points to process is -&gt;    1000000
 
-The number of points inside the circle were -&gt;     785890
+The number of points inside the circle were -&gt;     785676
 
-Estimated Pi Value:       3.14355993
+Estimated Pi Value:       3.14270401
 </pre></div>
 </div>
 </div>
@@ -762,6 +765,7 @@ Estimated Pi Value:       3.14355993
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-allocation">Memory Allocation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-point-generation">Random Point Generation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-estimation">Monte Carlo Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-results">Display Results</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-compilation-and-execution">Program Compilation and Execution</a></li>
